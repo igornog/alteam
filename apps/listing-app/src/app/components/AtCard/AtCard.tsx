@@ -22,6 +22,7 @@ const StyledCard = styled(Card)`
 const CustomCard: React.FunctionComponent<Props> = (props: Props) => {
   return (
     <StyledCard>
+      <img src={props.icon} alt={'logo'} width={40} />
       <AtTypography variant='h5'>{props.number}. {props.title}</AtTypography>
       <AtTypography >{props.text}</AtTypography>
     </StyledCard>
@@ -30,6 +31,7 @@ const CustomCard: React.FunctionComponent<Props> = (props: Props) => {
 
 interface Props {
   number: number,
+  icon: string,
   title: string,
   text: string
 }
