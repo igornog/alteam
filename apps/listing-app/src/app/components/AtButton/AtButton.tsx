@@ -229,7 +229,6 @@ const AtButton: React.FunctionComponent<AtButtonProps> = (
     >
       {props.name && (
         <AtTypography
-          variant={'button'}
           fontSize={props.fontSize}
           whiteSpace={'nowrap'}
         >

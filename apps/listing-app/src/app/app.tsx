@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import Home from './home'
 
-
 const StyledApp = styled.div`
   // Your style here
 `

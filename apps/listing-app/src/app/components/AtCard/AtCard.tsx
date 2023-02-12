@@ -1,0 +1,38 @@
+import React from 'react'
+import { Card } from '@mui/material'
+import styled from 'styled-components'
+import AtTypography from '../AtTypography/AtTypography'
+import { grey } from '@mui/material/colors'
+
+const StyledCard = styled(Card)`
+  width: 100%;
+  height: auto;
+  box-shadow: none;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  p {
+    color: ${grey}
+    line-height: 22.4px;
+  }
+`
+
+const CustomCard: React.FunctionComponent<Props> = (props: Props) => {
+  return (
+    <StyledCard>
+      <AtTypography variant='h5'>{props.number}. {props.title}</AtTypography>
+      <AtTypography >{props.text}</AtTypography>
+    </StyledCard>
+  )
+}
+
+interface Props {
+  number: number,
+  title: string,
+  text: string
+}
+
+export default CustomCard
+
