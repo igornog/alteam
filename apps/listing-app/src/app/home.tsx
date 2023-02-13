@@ -10,6 +10,7 @@ import Footer from './components/AtFooter/AtFooter'
 import listingIcon from './assets/images/icons/add-1.svg'
 import puzzleIcon from './assets/images/icons/puzzle.svg'
 import submitIcon from './assets/images/icons/send-mail.svg'
+import CustomLink from './components/AtLink/AtLink'
 
 const StyledBackground = styled.div`
   height: 100%;
@@ -38,11 +39,14 @@ const Home: React.FunctionComponent = () => {
             gap={'20px'}>
             <AtTypography variant={'h3'}>Intelligent freelance team matching </AtTypography>
             <AtTypography variant={'body1'}>Welcome to our Beta freelance job listing. Create a free project or team listing for free to match with vetted talents for roles such as software engineers, UX UI designers, and product managers and find an entire elastic squad (a team of 3-12).</AtTypography>
-
           </Box>
           <Box display={'flex'} gap={'20px'}>
-            <AtTypography variant='subtitle1' fontSize='16px'><Document size={20}/> What's an Alteam Project?</AtTypography>
-            <AtTypography variant='subtitle1' fontSize='16px'><DocumentText size={20}/> What's an Alteam Team?</AtTypography>
+            <CustomLink>
+              <AtTypography variant='subtitle1' fontSize='16px'><Document size={20}/>What's an Alteam Project?</AtTypography>
+            </CustomLink>
+            <CustomLink>
+              <AtTypography variant='subtitle1' fontSize='16px'><DocumentText size={20}/> What's an Alteam Team?</AtTypography>
+            </CustomLink>
           </Box>
         </Box>
         <Box display={'flex'} gap={'20px'}>

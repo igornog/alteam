@@ -8,10 +8,11 @@ const StyledCard = styled(Card)`
   width: 100%;
   height: auto;
   box-shadow: none;
-  padding: 40px 20px;
+  padding: 30px 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  border-radius: 5px;
 
   p {
     color: ${grey}
