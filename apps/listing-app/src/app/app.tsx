@@ -1,14 +1,14 @@
 import styled from 'styled-components'
-import Home from './home'
+import Home from './views/home'
+import Form from './views/form'
 
-const StyledApp = styled.div`
-  // Your style here
-`
+const StyledApp = styled.div``
 
 export function App() {
   return (
     <StyledApp>
       <Home  />
+      <Form />
     </StyledApp>
   )
 }

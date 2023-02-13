@@ -1,16 +1,16 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import AtTypography from './components/AtTypography/AtTypography'
+import AtTypography from '../components/AtTypography/AtTypography'
 import styled from 'styled-components'
-import Header from './components/AtHeader/AtHeader'
-import CustomCard from './components/AtCard/AtCard'
+import Header from '../components/AtHeader/AtHeader'
+import CustomCard from '../components/AtCard/AtCard'
 import { AddCircle, Call, Document, DocumentText } from 'iconsax-react'
-import AtButton, { AtButtonKind, AtButtonVariant } from './components/AtButton/AtButton'
-import Footer from './components/AtFooter/AtFooter'
+import AtButton, { AtButtonKind, AtButtonVariant } from '../components/AtButton/AtButton'
+import Footer from '../components/AtFooter/AtFooter'
 import listingIcon from './assets/images/icons/add-1.svg'
 import puzzleIcon from './assets/images/icons/puzzle.svg'
 import submitIcon from './assets/images/icons/send-mail.svg'
-import CustomLink from './components/AtLink/AtLink'
+import CustomLink from '../components/AtLink/AtLink'
 
 const StyledBackground = styled.div`
   height: 100%;
