@@ -3,7 +3,8 @@ import { Box } from '@mui/material'
 import logo from '../../assets/images/black_logo.svg'
 import AtButton, { AtButtonKind, AtButtonVariant } from '../AtButton/AtButton'
 import { AddCircle, Profile2User } from 'iconsax-react'
-import AtLine from '../AtLine/AtLine'
+import AtLine from '../AtLine/AtLine' 
+import { StyledLink } from '../../views/home'
 
 const Header: React.FunctionComponent = () => {
   return (
@@ -16,15 +17,15 @@ const Header: React.FunctionComponent = () => {
             variant={AtButtonVariant.Outlined}
             startIcon={<Profile2User />}
             name={'I am a freelancer'}
-          // onClick={() => setOpenDrawerCreateClient(true)}
           />
-          <AtButton
-            kind={AtButtonKind.Success}
-            variant={AtButtonVariant.Contained}
-            startIcon={<AddCircle />}
-            name={'Create Free Listing'}
-          // onClick={() => setOpenDrawerCreateClient(true)}
-          />
+          <StyledLink to="/form" >
+            <AtButton
+              kind={AtButtonKind.Success}
+              variant={AtButtonVariant.Contained}
+              startIcon={<AddCircle />}
+              name={'Create Free Listing'}
+            />
+          </StyledLink>
         </Box>
       </Box>
       <AtLine />

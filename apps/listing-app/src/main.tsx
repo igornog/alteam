@@ -7,15 +7,20 @@ import { ThemeProvider } from 'styled-components'
 import { StyledEngineProvider } from '@mui/material'
 // import store from './app/utils/redux/store'
 
+import { LocalizationProvider } from '@mui/x-date-pickers'
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
-  <ThemeProvider theme={alTeamTheme}>
-    <StyledEngineProvider injectFirst>
-      {/* <Provider store={store}> */}
-      <Router>
-        <App />
-      </Router>
-      {/* </Provider> */}
-    </StyledEngineProvider>
-  </ThemeProvider>
+  <LocalizationProvider dateAdapter={AdapterMoment}>
+    <ThemeProvider theme={alTeamTheme}>
+      <StyledEngineProvider injectFirst>
+        {/* <Provider store={store}> */}
+        <Router>
+          <App />
+        </Router>
+        {/* </Provider> */}
+      </StyledEngineProvider>
+    </ThemeProvider>
+  </LocalizationProvider>,
 )

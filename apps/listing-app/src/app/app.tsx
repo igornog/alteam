@@ -1,16 +1,27 @@
-import styled from 'styled-components'
+import React from 'react'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import Home from './views/home'
 import Form from './views/form'
 
-const StyledApp = styled.div``
+export const Navigation: NavigationProps[] = []
 
-export function App() {
+export interface NavigationProps {
+  link: string
+  element: React.ReactNode
+  icon?: React.ReactNode
+  name?: string
+}
+
+export const App: React.FunctionComponent = () => {
+  const location = useLocation()
+
   return (
-    <StyledApp>
-      <Home  />
-      <Form />
-    </StyledApp>
+    <Routes location={location} key={location.pathname}>
+      <Route path="/" element={<Home />} />
+      <Route path="/form" element={<Form />} />
+    </Routes>
   )
 }
 
 export default App
+

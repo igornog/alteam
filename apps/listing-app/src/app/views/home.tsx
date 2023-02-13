@@ -7,10 +7,11 @@ import CustomCard from '../components/AtCard/AtCard'
 import { AddCircle, Call, Document, DocumentText } from 'iconsax-react'
 import AtButton, { AtButtonKind, AtButtonVariant } from '../components/AtButton/AtButton'
 import Footer from '../components/AtFooter/AtFooter'
-import listingIcon from './assets/images/icons/add-1.svg'
-import puzzleIcon from './assets/images/icons/puzzle.svg'
-import submitIcon from './assets/images/icons/send-mail.svg'
+import listingIcon from './../assets/images/icons/add-1.svg'
+import puzzleIcon from './../assets/images/icons/puzzle.svg'
+import submitIcon from './../assets/images/icons/send-mail.svg'
 import CustomLink from '../components/AtLink/AtLink'
+import { Link } from 'react-router-dom'
 
 const StyledBackground = styled.div`
   height: 100%;
@@ -19,6 +20,9 @@ const StyledBackground = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+`
+export const StyledLink = styled(Link)`
+    text-decoration: none;
 `
 
 const Home: React.FunctionComponent = () => {
@@ -42,10 +46,10 @@ const Home: React.FunctionComponent = () => {
           </Box>
           <Box display={'flex'} gap={'20px'}>
             <CustomLink>
-              <AtTypography variant='subtitle1' fontSize='16px'><Document size={20}/>What's an Alteam Project?</AtTypography>
+              <AtTypography variant='subtitle1' fontSize='16px'><Document size={20} />What's an Alteam Project?</AtTypography>
             </CustomLink>
             <CustomLink>
-              <AtTypography variant='subtitle1' fontSize='16px'><DocumentText size={20}/> What's an Alteam Team?</AtTypography>
+              <AtTypography variant='subtitle1' fontSize='16px'><DocumentText size={20} /> What's an Alteam Team?</AtTypography>
             </CustomLink>
           </Box>
         </Box>
@@ -62,13 +66,14 @@ const Home: React.FunctionComponent = () => {
             name={'Book a Call'}
           // onClick={() => setOpenDrawerCreateClient(true)}
           />
-          <AtButton
-            kind={AtButtonKind.Success}
-            variant={AtButtonVariant.Contained}
-            startIcon={<AddCircle />}
-            name={'Create Free Listing'}
-          // onClick={() => setOpenDrawerCreateClient(true)}
-          />
+          <StyledLink to="/form" >
+            <AtButton
+              kind={AtButtonKind.Success}
+              variant={AtButtonVariant.Contained}
+              startIcon={<AddCircle />}
+              name={'Create Free Listing'}
+            />
+          </StyledLink>
         </Box>
       </Box>
       <Footer />
