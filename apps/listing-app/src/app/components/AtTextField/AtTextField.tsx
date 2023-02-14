@@ -68,12 +68,13 @@ const StyledLabel = styled.label<{
 }
 `
 
-const StyledInput = styled(OutlinedInput)<{
+const StyledInput = styled(OutlinedInput) <{
   $isError?: boolean
   $isSuccess?: boolean
   $focused: boolean
   disabled?: boolean
   size?: string
+  $isCountryCode?: boolean
   $dropdown?: boolean
   $bgColor?: string
   $maxWidth?: number
@@ -81,32 +82,32 @@ const StyledInput = styled(OutlinedInput)<{
 }>`
   &.${outlinedInputClasses.root} {
     ${({ multiline }) =>
-      !multiline &&
-      css`
+    !multiline && 
+    css`
         padding: 0 20px;
       `}
     justify-content: space-between;
     ${({ $bgColor }) =>
-      $bgColor
-        ? css<{ $bgColor?: string }>`
+    $bgColor
+      ? css<{ $bgColor?: string }>`
             background-color: ${({ $bgColor }) =>
-              $bgColor === 'black' ? black : white};
+          $bgColor === 'black' ? black : white};
           `
-        : css<{ $focused: boolean; $isError?: boolean; $isSuccess?: boolean }>`
+      : css<{ $focused: boolean; $isError?: boolean; $isSuccess?: boolean }>`
             background-color: ${({ $focused, $isError, $isSuccess }) =>
-              $focused
-                ? $isError
-                  ? red1
-                  : $isSuccess
-                  ? green5
-                  : white
-                : white};
+          $focused
+            ? $isError
+              ? red1
+              : $isSuccess
+                ? green5
+                : white
+            : white};
           `};
 
     & > input {
       max-width: ${({ $maxWidth }) => $maxWidth && $maxWidth + 'ch'};
       color: ${({ disabled, $bgColor }: any) =>
-        $bgColor === 'black' ? white : disabled ? grey3 : black};
+    $bgColor === 'black' ? white : disabled ? grey3 : black};
       font-size: ${({ size }) => (size === 'medium' ? '16px' : '14px')};
 
       &::placeholder {
@@ -120,7 +121,7 @@ const StyledInput = styled(OutlinedInput)<{
         }
       }
       padding: ${({ size }) => (size === 'medium' ? '18px 0' : '10px 0')};
-
+      padding-left: ${({ $isCountryCode }) => ( $isCountryCode ? '0px' : null )}
       ::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
@@ -146,21 +147,21 @@ const StyledInput = styled(OutlinedInput)<{
       }
       & > svg {
         ${({ $dropdown }) =>
-          $dropdown &&
-          css`
+    $dropdown &&
+    css`
             &:hover {
               cursor: pointer;
             }
           `}
         width: 20px;
         color: ${({ disabled, $bgColor }) =>
-          $bgColor === 'black' ? white : disabled ? grey3 : black};
+    $bgColor === 'black' ? white : disabled ? grey3 : black};
       }
     }
     .${inputAdornmentClasses.positionStart} {
       width: ${({ size }) => (size === 'medium' ? '20px' : '15px')};
       color: ${({ $isError, $isSuccess, disabled }) =>
-        disabled ? grey3 : $isError ? red : $isSuccess ? green : grey2};
+    disabled ? grey3 : $isError ? red : $isSuccess ? green : grey2};
       margin-right: 0;
     }
   }
@@ -171,11 +172,11 @@ const StyledInput = styled(OutlinedInput)<{
       transition: 0.3s;
       border-width: 1px;
       border-color: ${({ $isError, $isSuccess, $bgColor }) =>
-        $bgColor === 'black'
-          ? null
-          : $isError
-          ? red
-          : $isSuccess
+    $bgColor === 'black'
+      ? null
+      : $isError
+        ? red
+        : $isSuccess
           ? green
           : grey5};
     }
@@ -184,12 +185,12 @@ const StyledInput = styled(OutlinedInput)<{
     fieldset {
       transition: 0.3s;
       border-color: ${({ $isError, $isSuccess }) =>
-        $isError ? red : $isSuccess ? green : grey3};
+    $isError ? red : $isSuccess ? green : grey3};
     }
   }
 `
 
-const StyledArrow = styled(ArrowDown2)<{ open?: boolean }>`
+const StyledArrow = styled(ArrowDown2) <{ open?: boolean }>`
   transition: 0.3s;
   transform: rotate(${({ open }) => (open ? '180' : '0')}deg);
 `
@@ -199,6 +200,19 @@ const StyledCharCounter = styled.label`
   padding: 10px;
   bottom: 0px;
   right: 0;
+}
+`
+
+const CountryCodeInput = styled(OutlinedInput)`
+  height: 59px;
+  border-radius: 5px 0 0 5px;
+  left: -20px;
+
+  input{
+    text-align: center;
+    pointer-events: none;
+    width: 60px;
+  }
 }
 `
 
@@ -318,6 +332,7 @@ const AtTextField: React.FunctionComponent<AtTextFieldProps> = (
           $bgColor={props.bgColor}
           readOnly={props.readonly}
           $isError={props.isError}
+          $isCountryCode={props.countryCode}
           $isSuccess={props.isSuccess}
           $focused={isFocused}
           multiline={props.multiline}
@@ -342,11 +357,13 @@ const AtTextField: React.FunctionComponent<AtTextFieldProps> = (
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           startAdornment={
-            props.startIcon && (
+            props.startIcon ?
               <InputAdornment position="start">
                 {props.startIcon}
               </InputAdornment>
-            )
+              : props.countryCode ?
+                <CountryCodeInput value={'+44'}/>
+                : null
           }
           endAdornment={
             props.dropdown ? (
@@ -395,6 +412,7 @@ export interface AtTextFieldProps {
   multiline?: boolean
   rows?: number
   inputProps?: any
+  countryCode?: boolean
 
   isSuccess?: boolean
   isError?: boolean

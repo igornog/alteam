@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import Home from './views/home'
-import Form from './views/form'
+import Form from './views/generalInfo'
 
 export const Navigation: NavigationProps[] = []
 

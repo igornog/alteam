@@ -1,17 +1,12 @@
-import { Box, Container, Grid } from '@mui/material'
-import { ArrowLeft2, Edit } from 'iconsax-react'
-import React, { useState } from 'react'
+import { Box, Container } from '@mui/material'
+import { ArrowRight2 } from 'iconsax-react'
 import styled from 'styled-components'
-// import CreateProject from './Project/CreateProject'
-// import CreateTeam from './Team/CreateTeam'
-import { grey, grey2, white } from '../utils/colors'
+import { grey2, white } from '../utils/colors'
 import AtButton, { AtButtonKind, AtButtonVariant } from '../components/AtButton/AtButton'
 import AtTypography from '../components/AtTypography/AtTypography'
 import AtLine from '../components/AtLine/AtLine'
-import AtFrame from '../components/AtFrame/AtFrame'
 import AtTextField from '../components/AtTextField/AtTextField'
 import AtTextFieldDropdown from '../components/AtDropdown/AtTextFieldDropdown'
-import AtTextFieldDate from '../components/AtTextField/AtTextFieldDate'
 
 export const StyledForm = styled.div`
   background-color: ${white};
@@ -19,18 +14,18 @@ export const StyledForm = styled.div`
   border-radius: 5px;
 `
 
-const Form: React.FunctionComponent<CreateListingProps> = (
+const GeneralInfoForm: React.FunctionComponent<CreateListingProps> = (
   props: CreateListingProps,
 ) => {
-  const [step, setStep] = useState(0)
+  // const [step, setStep] = useState(0)
 
-  const handleCloseAll = () => {
-    // props.handleClose()
+  // const handleCloseAll = () => {
+  //   // props.handleClose()
 
-    setTimeout(() => {
-      // props.handleBackToCreateListing()
-    }, 1500)
-  }
+  //   setTimeout(() => {
+  //     // props.handleBackToCreateListing()
+  //   }, 1500)
+  // }
 
   return (
     <Container>
@@ -74,19 +69,13 @@ const Form: React.FunctionComponent<CreateListingProps> = (
               maxLength={30}
             />
 
-            <Box display={'flex'}>
-              <AtTextField
-                maxWidth={1}
-                placeholder={'Enter Phone Number'}
-                required={true}
-              />
-              <AtTextField
-                maxWidth={99}
-                placeholder={'Enter Phone Number'}
-                required={true}
-                label={'Phone Number'}
-              />
-            </Box>
+            <AtTextField
+              maxWidth={99}
+              placeholder={'Enter Phone Number'}
+              required={true}
+              countryCode={true}
+              label={'Phone Number'}
+            />
 
             <AtTextField
               label={'Company Name'}
@@ -121,6 +110,16 @@ const Form: React.FunctionComponent<CreateListingProps> = (
             />
 
           </Box>
+
+          <Box display={'flex'} justifyContent={'flex-end'}>
+          <AtButton
+            kind={AtButtonKind.Success}
+            variant={AtButtonVariant.Contained}
+            name={'Next Step'}
+            endIcon={<ArrowRight2 />
+            }
+          />
+          </Box>
         </Box>
       </StyledForm>
     </Container>
@@ -135,4 +134,4 @@ interface CreateListingProps {
   handleBackToCreateListing?: () => void
 }
 
-export default Form
+export default GeneralInfoForm
