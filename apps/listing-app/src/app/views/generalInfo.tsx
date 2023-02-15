@@ -1,12 +1,15 @@
-import { Box, Container } from '@mui/material'
-import { ArrowRight2 } from 'iconsax-react'
 import styled from 'styled-components'
-import { grey2, white } from '../utils/colors'
+import { useState } from 'react'
+import { white, grey2 } from '../utils/colors'
 import AtButton, { AtButtonKind, AtButtonVariant } from '../components/AtButton/AtButton'
-import AtTypography from '../components/AtTypography/AtTypography'
+import AtTextFieldDropdown from '../components/AtDropdown/AtTextFieldDropdown'
 import AtLine from '../components/AtLine/AtLine'
 import AtTextField from '../components/AtTextField/AtTextField'
-import AtTextFieldDropdown from '../components/AtDropdown/AtTextFieldDropdown'
+import AtTypography from '../components/AtTypography/AtTypography'
+import { Box, Container } from '@mui/material'
+import { ArrowRight2 } from 'iconsax-react'
+import DrawerCreateListing from '../components/AtDrawer/drawers/DrawerCreateListing/DrawerCreateListing'
+import AtDrawer from '../components/AtDrawer/AtDrawer'
 
 export const StyledForm = styled.div`
   background-color: ${white};
@@ -17,15 +20,7 @@ export const StyledForm = styled.div`
 const GeneralInfoForm: React.FunctionComponent<CreateListingProps> = (
   props: CreateListingProps,
 ) => {
-  // const [step, setStep] = useState(0)
-
-  // const handleCloseAll = () => {
-  //   // props.handleClose()
-
-  //   setTimeout(() => {
-  //     // props.handleBackToCreateListing()
-  //   }, 1500)
-  // }
+  const [openCreateListing, setOpenCreateListing] = useState(false)
 
   return (
     <Container>
@@ -112,13 +107,15 @@ const GeneralInfoForm: React.FunctionComponent<CreateListingProps> = (
           </Box>
 
           <Box display={'flex'} justifyContent={'flex-end'}>
-          <AtButton
-            kind={AtButtonKind.Success}
-            variant={AtButtonVariant.Contained}
-            name={'Next Step'}
-            endIcon={<ArrowRight2 />
-            }
-          />
+            <AtButton
+              kind={AtButtonKind.Success}
+              variant={AtButtonVariant.Contained}
+              name={'Next Step'}
+              endIcon={<ArrowRight2
+                onClick={() => setOpenCreateListing(true)}
+              />
+              }
+            />
           </Box>
         </Box>
       </StyledForm>
