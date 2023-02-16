@@ -9,6 +9,8 @@ import AtTypography from '../components/AtTypography/AtTypography'
 import { Box, Container } from '@mui/material'
 import { ArrowRight2 } from 'iconsax-react'
 import { StyledLink } from './home'
+import { ClientStatus } from '@yjcapp/app'
+import { Client } from '../utils/redux/types/clients.type'
 
 export const StyledForm = styled.div`
   background-color: ${white};
@@ -19,6 +21,24 @@ export const StyledForm = styled.div`
 const GeneralInfoForm: React.FunctionComponent<CreateListingProps> = (
   props: CreateListingProps,
 ) => {
+
+  const defaultClient = {
+    companyName: '',
+    phoneNumber: '',
+    companyUrl: '',
+    linkedinUrl: '',
+    industry: '',
+    projectType: undefined,
+    deliveryType: undefined,
+    teamRequest: undefined,
+    request: '',
+    email: '',
+    fullName: '',
+    position: '',
+    status: ClientStatus.Request,
+  }
+
+  const [client, setClient] = useState<Client>(defaultClient)
   const [openCreateListing, setOpenCreateListing] = useState(false)
 
   return (
@@ -47,9 +67,9 @@ const GeneralInfoForm: React.FunctionComponent<CreateListingProps> = (
               label={'Full Name'}
               required={true}
               placeholder={'Enter Full Name'}
-              // onValueChange={(e) =>
-              //   props.setProject({ ...props.project, listingName: e })
-              // }
+              onValueChange={(e) =>
+                setClient({ ...client, fullName: e })
+              }
               maxLength={30}
             />
 
@@ -57,9 +77,9 @@ const GeneralInfoForm: React.FunctionComponent<CreateListingProps> = (
               label={'Email Address'}
               required={true}
               placeholder={'Enter Email Address'}
-              // onValueChange={(e) =>
-              //   props.setProject({ ...props.project, listingName: e })
-              // }
+              onValueChange={(e) =>
+                setClient({ ...client, email: e })
+              }
               maxLength={30}
             />
 
@@ -68,6 +88,9 @@ const GeneralInfoForm: React.FunctionComponent<CreateListingProps> = (
               placeholder={'Enter Phone Number'}
               required={true}
               countryCode={true}
+              onValueChange={(e) =>
+                setClient({ ...client, phoneNumber: e })
+              }
               label={'Phone Number'}
             />
 
@@ -75,9 +98,9 @@ const GeneralInfoForm: React.FunctionComponent<CreateListingProps> = (
               label={'Company Name'}
               required={true}
               placeholder={'Enter Company Name'}
-              // onValueChange={(e) =>
-              //   props.setProject({ ...props.project, listingName: e })
-              // }
+              onValueChange={(e) =>
+                setClient({ ...client, companyName: e })
+              }
               maxLength={30}
             />
 
@@ -86,37 +109,46 @@ const GeneralInfoForm: React.FunctionComponent<CreateListingProps> = (
               // type={AtTextFieldType.Number}
               required={true}
               placeholder={'Enter Position'}
+              onValueChange={(e) =>
+                setClient({ ...client, position: e })
+              }
               maxLength={30}
             />
 
             <AtTextField
               label={'LinkedIn URL'}
               placeholder={'Enter LinkedIn URL'}
-            // onValueChange={(e) =>
-            //   props.setProject({ ...props.project, learningLink: e })
-            // }
+              onValueChange={(e) =>
+                setClient({ ...client, linkedinUrl: e })
+              }
             />
 
             <AtTextFieldDropdown
               fullWidth={true}
               placeholder={'Select Industry'}
-              label={'Industry'} $listItems={[]}
+              searchable={false}
+              label={'Industry'}
+              $listItems={[
+                {
+                  id: 0,
+                  label: 'IT'
+                }
+              ]}
+              onValueChange={(e) =>
+                setClient({ ...client, industry: e })
+              }
             />
 
           </Box>
 
           <Box display={'flex'} justifyContent={'flex-end'}>
-            <StyledLink to="/create-my-listing" >
-              <AtButton
-                kind={AtButtonKind.Success}
-                variant={AtButtonVariant.Contained}
-                name={'Next Step'}
-                endIcon={<ArrowRight2
-                  onClick={() => setOpenCreateListing(true)}
-                />
-                }
-              />
-            </StyledLink>
+            <AtButton
+              kind={AtButtonKind.Success}
+              variant={AtButtonVariant.Contained}
+              name={'Next Step'}
+              endIcon={<ArrowRight2 />}
+              onClick={() => console.log(client)}
+            />
           </Box>
         </Box>
       </StyledForm>

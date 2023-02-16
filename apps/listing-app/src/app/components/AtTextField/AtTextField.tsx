@@ -81,12 +81,8 @@ const StyledInput = styled(OutlinedInput) <{
   multiline?: boolean
 }>`
   &.${outlinedInputClasses.root} {
-    ${({ multiline }) =>
-    !multiline && 
-    css`
-        padding: 0 20px;
-      `}
     justify-content: space-between;
+    padding-left: 0px;
     ${({ $bgColor }) =>
     $bgColor
       ? css<{ $bgColor?: string }>`
@@ -120,7 +116,7 @@ const StyledInput = styled(OutlinedInput) <{
           color: ${grey2};
         }
       }
-      padding: ${({ size }) => (size === 'medium' ? '18px 0' : '10px 0')};
+      padding: ${({ size }) => (size === 'medium' ? '18px 20px' : '10px 20px')};
       padding-left: ${({ $isCountryCode }) => ( $isCountryCode ? '0px' : null )}
       ::-webkit-inner-spin-button {
         -webkit-appearance: none;
@@ -206,7 +202,6 @@ const StyledCharCounter = styled.label`
 const CountryCodeInput = styled(OutlinedInput)`
   height: 59px;
   border-radius: 5px 0 0 5px;
-  left: -20px;
 
   input{
     text-align: center;

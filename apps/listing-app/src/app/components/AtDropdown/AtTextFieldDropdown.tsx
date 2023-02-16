@@ -114,6 +114,7 @@ const AtTextFieldDropdown: React.FunctionComponent<AtTextFieldDropdownProps> = (
       >
         <StyledTextField
           {...props}
+          readonly={true}
           dropdown={true}
           open={open}
           onValueChange={(e) => setValueSearchable(e)}
