@@ -1,6 +1,6 @@
 import { ArrowLeft2, ArrowRight, CloseCircle, TickCircle } from 'iconsax-react'
 import { Dispatch, useState } from 'react'
-import { ListingState, Role, WorkType } from '@yjcapp/app'
+import { ListingState, ListingType, Role, WorkType } from '@yjcapp/app'
 import { grey2, black } from '../../../../../utils/colors'
 import AtButton, {
   AtButtonVariant,
@@ -13,13 +13,11 @@ import TeamStep1 from './steps/Step1'
 import { Listing } from '../../../../../utils/redux/types/listings.type'
 import { Grid, Box } from '@mui/material'
 import { useAppDispatch } from '../../../../../utils/hooks/reduxHook'
-// import { getActiveClient } from '../../../../../utils/redux/selectors/clients.selector'
 import TeamStep2 from './steps/Step2'
 import TeamStep3 from './steps/Step3'
 import TeamStep4 from './steps/Step4'
 import TeamStep5 from './steps/Step5'
-// import { Listing } from '../../../../../utils/redux/types/listings.type'
-// import { handleCreateListing } from '../../../../../utils/redux/actions/listing.action'
+import { handleCreateListing } from '../../../../../utils/redux/actions/listing.action'
 
 const CreateTeam: React.FunctionComponent<CreateTeamProps> = (
   props: CreateTeamProps,
@@ -122,16 +120,16 @@ const CreateTeam: React.FunctionComponent<CreateTeamProps> = (
   }
 
   const handleSubmitProject = (status: ListingState) => {
-    // if (props.step + 1 === tabs.length) {
-    //   dispatch(
-    //     handleCreateListing({
-    //       ...team,
-    //       soloClient: 'test',
-    //       listingType: ListingType.Team,
-    //       status: status,
-    //     }),
-    //   )
-    // }
+    if (props.step + 1 === tabs.length) {
+      dispatch(
+        handleCreateListing({
+          ...team,
+          soloClient: 'test',
+          listingType: ListingType.Team,
+          status: status,
+        }),
+      )
+    }
 
     props.setStep(props.step + 1)
   }

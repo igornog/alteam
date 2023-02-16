@@ -187,7 +187,7 @@ const ProjectStep1: React.FunctionComponent<Step1Props> = (
             required={true}
             label={'Start Date'}
             onValueChange={(e) =>
-              props.setProject({ ...props.project, startDate: e as any })
+              props.setProject({ ...props.project, startDate: e.format('DD.MM.YYYY') as any })
             }
           />
 

@@ -81,8 +81,18 @@ const StyledInput = styled(OutlinedInput) <{
   multiline?: boolean
 }>`
   &.${outlinedInputClasses.root} {
-    justify-content: space-between;
-    padding-left: 0px;
+    ${({ multiline }) =>
+    multiline &&
+    css`
+    textarea {
+      padding-left: ${multiline ? '20px' : '0px'};
+    }
+    `}
+    ${({ $isCountryCode }) =>
+    $isCountryCode &&
+    css`
+      padding-left: ${$isCountryCode ? '0' : '14px'};
+    `}
     ${({ $bgColor }) =>
     $bgColor
       ? css<{ $bgColor?: string }>`
@@ -98,8 +108,9 @@ const StyledInput = styled(OutlinedInput) <{
                 ? green5
                 : white
             : white};
-          `};
-
+    `};
+    justify-content: space-between;
+    padding-left: 0px;
     & > input {
       max-width: ${({ $maxWidth }) => $maxWidth && $maxWidth + 'ch'};
       color: ${({ disabled, $bgColor }: any) =>
@@ -117,7 +128,7 @@ const StyledInput = styled(OutlinedInput) <{
         }
       }
       padding: ${({ size }) => (size === 'medium' ? '18px 20px' : '10px 20px')};
-      padding-left: ${({ $isCountryCode }) => ( $isCountryCode ? '0px' : null )}
+      padding-left: ${({ $isCountryCode }) => ($isCountryCode ? '0px' : null)}
       ::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
@@ -158,7 +169,7 @@ const StyledInput = styled(OutlinedInput) <{
       width: ${({ size }) => (size === 'medium' ? '20px' : '15px')};
       color: ${({ $isError, $isSuccess, disabled }) =>
     disabled ? grey3 : $isError ? red : $isSuccess ? green : grey2};
-      margin-right: 0;
+      margin-left: 20px;
     }
   }
   &.${outlinedInputClasses.root},
@@ -357,7 +368,7 @@ const AtTextField: React.FunctionComponent<AtTextFieldProps> = (
                 {props.startIcon}
               </InputAdornment>
               : props.countryCode ?
-                <CountryCodeInput value={'+44'}/>
+                <CountryCodeInput value={'+44'} />
                 : null
           }
           endAdornment={
