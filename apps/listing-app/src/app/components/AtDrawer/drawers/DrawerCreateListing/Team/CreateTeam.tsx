@@ -1,6 +1,6 @@
 import { ArrowLeft2, ArrowRight, CloseCircle, TickCircle } from 'iconsax-react'
 import { Dispatch, useState } from 'react'
-import { ListingState, ListingType, Role, WorkType } from '@yjcapp/app'
+import { ListingState, Role, WorkType } from '@yjcapp/app'
 import { grey2, black } from '../../../../../utils/colors'
 import AtButton, {
   AtButtonVariant,
@@ -14,7 +14,10 @@ import { Listing } from '../../../../../utils/redux/types/listings.type'
 import { Grid, Box } from '@mui/material'
 import { useAppDispatch } from '../../../../../utils/hooks/reduxHook'
 // import { getActiveClient } from '../../../../../utils/redux/selectors/clients.selector'
-// import TeamStep5 from './steps/Step5'
+import TeamStep2 from './steps/Step2'
+import TeamStep3 from './steps/Step3'
+import TeamStep4 from './steps/Step4'
+import TeamStep5 from './steps/Step5'
 // import { Listing } from '../../../../../utils/redux/types/listings.type'
 // import { handleCreateListing } from '../../../../../utils/redux/actions/listing.action'
 
@@ -39,22 +42,22 @@ const CreateTeam: React.FunctionComponent<CreateTeamProps> = (
         />
       ),
     },
-    // {
-    //   id: 1,
-    //   content: <TeamStep2 setTeam={setTeam} team={team} />,
-    // },
-    // {
-    //   id: 2,
-    //   content: <TeamStep3 setTeam={setTeam} team={team} />,
-    // },
-    // {
-    //   id: 3,
-    //   content: <TeamStep4 setTeam={setTeam} team={team} />,
-    // },
-    // {
-    //   id: 4,
-    //   content: <TeamStep5 setTeam={setTeam} team={team} />,
-    // },
+    {
+      id: 1,
+      content: <TeamStep2 setTeam={setTeam} team={team} />,
+    },
+    {
+      id: 2,
+      content: <TeamStep3 setTeam={setTeam} team={team} />,
+    },
+    {
+      id: 3,
+      content: <TeamStep4 setTeam={setTeam} team={team} />,
+    },
+    {
+      id: 4,
+      content: <TeamStep5 setTeam={setTeam} team={team} />,
+    },
   ]
 
   const isDisabled = () => {

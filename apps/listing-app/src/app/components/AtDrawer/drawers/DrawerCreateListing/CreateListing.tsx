@@ -32,7 +32,7 @@ const CreateListing: React.FunctionComponent<CreateListingProps> = (
     }, 1500)
   }
 
-  return step !== props.steps ? (
+  return step === props.steps ? (
       <FinalStep handleClose={handleCloseAll} clientName={props.clientName} />
     ) : (
     <Container>
