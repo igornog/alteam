@@ -9,11 +9,10 @@ import AtButton, {
 import styled from 'styled-components'
 import AtLine from '../../../AtLine/AtLine'
 import AtTypography from '../../../AtTypography/AtTypography'
-// import FinalStep from './FinalStep'
 import { Box, Container } from '@mui/material'
-
 import CreateProject from './Project/CreateProject'
 import CreateTeam from './Team/CreateTeam'
+import FinalStep from './FinalStep'
 
 export const StyledForm = styled.div`
   background-color: ${white};
@@ -33,10 +32,9 @@ const CreateListing: React.FunctionComponent<CreateListingProps> = (
     }, 1500)
   }
 
-  return (
-    // step === props.steps ? (
-    //   <FinalStep handleClose={handleCloseAll} clientName={props.clientName} />
-    // ) : (
+  return step !== props.steps ? (
+      <FinalStep handleClose={handleCloseAll} clientName={props.clientName} />
+    ) : (
     <Container>
       <Box
         paddingY={'30px'}

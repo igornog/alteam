@@ -10,13 +10,9 @@ import AtTabs from '../../../../AtTabs/AtTabs'
 import AtTypography from '../../../../AtTypography/AtTypography'
 import { StyledDot, StyledStepper, StyledFormStepper } from '../../../AtDrawer'
 import TeamStep1 from './steps/Step1'
-import { Listing } from '../../../../../utils/types/listings.type'
+import { Listing } from '../../../../../utils/redux/types/listings.type'
 import { Grid, Box } from '@mui/material'
-
-// import {
-//   useAppDispatch,
-//   useAppSelector,
-// } from '../../../../../utils/hooks/reduxHook'
+import { useAppDispatch } from '../../../../../utils/hooks/reduxHook'
 // import { getActiveClient } from '../../../../../utils/redux/selectors/clients.selector'
 // import TeamStep5 from './steps/Step5'
 // import { Listing } from '../../../../../utils/redux/types/listings.type'
@@ -25,8 +21,8 @@ import { Grid, Box } from '@mui/material'
 const CreateTeam: React.FunctionComponent<CreateTeamProps> = (
   props: CreateTeamProps,
 ) => {
-//   const dispatch = useAppDispatch()
-//   const selectedClient = useAppSelector((state) => getActiveClient(state))
+  const dispatch = useAppDispatch()
+  // const selectedClient = useAppSelector((state) => getActiveClient(state))
 
   const [team, setTeam] = useState<Listing>(new Listing({}))
   const [knownTotalPrice, setKnownTotalPrice] = useState<boolean>(false)
@@ -127,14 +123,14 @@ const CreateTeam: React.FunctionComponent<CreateTeamProps> = (
     //   dispatch(
     //     handleCreateListing({
     //       ...team,
-    //       soloClient: team.soloClient ?? selectedClient,
+    //       soloClient: 'test',
     //       listingType: ListingType.Team,
     //       status: status,
     //     }),
     //   )
     // }
 
-    // props.setStep(props.step + 1)
+    props.setStep(props.step + 1)
   }
 
   const isLastStep = props.step + 1 === tabs.length

@@ -10,8 +10,8 @@ import AtTextFieldDate from "../../../../../AtTextField/AtTextFieldDate"
 import AtTypography from "../../../../../AtTypography/AtTypography"
 import { black, white, grey2 } from "../../../../../../utils/colors"
 import { plurialize, getCurrencySymbol, convertHexToRGBA } from "../../../../../../utils/helpers"
-import { Client } from "../../../../../../utils/types/clients.type"
-import { Listing } from "../../../../../../utils/types/listings.type"
+import { Client } from "../../../../../../utils/redux/types/clients.type"
+import { Listing } from "../../../../../../utils/redux/types/listings.type"
 import { Box } from "@mui/material"
 
 const StyledPeriod = styled.div`

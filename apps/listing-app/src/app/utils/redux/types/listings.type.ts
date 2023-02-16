@@ -1,4 +1,3 @@
-import { Client } from './clients.type'
 import { StatusType } from './status.type'
 import {
   Availability,
@@ -10,6 +9,7 @@ import {
   Role,
   WorkType,
 } from '@yjcapp/app'
+import { Client } from './clients.type'
 
 export interface ListingsState {
   listListings: ClientListing[]
@@ -20,7 +20,7 @@ export interface ListingsState {
 
 export class Listing implements ClientListing {
   id: number
-  soloClient: Client
+  soloClient: Client | string
   listingName: string
   individuals: number
   workType?: WorkType

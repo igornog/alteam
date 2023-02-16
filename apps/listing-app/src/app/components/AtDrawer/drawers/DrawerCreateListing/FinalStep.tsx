@@ -9,6 +9,7 @@ import AtButton, {
   AtButtonVariant,
 } from '../../../AtButton/AtButton'
 import AtTypography from '../../../AtTypography/AtTypography'
+import { StyledLink } from '../../../../views/home'
 
 const StyledBox = styled(Box)`
   background-image: url(${Rocketbg});
@@ -35,13 +36,19 @@ const FinalStep: React.FunctionComponent<FinalStepProps> = (
       >
         <img src={SmallRocket} alt={'Small Rocket'} />
         <AtTypography variant={'h3'}>Successfully Created</AtTypography>
-        <AtButton
-          kind={AtButtonKind.Success}
-          variant={AtButtonVariant.Contained}
-          name={`Go to ${props.clientName}`}
-          endIcon={<ArrowRight />}
-          onClick={props.handleClose}
-        />
+        <Box display={'flex'} flexDirection={'column'} gap={'20px'} padding={'0 35vw'} justifyContent={'center'} textAlign={'center'}>
+          <AtTypography variant={'body1'} color={'#6F737D'}>Thank you for your submission. We will get back to you within 2-5 working days</AtTypography>
+          <AtTypography variant={'body1'} color={'#6F737D'}>What happened next? Once your listing is approved we’ll start sharing it with our freelancer and teams network</AtTypography>
+        </Box>
+        <StyledLink to="/" >
+          <AtButton
+            kind={AtButtonKind.Success}
+            variant={AtButtonVariant.Contained}
+            name={`Go to website`}
+            endIcon={<ArrowRight />}
+            onClick={props.handleClose}
+          />
+        </StyledLink>
       </Box>
     </StyledBox>
   )

@@ -1,5 +1,5 @@
 import { Box, Container, Grid } from '@mui/material'
-import { ArrowLeft2 } from 'iconsax-react'
+import { ArrowLeft2, Document, DocumentText } from 'iconsax-react'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { white, grey2, grey5, green } from '../../../../utils/colors'
@@ -18,6 +18,8 @@ import GroupIcon from '../../../../assets/images/icons/group.svg'
 import AtCreateListingCard from '../../../AtCard/AtCreateListingCard'
 import CreateListing from './CreateListing'
 import { ListingType } from '@yjcapp/app'
+import CustomLink from '../../../AtLink/AtLink'
+import { StyledLink } from '../../../../views/home'
 
 export const StyledForm = styled.div`
   background-color: ${white};
@@ -89,13 +91,14 @@ const DrawerCreateListing: React.FunctionComponent<DrawerCreateListingProps> = (
             gap={'30px'}
           >
             <Box display={'flex'} gap={'5px'}>
-              <AtButton
-                variant={AtButtonVariant.Contained}
-                startIcon={<ArrowLeft2 />}
-                kind={AtButtonKind.Default}
-                onClick={handleCloseToCreateListing}
-              />
-
+              <StyledLink to="/form" >
+                <AtButton
+                  variant={AtButtonVariant.Contained}
+                  startIcon={<ArrowLeft2 />}
+                  kind={AtButtonKind.Default}
+                  onClick={handleCloseToCreateListing}
+                />
+              </StyledLink>
               <AtTypography color={grey2}>
                 Back to General Information
               </AtTypography>
@@ -142,6 +145,19 @@ const DrawerCreateListing: React.FunctionComponent<DrawerCreateListingProps> = (
                     />
                   </Grid>
                 </StyledForm>
+              </Grid>
+              <Grid
+                xs={10}
+                marginTop={'50px'}
+                display={'flex'}
+                gap={'20px'}
+              >
+                <CustomLink>
+                  <AtTypography variant='subtitle1' fontSize='16px'><Document size={20} />What's an Alteam Project?</AtTypography>
+                </CustomLink>
+                <CustomLink>
+                  <AtTypography variant='subtitle1' fontSize='16px'><DocumentText size={20} /> What's an Alteam Team?</AtTypography>
+                </CustomLink>
               </Grid>
             </Grid>
           </Box>

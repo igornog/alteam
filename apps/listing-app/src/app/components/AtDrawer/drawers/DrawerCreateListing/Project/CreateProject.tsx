@@ -1,7 +1,7 @@
 import { Grid, Box } from '@mui/material'
 import { ArrowLeft2, ArrowRight, CloseCircle, TickCircle } from 'iconsax-react'
 import { Dispatch, useState } from 'react'
-import { ListingState, RateType, WorkType } from '@yjcapp/app'
+import { ListingState, ListingType, RateType, WorkType } from '@yjcapp/app'
 import { grey2, black } from '../../../../../utils/colors'
 import AtButton, {
   AtButtonVariant,
@@ -11,23 +11,19 @@ import AtTabs from '../../../../AtTabs/AtTabs'
 import AtTypography from '../../../../AtTypography/AtTypography'
 import { StyledDot, StyledStepper, StyledFormStepper } from '../../../AtDrawer'
 import ProjectStep1 from './steps/Step1'
-import { Listing } from '../../../../../utils/types/listings.type'
-// import ProjectStep2 from './steps/Step2'
-// import ProjectStep3 from './steps/Step3'
-// import ProjectStep4 from './steps/Step4'
-// import {
-//   useAppDispatch,
-//   useAppSelector,
-// } from '../../../../../utils/hooks/reduxHook'
+import { Listing } from '../../../../../utils/redux/types/listings.type'
+import ProjectStep2 from './steps/Step2'
+import ProjectStep3 from './steps/Step3'
+import ProjectStep4 from './steps/Step4'
 // import { getActiveClient } from '../../../../../utils/redux/selectors/clients.selector'
-// import { Listing } from '../../../../../utils/redux/types/listings.type'
-// import { handleCreateListing } from '../../../../../utils/redux/actions/listing.action'
+import { handleCreateListing } from '../../../../../utils/redux/actions/listing.action'
+import { useAppDispatch } from '../../../../../utils/hooks/reduxHook'
 
 const CreateProject: React.FunctionComponent<CreateProjectProps> = (
   props: CreateProjectProps,
 ) => {
   const [rateType, setRateType] = useState<RateType>()
-  // const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch()
   // const selectedClient = useAppSelector((state) => getActiveClient(state))
 
   const [project, setProject] = useState<Listing>(new Listing({}))
@@ -44,18 +40,18 @@ const CreateProject: React.FunctionComponent<CreateProjectProps> = (
         />
       ),
     },
-    // {
-    //   id: 1,
-    //   content: <ProjectStep2 setProject={setProject} project={project} />,
-    // },
-    // {
-    //   id: 2,
-    //   content: <ProjectStep3 setProject={setProject} project={project} />,
-    // },
-    // {
-    //   id: 3,
-    //   content: <ProjectStep4 setProject={setProject} project={project} />,
-    // },
+    {
+      id: 1,
+      content: <ProjectStep2 setProject={setProject} project={project} />,
+    },
+    {
+      id: 2,
+      content: <ProjectStep3 setProject={setProject} project={project} />,
+    },
+    {
+      id: 3,
+      content: <ProjectStep4 setProject={setProject} project={project} />,
+    },
   ]
 
   const isDisabled = () => {
@@ -115,18 +111,18 @@ const CreateProject: React.FunctionComponent<CreateProjectProps> = (
   }
 
   const handleSubmitProject = (status: ListingState) => {
-    // if (props.step + 1 === tabs.length) {
-    //   dispatch(
-    //     handleCreateListing({
-    //       ...project,
-    //       soloClient: project.soloClient ?? selectedClient,
-    //       listingType: ListingType.Project,
-    //       status: status,
-    //     }),
-    //   )
-    // }
+    if (props.step + 1 === tabs.length) {
+      dispatch(
+        handleCreateListing({
+          ...project,
+          soloClient: 'test',
+          listingType: ListingType.Project,
+          status: status,
+        }),
+      )
+    }
 
-    // props.setStep(props.step + 1)
+    props.setStep(props.step + 1)
   }
 
   const isLastStep = props.step + 1 === tabs.length

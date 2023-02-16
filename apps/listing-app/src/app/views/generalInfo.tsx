@@ -8,8 +8,7 @@ import AtTextField from '../components/AtTextField/AtTextField'
 import AtTypography from '../components/AtTypography/AtTypography'
 import { Box, Container } from '@mui/material'
 import { ArrowRight2 } from 'iconsax-react'
-import DrawerCreateListing from '../components/AtDrawer/drawers/DrawerCreateListing/DrawerCreateListing'
-import AtDrawer from '../components/AtDrawer/AtDrawer'
+import { StyledLink } from './home'
 
 export const StyledForm = styled.div`
   background-color: ${white};
@@ -107,15 +106,17 @@ const GeneralInfoForm: React.FunctionComponent<CreateListingProps> = (
           </Box>
 
           <Box display={'flex'} justifyContent={'flex-end'}>
-            <AtButton
-              kind={AtButtonKind.Success}
-              variant={AtButtonVariant.Contained}
-              name={'Next Step'}
-              endIcon={<ArrowRight2
-                onClick={() => setOpenCreateListing(true)}
+            <StyledLink to="/create-my-listing" >
+              <AtButton
+                kind={AtButtonKind.Success}
+                variant={AtButtonVariant.Contained}
+                name={'Next Step'}
+                endIcon={<ArrowRight2
+                  onClick={() => setOpenCreateListing(true)}
+                />
+                }
               />
-              }
-            />
+            </StyledLink>
           </Box>
         </Box>
       </StyledForm>
