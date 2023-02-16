@@ -33,8 +33,8 @@ const CreateListing: React.FunctionComponent<CreateListingProps> = (
   }
 
   return step === props.steps ? (
-      <FinalStep handleClose={handleCloseAll} clientName={props.clientName} />
-    ) : (
+    <FinalStep handleClose={handleCloseAll} clientName={props.clientName} />
+  ) : (
     <Container>
       <Box
         paddingY={'30px'}

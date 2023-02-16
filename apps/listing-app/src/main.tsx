@@ -6,7 +6,6 @@ import { alTeamTheme } from './app/utils/theme'
 import { ThemeProvider } from 'styled-components'
 import { StyledEngineProvider } from '@mui/material'
 import store from './app/utils/redux/store'
-
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
 

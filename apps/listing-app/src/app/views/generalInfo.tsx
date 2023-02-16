@@ -8,9 +8,10 @@ import AtTextField from '../components/AtTextField/AtTextField'
 import AtTypography from '../components/AtTypography/AtTypography'
 import { Box, Container } from '@mui/material'
 import { ArrowRight2 } from 'iconsax-react'
-import { StyledLink } from './home'
 import { ClientStatus } from '@yjcapp/app'
 import { Client } from '../utils/redux/types/clients.type'
+import { useAppDispatch } from '../utils/hooks/reduxHook'
+import { handleCreateClient } from '../utils/redux/actions/clients.action'
 
 export const StyledForm = styled.div`
   background-color: ${white};
@@ -18,10 +19,9 @@ export const StyledForm = styled.div`
   border-radius: 5px;
 `
 
-const GeneralInfoForm: React.FunctionComponent<CreateListingProps> = (
-  props: CreateListingProps,
-) => {
-
+const GeneralInfoForm: React.FunctionComponent = () => {
+  const dispatch = useAppDispatch()
+  
   const defaultClient = {
     companyName: '',
     phoneNumber: '',
@@ -39,7 +39,12 @@ const GeneralInfoForm: React.FunctionComponent<CreateListingProps> = (
   }
 
   const [client, setClient] = useState<Client>(defaultClient)
-  const [openCreateListing, setOpenCreateListing] = useState(false)
+
+  const createClient = () => {
+    console.log(client)
+    dispatch(handleCreateClient(client))
+    window.location.href = '/create-my-listing'
+  }
 
   return (
     <Container>
@@ -147,21 +152,13 @@ const GeneralInfoForm: React.FunctionComponent<CreateListingProps> = (
               variant={AtButtonVariant.Contained}
               name={'Next Step'}
               endIcon={<ArrowRight2 />}
-              onClick={() => console.log(client)}
+              onClick={createClient}
             />
           </Box>
         </Box>
       </StyledForm>
     </Container>
   )
-}
-
-interface CreateListingProps {
-  clientName?: string
-  steps?: number
-  // listingType?: ListingType
-  handleClose?: () => void
-  handleBackToCreateListing?: () => void
 }
 
 export default GeneralInfoForm

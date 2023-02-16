@@ -4,15 +4,6 @@ import Home from './views/home'
 import GeneralInfoForm from './views/generalInfo'
 import DrawerCreateListing from './components/AtDrawer/drawers/DrawerCreateListing/DrawerCreateListing'
 
-export const Navigation: NavigationProps[] = []
-
-export interface NavigationProps {
-  link: string
-  element: React.ReactNode
-  icon?: React.ReactNode
-  name?: string
-}
-
 export const App: React.FunctionComponent = () => {
   const location = useLocation()
 
