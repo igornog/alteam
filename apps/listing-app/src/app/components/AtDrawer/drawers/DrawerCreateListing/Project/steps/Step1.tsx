@@ -171,6 +171,7 @@ const ProjectStep1: React.FunctionComponent<Step1Props> = (
             required={true}
             placeholder={'Enter Project Length'}
             maxLength={30}
+            minValue={1}
             onValueChange={(e) =>
               props.setProject({ ...props.project, projectLength: parseInt(e) })
             }
@@ -187,7 +188,7 @@ const ProjectStep1: React.FunctionComponent<Step1Props> = (
             required={true}
             label={'Start Date'}
             onValueChange={(e) =>
-              props.setProject({ ...props.project, startDate: e.format('DD.MM.YYYY') as any })
+              props.setProject({ ...props.project, startDate: e.format('DD-MM-YYYY') as any })
             }
           />
 
@@ -239,6 +240,8 @@ const ProjectStep1: React.FunctionComponent<Step1Props> = (
                     </AtTypography>
                   }
                   maxLength={30}
+                  minValue={1}
+                  type={AtTextFieldType.Number}
                   value={props.project.rateFrom?.toString()}
                   onValueChange={(e) =>
                     props.setProject({
@@ -253,6 +256,8 @@ const ProjectStep1: React.FunctionComponent<Step1Props> = (
                 <AtTextField
                   placeholder={'Rate To'}
                   maxLength={30}
+                  minValue={props.project.rateFrom ? props.project.rateFrom + 1 : 2}
+                  type={AtTextFieldType.Number}
                   startIcon={
                     <AtTypography color={convertHexToRGBA(black, 0.5)}>
                       {getCurrencySymbol(props.project.currency)}

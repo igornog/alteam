@@ -46,7 +46,6 @@ const FinalStep: React.FunctionComponent<FinalStepProps> = (
             variant={AtButtonVariant.Contained}
             name={`Go to website`}
             endIcon={<ArrowRight />}
-            onClick={props.handleClose}
           />
         </StyledLink>
       </Box>
@@ -55,7 +54,6 @@ const FinalStep: React.FunctionComponent<FinalStepProps> = (
 }
 
 interface FinalStepProps {
-  handleClose: () => void
   clientName?: string
 }
 

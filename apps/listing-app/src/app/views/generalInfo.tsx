@@ -21,7 +21,7 @@ export const StyledForm = styled.div`
 
 const GeneralInfoForm: React.FunctionComponent = () => {
   const dispatch = useAppDispatch()
-  
+
   const defaultClient = {
     companyName: '',
     phoneNumber: '',
@@ -41,7 +41,6 @@ const GeneralInfoForm: React.FunctionComponent = () => {
   const [client, setClient] = useState<Client>(defaultClient)
 
   const createClient = () => {
-    console.log(client)
     dispatch(handleCreateClient(client))
     window.location.href = '/create-my-listing'
   }

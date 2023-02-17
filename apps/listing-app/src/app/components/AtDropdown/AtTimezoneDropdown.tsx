@@ -60,7 +60,6 @@ const AtTimezoneDropdown: React.FunctionComponent<AtTimeZoneDropdownProps> = (
   const [search, setSearch] = useState('')
 
   const timezones: any = Object.values(timezone.getAllTimezones())
-
   const possibilities = ['Europe', 'America', 'Asia', 'Australia', 'Pacific']
 
   const groupedTimeZones = possibilities.reduce(

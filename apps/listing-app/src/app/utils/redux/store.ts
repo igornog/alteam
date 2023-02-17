@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import listingReducer from './reducers/listing.reducer'
+import clientsReducer from './reducers/clients.reducer'
 const store = configureStore({
   reducer: {
     listings: listingReducer,
+    clients: clientsReducer
   },
 })
 

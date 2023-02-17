@@ -8,7 +8,6 @@ import AtButton, {
 } from '../../../../AtButton/AtButton'
 import AtTabs from '../../../../AtTabs/AtTabs'
 import AtTypography from '../../../../AtTypography/AtTypography'
-import { StyledDot, StyledStepper, StyledFormStepper } from '../../../AtDrawer'
 import TeamStep1 from './steps/Step1'
 import { Listing } from '../../../../../utils/redux/types/listings.type'
 import { Grid, Box } from '@mui/material'
@@ -18,12 +17,12 @@ import TeamStep3 from './steps/Step3'
 import TeamStep4 from './steps/Step4'
 import TeamStep5 from './steps/Step5'
 import { handleCreateListing } from '../../../../../utils/redux/actions/listing.action'
+import { StyledDot, StyledStepper, StyledFormStepper } from '../CreateListing'
 
-const CreateTeam: React.FunctionComponent<CreateTeamProps> = (
-  props: CreateTeamProps,
+const CreateTeam: React.FunctionComponent<Props> = (
+  props: Props,
 ) => {
   const dispatch = useAppDispatch()
-  // const selectedClient = useAppSelector((state) => getActiveClient(state))
 
   const [team, setTeam] = useState<Listing>(new Listing({}))
   const [knownTotalPrice, setKnownTotalPrice] = useState<boolean>(false)
@@ -124,7 +123,7 @@ const CreateTeam: React.FunctionComponent<CreateTeamProps> = (
       dispatch(
         handleCreateListing({
           ...team,
-          soloClient: 'test',
+          soloClient: props.client,
           listingType: ListingType.Team,
           status: status,
         }),
@@ -196,7 +195,8 @@ const CreateTeam: React.FunctionComponent<CreateTeamProps> = (
   )
 }
 
-interface CreateTeamProps {
+interface Props {
+  client: string
   step: number
   setStep: Dispatch<React.SetStateAction<number>>
 }

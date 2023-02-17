@@ -1,7 +1,7 @@
 import { ArrowLeft2 } from 'iconsax-react'
 import React, { useState } from 'react'
 import { ListingType } from '@yjcapp/app'
-import { white, grey2 } from '../../../../utils/colors'
+import { white, grey2, black, grey4, grey5 } from '../../../../utils/colors'
 import AtButton, {
   AtButtonVariant,
   AtButtonKind,
@@ -13,6 +13,37 @@ import { Box, Container } from '@mui/material'
 import CreateProject from './Project/CreateProject'
 import CreateTeam from './Team/CreateTeam'
 import FinalStep from './FinalStep'
+import { boxShadow } from '../../../../utils/theme'
+
+export const StyledStepper = styled.div`
+  position: sticky;
+  bottom: 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: fit-content;
+  align-self: center;
+`
+
+export const StyledFormStepper = styled.div`
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  background-color: ${white};
+  border: 1px solid ${grey5};
+  padding: 10px;
+  box-shadow: ${boxShadow};
+  gap: 10px;
+`
+
+export const StyledDot = styled.div<{ isActive: boolean }>`
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: ${({ isActive }) => (isActive ? black : grey4)};
+`
 
 export const StyledForm = styled.div`
   background-color: ${white};
@@ -24,16 +55,8 @@ const CreateListing: React.FunctionComponent<CreateListingProps> = (
 ) => {
   const [step, setStep] = useState(0)
 
-  const handleCloseAll = () => {
-    props.handleClose()
-
-    setTimeout(() => {
-      props.handleBackToCreateListing()
-    }, 1500)
-  }
-
   return step === props.steps ? (
-    <FinalStep handleClose={handleCloseAll} clientName={props.clientName} />
+    <FinalStep clientName={props.clientName} />
   ) : (
     <Container>
       <Box
@@ -58,9 +81,9 @@ const CreateListing: React.FunctionComponent<CreateListingProps> = (
         <AtLine />
 
         {props.listingType === ListingType.Project ? (
-          <CreateProject step={step} setStep={setStep} />
+          <CreateProject step={step} setStep={setStep} client={props.clientName}/>
         ) : props.listingType === ListingType.Team ? (
-          <CreateTeam step={step} setStep={setStep} />
+          <CreateTeam step={step} setStep={setStep} client={props.clientName}/>
         ) : null}
       </Box>
     </Container>
@@ -68,10 +91,9 @@ const CreateListing: React.FunctionComponent<CreateListingProps> = (
 }
 
 interface CreateListingProps {
-  clientName?: string
+  clientName: string
   steps?: number
   listingType: ListingType
-  handleClose: () => void
   handleBackToCreateListing: () => void
 }
 

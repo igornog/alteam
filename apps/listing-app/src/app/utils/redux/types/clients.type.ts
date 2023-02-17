@@ -10,7 +10,7 @@ import { StatusType } from './status.type'
 
 export interface ClientsState {
   listClients: Client[]
-  selectedClient: number | null
+  currentClient: string
   status?: StatusType
   error?: string | null
 }

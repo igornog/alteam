@@ -13,6 +13,7 @@ import { Client } from '../../../../../../utils/redux/types/clients.type'
 import { Listing } from '../../../../../../utils/redux/types/listings.type'
 import { StyledForm } from '../../DrawerCreateListing'
 import styled from 'styled-components'
+import AtTimezoneDropdown from '../../../../../AtDropdown/AtTimezoneDropdown'
 
 const StyledPeriod = styled.div`
   background-color: ${black};
@@ -23,6 +24,9 @@ const StyledPeriod = styled.div`
 
 const TeamStep1: React.FunctionComponent<Step1Props> = (props: Step1Props) => {
   // const selectedClient = useAppSelector((state) => getActiveClient(state))
+  const isDifferentOnSite =
+    props.team.workType === WorkType.Hybrid ||
+    props.team.workType === WorkType.Remote
   const [listClients, setListClients] = useState<Client[]>()
 
   useEffect(() => {
@@ -134,36 +138,36 @@ const TeamStep1: React.FunctionComponent<Step1Props> = (props: Step1Props) => {
 
           <Box display={'flex'} gap={'10px'} flexDirection={'column'}>
             <Box display={'flex'} gap={'16px'}>
-              <AtTextFieldDropdown
-                fullWidth={true}
-                required={true}
-                placeholder={'Select Work Type'}
-                $listItems={Object.values(WorkType).map(
-                  (label: WorkType, index: number) => ({
-                    id: index,
-                    label: label,
-                  }),
-                )}
-                handleSelect={(e) =>
-                  props.setTeam({
-                    ...props.team,
-                    workType: e.label as WorkType,
-                  })
-                }
-                label={'Work Type'}
-              />
-
-              {props.team.workType === WorkType.Hybrid ||
-              props.team.workType === WorkType.Remote ? (
-                <AtTextField
+              <Box width={isDifferentOnSite ? '50%' : '100%'}>
+                <AtTextFieldDropdown
                   fullWidth={true}
                   required={true}
-                  placeholder={'Enter Timezone'}
-                  onValueChange={(e) =>
-                    props.setTeam({ ...props.team, timeZone: e })
+                  placeholder={'Select Work Type'}
+                  $listItems={Object.values(WorkType).map(
+                    (label: WorkType, index: number) => ({
+                      id: index,
+                      label: label,
+                    }),
+                  )}
+                  handleSelect={(e) =>
+                    props.setTeam({
+                      ...props.team,
+                      workType: e.label as WorkType,
+                    })
                   }
-                  maxLength={6}
+                  label={'Work Type'}
                 />
+              </Box>
+              {isDifferentOnSite ? (
+                <Box width={'50%'}>
+                  <AtTimezoneDropdown
+                    fullWidth={true}
+                    placeholder={'Enter Timezone'}
+                    handleSelect={(e) =>
+                      props.setTeam({ ...props.team, timeZone: e })
+                    }
+                  />
+                </Box>
               ) : null}
             </Box>
           </Box>
@@ -190,6 +194,7 @@ const TeamStep1: React.FunctionComponent<Step1Props> = (props: Step1Props) => {
             placeholder={'Enter Project Length'}
             type={AtTextFieldType.Number}
             label={'Project Length'}
+            minValue={1}
             required={true}
             onValueChange={(e) =>
               props.setTeam({ ...props.team, projectLength: parseInt(e) })
@@ -207,7 +212,7 @@ const TeamStep1: React.FunctionComponent<Step1Props> = (props: Step1Props) => {
             required={true}
             label={'Start Date'}
             onValueChange={(e) =>
-              props.setTeam({ ...props.team, startDate: e as any })
+              props.setTeam({ ...props.team, startDate: e.format('DD-MM-YYYY') as any })
             }
           />
 
@@ -251,6 +256,7 @@ const TeamStep1: React.FunctionComponent<Step1Props> = (props: Step1Props) => {
                 <AtTextField
                   label={'Team Rate'}
                   type={AtTextFieldType.Number}
+                  minValue={1}
                   placeholder={'Enter Exact Rate'}
                   startIcon={
                     <AtTypography color={convertHexToRGBA(black, 0.5)}>

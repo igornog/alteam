@@ -9,22 +9,20 @@ import AtButton, {
 } from '../../../../AtButton/AtButton'
 import AtTabs from '../../../../AtTabs/AtTabs'
 import AtTypography from '../../../../AtTypography/AtTypography'
-import { StyledDot, StyledStepper, StyledFormStepper } from '../../../AtDrawer'
 import ProjectStep1 from './steps/Step1'
 import { Listing } from '../../../../../utils/redux/types/listings.type'
 import ProjectStep2 from './steps/Step2'
 import ProjectStep3 from './steps/Step3'
 import ProjectStep4 from './steps/Step4'
-// import { getActiveClient } from '../../../../../utils/redux/selectors/clients.selector'
 import { handleCreateListing } from '../../../../../utils/redux/actions/listing.action'
 import { useAppDispatch } from '../../../../../utils/hooks/reduxHook'
+import { StyledDot, StyledFormStepper, StyledStepper } from '../CreateListing'
 
 const CreateProject: React.FunctionComponent<CreateProjectProps> = (
   props: CreateProjectProps,
 ) => {
   const [rateType, setRateType] = useState<RateType>()
   const dispatch = useAppDispatch()
-  // const selectedClient = useAppSelector((state) => getActiveClient(state))
 
   const [project, setProject] = useState<Listing>(new Listing({}))
 
@@ -115,7 +113,7 @@ const CreateProject: React.FunctionComponent<CreateProjectProps> = (
       dispatch(
         handleCreateListing({
           ...project,
-          soloClient: 'test',
+          soloClient: props.client,
           listingType: ListingType.Project,
           status: status,
         }),
@@ -187,9 +185,10 @@ const CreateProject: React.FunctionComponent<CreateProjectProps> = (
   )
 }
 
+export default CreateProject
 interface CreateProjectProps {
+  client: string
   step: number
   setStep: Dispatch<React.SetStateAction<number>>
 }
 
-export default CreateProject

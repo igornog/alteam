@@ -345,6 +345,7 @@ const AtTextField: React.FunctionComponent<AtTextFieldProps> = (
           rows={props.rows}
           inputProps={{
             maxlength: props.maxLength,
+            min: props.minValue,
             ...props.inputProps,
           }}
           disabled={props.disabled}
@@ -410,6 +411,7 @@ const AtTextField: React.FunctionComponent<AtTextFieldProps> = (
 
 export interface AtTextFieldProps {
   charCounter?: boolean
+  minValue?: number
   maxLength?: number
   fullWidth?: boolean
   required?: boolean
