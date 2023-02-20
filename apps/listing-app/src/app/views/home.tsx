@@ -55,7 +55,7 @@ const Home: React.FC = () => {
             </CustomLink>
           </Box>
         </Box>
-        <Box display={'grid'} gridTemplateColumns={'repeat(3, 1fr)'} gap={'20px'}>
+        <Box display={'flex'} gap={'20px'}>
           <CustomCard number={1} icon={listingIcon} title={'Create your listing'} text={'You can choose between a project and team, add your company details, and fill in information about your hiring role(s). It should take you 8-12 mins to complete.'} />
           <CustomCard number={2} icon={submitIcon} title={'Submit Review'} text={"Once you're happy, please click the button “Submit” and a member of our team will review it. To make an edit or cancel your listing, you'll have to contact YJCollective."} />
           <CustomCard number={3} icon={puzzleIcon} title={'Get matches'} text={'We query our network of vetted freelancers & teams. We then send a talent shortlist and help arrange interviews. Like a marketplace, we take our fee when the work starts.'} />

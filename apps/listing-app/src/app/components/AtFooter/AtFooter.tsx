@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box } from '@mui/material'
 import AtTypography from '../AtTypography/AtTypography'
+import CustomLink from '../AtLink/AtLink'
 import styled from 'styled-components'
 import { grey } from '../../utils/colors'
 
@@ -22,8 +23,11 @@ const Footer: React.FC = () => {
     <StyledFooter>
       <AtTypography >Alteam is an initiave and brand of YJCollective Limited</AtTypography>
       <Box display={'flex'} gap={'30px'}>
-      <AtTypography >Terms and Conditions</AtTypography>
-      <AtTypography >Privacy Policy</AtTypography>
+      <CustomLink> 
+        <AtTypography >Terms and Conditions</AtTypography></CustomLink>
+      <CustomLink> 
+        <AtTypography >Privacy Policy</AtTypography>
+      </CustomLink>
       </Box>
     </StyledFooter>
   )
