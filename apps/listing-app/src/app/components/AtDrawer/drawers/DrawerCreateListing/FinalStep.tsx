@@ -21,7 +21,7 @@ const StyledBox = styled(Box)`
   background-position: center;
 `
 
-const FinalStep: React.FunctionComponent<FinalStepProps> = (
+const FinalStep: React.FC<FinalStepProps> = (
   props: FinalStepProps,
 ) => {
   return (

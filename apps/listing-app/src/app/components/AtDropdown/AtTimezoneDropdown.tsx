@@ -51,7 +51,7 @@ const StyledTextField = styled(AtTextField)`
   }
 `
 
-const AtTimezoneDropdown: React.FunctionComponent<AtTimeZoneDropdownProps> = (
+const AtTimezoneDropdown: React.FC<AtTimeZoneDropdownProps> = (
   props: AtTimeZoneDropdownProps,
 ) => {
   const dropdownRef = useRef<any>(null)
@@ -155,7 +155,7 @@ const AtTimezoneDropdown: React.FunctionComponent<AtTimeZoneDropdownProps> = (
           {filteredGroupedTimeZones.map((zone: any, id: number) => {
             return (
               <Box display={'flex'} flexDirection={'column'} key={id}>
-                <AtTypography variant={'caption'} $bold={true}>
+                <AtTypography variant={'caption'} $bold>
                   {zone.name}
                 </AtTypography>
                 {zone.timezones.map((utc: any, id: number) => {

@@ -41,7 +41,7 @@ const StyledTypography = styled(Typography)<StyledTypographyProps>`
     `}
 `
 
-const AtTypography: React.FunctionComponent<AtTypographyProps> = (
+const AtTypography: React.FC<AtTypographyProps> = (
   props: AtTypographyProps,
 ) => {
   return (

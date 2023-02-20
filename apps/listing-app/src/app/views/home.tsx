@@ -25,7 +25,7 @@ export const StyledLink = styled(Link)`
     text-decoration: none;
 `
 
-const Home: React.FunctionComponent = () => {
+const Home: React.FC = () => {
   return (
     <StyledBackground>
       <Header />
@@ -41,19 +41,21 @@ const Home: React.FunctionComponent = () => {
           <Box display={'flex'}
             flexDirection={'column'}
             gap={'20px'}>
-            <AtTypography variant={'h3'}>Intelligent freelance team matching </AtTypography>
-            <AtTypography variant={'body1'}>Welcome to our Beta freelance job listing. Create a free project or team listing for free to match with vetted talents for roles such as software engineers, UX UI designers, and product managers and find an entire elastic squad (a team of 3-12).</AtTypography>
+            <AtTypography variant={'h3'}>{`Intelligent freelance team matching`}</AtTypography>
+            <AtTypography variant={'body1'}>
+              {`Welcome to our Beta freelance job listing. Create a free project or team listing for free to match with vetted talents for roles such as software engineers, UX UI designers, and product managers and find an entire elastic squad (a team of 3-12).`}
+            </AtTypography>
           </Box>
           <Box display={'flex'} gap={'20px'}>
             <CustomLink>
-              <AtTypography variant='subtitle1' fontSize='16px'><Document size={20} />What's an Alteam Project?</AtTypography>
+              <AtTypography variant='subtitle1' fontSize='16px'><Document size={20} />{`What's an Alteam Project?`}</AtTypography>
             </CustomLink>
             <CustomLink>
-              <AtTypography variant='subtitle1' fontSize='16px'><DocumentText size={20} /> What's an Alteam Team?</AtTypography>
+              <AtTypography variant='subtitle1' fontSize='16px'><DocumentText size={20} />{`What's an Alteam Team?`}</AtTypography>
             </CustomLink>
           </Box>
         </Box>
-        <Box display={'flex'} gap={'20px'}>
+        <Box display={'grid'} gridTemplateColumns={'repeat(3, 1fr)'} gap={'20px'}>
           <CustomCard number={1} icon={listingIcon} title={'Create your listing'} text={'You can choose between a project and team, add your company details, and fill in information about your hiring role(s). It should take you 8-12 mins to complete.'} />
           <CustomCard number={2} icon={submitIcon} title={'Submit Review'} text={"Once you're happy, please click the button “Submit” and a member of our team will review it. To make an edit or cancel your listing, you'll have to contact YJCollective."} />
           <CustomCard number={3} icon={puzzleIcon} title={'Get matches'} text={'We query our network of vetted freelancers & teams. We then send a talent shortlist and help arrange interviews. Like a marketplace, we take our fee when the work starts.'} />

@@ -20,7 +20,7 @@ const StyledCard = styled(Card)`
   }
 `
 
-const CustomCard: React.FunctionComponent<Props> = (props: Props) => {
+const CustomCard: React.FC<Props> = (props: Props) => {
   return (
     <StyledCard>
       <img src={props.icon} alt={'logo'} width={40} />

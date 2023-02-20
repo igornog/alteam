@@ -47,7 +47,7 @@ interface JobDescriptionProps {
   description: string
 }
 
-const TeamStep3: React.FunctionComponent<Step3Props> = (props: Step3Props) => {
+const TeamStep3: React.FC<Step3Props> = (props: Step3Props) => {
   const [jobDescriptions, setJobDescriptions] = useState<JobDescriptionProps[]>(
     [],
   )
@@ -128,7 +128,7 @@ const TeamStep3: React.FunctionComponent<Step3Props> = (props: Step3Props) => {
             maxLength={500}
             multiline={true}
             rows={6}
-            required={true}
+            required
             placeholder={'Enter General Description'}
             charCounter={true}
           />
@@ -149,8 +149,8 @@ const TeamStep3: React.FunctionComponent<Step3Props> = (props: Step3Props) => {
                   <AtLine />
                   <Box display={'flex'} width={'100%'}>
                     <AtTextFieldDropdown
-                      fullWidth={true}
-                      required={true}
+                      fullWidth
+                      required
                       placeholder={'Enter Role Name'}
                       $listItems={[
                         ...props.team.roles
@@ -190,7 +190,7 @@ const TeamStep3: React.FunctionComponent<Step3Props> = (props: Step3Props) => {
                     maxLength={500}
                     multiline={true}
                     rows={6}
-                    required={true}
+                    required
                     label={`Job Description ${i + 1}`}
                     placeholder={'Enter Job Description'}
                     charCounter={true}

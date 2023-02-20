@@ -210,7 +210,7 @@ const StyledButton = styled(Button) <StyledButtonProps>`
   }
 `
 
-const AtButton: React.FunctionComponent<AtButtonProps> = (
+const AtButton: React.FC<AtButtonProps> = (
   props: AtButtonProps,
 ) => {
   return (

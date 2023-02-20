@@ -43,7 +43,7 @@ export const StyledCard = styled.div`
   }
 `
 
-const DrawerCreateListing: React.FunctionComponent = () => {
+const DrawerCreateListing: React.FC = () => {
 
   const [openCreateListing, setOpenCreateListing] = useState(false)
   const [listingType, setListingType] = useState<ListingType>(ListingType.Project)
@@ -93,7 +93,7 @@ const DrawerCreateListing: React.FunctionComponent = () => {
 
           <AtLine />
 
-          <Grid container={true} justifyContent={'center'}>
+          <Grid container justifyContent={'center'}>
             <Grid
               xs={10}
               display={'flex'}
@@ -112,7 +112,7 @@ const DrawerCreateListing: React.FunctionComponent = () => {
                 </Box>
                 <AtLine />
                 <Grid
-                  container={true}
+                  container
                   justifyContent={'center'}
                   gap={'20px'}
                   padding={'20px'}

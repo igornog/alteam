@@ -91,7 +91,7 @@ const StyledLabel = styled.div`
   align-items: center;
 `
 
-const AtDropdown: React.FunctionComponent<AtDropdownProps> = (
+const AtDropdown: React.FC<AtDropdownProps> = (
   props: AtDropdownProps,
 ) => {
   const dropdownRef = useRef<any>(null)

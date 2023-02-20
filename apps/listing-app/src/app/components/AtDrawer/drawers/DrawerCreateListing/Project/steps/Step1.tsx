@@ -21,7 +21,7 @@ const StyledPeriod = styled.div`
   padding: 2px 5px;
 `
 
-const ProjectStep1: React.FunctionComponent<Step1Props> = (
+const ProjectStep1: React.FC<Step1Props> = (
   props: Step1Props,
 ) => {
   // const selectedClient = useAppSelector((state) => getActiveClient(state))
@@ -58,7 +58,7 @@ const ProjectStep1: React.FunctionComponent<Step1Props> = (
         <Box display={'flex'} gap={'30px'} flexDirection={'column'}>
           <AtTextField
             label={'Project Name'}
-            required={true}
+            required
             placeholder={'Enter Project Name'}
             onValueChange={(e) =>
               props.setProject({ ...props.project, listingName: e })
@@ -68,9 +68,9 @@ const ProjectStep1: React.FunctionComponent<Step1Props> = (
 
           {listClients && (
             <AtTextFieldDropdown
-              fullWidth={true}
+              fullWidth
               searchable={true}
-              required={true}
+              required
               // value={selectedClient.companyName}
               placeholder={'Client'}
               $listItems={listClients.map((client: Client, index: number) => ({
@@ -94,8 +94,8 @@ const ProjectStep1: React.FunctionComponent<Step1Props> = (
           )}
 
           <AtTextFieldDropdown
-            fullWidth={true}
-            required={true}
+            fullWidth
+            required
             placeholder={'Select Number of Individuals'}
             $listItems={Array.from(Array(10).keys()).map((key) => ({
               id: key + 1,
@@ -114,8 +114,8 @@ const ProjectStep1: React.FunctionComponent<Step1Props> = (
             <Box display={'flex'} gap={'16px'}>
               <Box width={isDifferentOnSite ? '50%' : '100%'}>
                 <AtTextFieldDropdown
-                  fullWidth={true}
-                  required={true}
+                  fullWidth
+                  required
                   placeholder={'Select Work Type'}
                   $listItems={Object.values(WorkType).map(
                     (label: WorkType, index: number) => ({
@@ -136,7 +136,7 @@ const ProjectStep1: React.FunctionComponent<Step1Props> = (
               {isDifferentOnSite ? (
                 <Box width={'50%'}>
                   <AtTimezoneDropdown
-                    fullWidth={true}
+                    fullWidth
                     placeholder={'Enter Timezone'}
                     handleSelect={(e) =>
                       props.setProject({ ...props.project, timeZone: e })
@@ -147,8 +147,8 @@ const ProjectStep1: React.FunctionComponent<Step1Props> = (
             </Box>
           </Box>
           <AtTextFieldDropdown
-            fullWidth={true}
-            required={true}
+            fullWidth
+            required
             placeholder={'Select Availability'}
             $listItems={Object.values(Availability).map(
               (label: Availability, index: number) => ({
@@ -168,7 +168,7 @@ const ProjectStep1: React.FunctionComponent<Step1Props> = (
           <AtTextField
             label={'Project Length'}
             type={AtTextFieldType.Number}
-            required={true}
+            required
             placeholder={'Enter Project Length'}
             maxLength={30}
             minValue={1}
@@ -185,7 +185,7 @@ const ProjectStep1: React.FunctionComponent<Step1Props> = (
           />
 
           <AtTextFieldDate
-            required={true}
+            required
             label={'Start Date'}
             onValueChange={(e) =>
               props.setProject({ ...props.project, startDate: e.format('DD-MM-YYYY') as any })
@@ -193,7 +193,7 @@ const ProjectStep1: React.FunctionComponent<Step1Props> = (
           />
 
           <AtTextFieldDropdown
-            fullWidth={true}
+            fullWidth
             placeholder={'Select Your Currency'}
             $listItems={Object.values(Currency).map(
               (label: Currency, index: number) => ({
@@ -213,8 +213,8 @@ const ProjectStep1: React.FunctionComponent<Step1Props> = (
 
           <Box display={'flex'} gap={'10px'} flexDirection={'column'}>
             <AtTextFieldDropdown
-              fullWidth={true}
-              required={true}
+              fullWidth
+              required
               placeholder={'Select Rate'}
               $listItems={Object.values(RateType).map(
                 (label: RateType, index: number) => ({
@@ -276,8 +276,8 @@ const ProjectStep1: React.FunctionComponent<Step1Props> = (
           </Box>
 
           <AtTextFieldDropdown
-            fullWidth={true}
-            required={true}
+            fullWidth
+            required
             placeholder={'Select Difficulty'}
             $listItems={Object.values(Difficulty).map(
               (label: Difficulty, index: number) => ({

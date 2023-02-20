@@ -22,8 +22,7 @@ const StyledPeriod = styled.div`
   padding: 2px 5px;
 `
 
-const TeamStep1: React.FunctionComponent<Step1Props> = (props: Step1Props) => {
-  // const selectedClient = useAppSelector((state) => getActiveClient(state))
+const TeamStep1: React.FC<Step1Props> = (props: Step1Props) => {
   const isDifferentOnSite =
     props.team.workType === WorkType.Hybrid ||
     props.team.workType === WorkType.Remote
@@ -57,15 +56,6 @@ const TeamStep1: React.FunctionComponent<Step1Props> = (props: Step1Props) => {
     }
   }, [props.team.roles, props.team.individuals])
 
-  // useEffect(() => {
-  //   const getListClients = async () => {
-  //     const list = await clientService.searchClient({ clientName: '' })
-  //     setListClients(list)
-  //   }
-
-  //   getListClients()
-  // }, [])
-
   return (
     <StyledForm>
       <Box padding={'20px'} display={'flex'} justifyContent={'space-between'}>
@@ -85,7 +75,7 @@ const TeamStep1: React.FunctionComponent<Step1Props> = (props: Step1Props) => {
         <Box display={'flex'} gap={'30px'} flexDirection={'column'}>
           <AtTextField
             label={'Project Name'}
-            required={true}
+            required
             placeholder={'Enter Team Project Name'}
             onValueChange={(e) =>
               props.setTeam({ ...props.team, listingName: e })
@@ -95,8 +85,8 @@ const TeamStep1: React.FunctionComponent<Step1Props> = (props: Step1Props) => {
 
           {listClients && (
             <AtTextFieldDropdown
-              fullWidth={true}
-              required={true}
+              fullWidth
+              required
               // value={selectedClient.companyName}
               placeholder={'Client'}
               $listItems={listClients.map((client: Client, index: number) => ({
@@ -120,8 +110,8 @@ const TeamStep1: React.FunctionComponent<Step1Props> = (props: Step1Props) => {
           )}
 
           <AtTextFieldDropdown
-            fullWidth={true}
-            required={true}
+            fullWidth
+            required
             placeholder={'Select Number of Individuals'}
             $listItems={Array.from(Array(10).keys()).map((key) => ({
               id: key + 1,
@@ -140,8 +130,8 @@ const TeamStep1: React.FunctionComponent<Step1Props> = (props: Step1Props) => {
             <Box display={'flex'} gap={'16px'}>
               <Box width={isDifferentOnSite ? '50%' : '100%'}>
                 <AtTextFieldDropdown
-                  fullWidth={true}
-                  required={true}
+                  fullWidth
+                  required
                   placeholder={'Select Work Type'}
                   $listItems={Object.values(WorkType).map(
                     (label: WorkType, index: number) => ({
@@ -161,7 +151,7 @@ const TeamStep1: React.FunctionComponent<Step1Props> = (props: Step1Props) => {
               {isDifferentOnSite ? (
                 <Box width={'50%'}>
                   <AtTimezoneDropdown
-                    fullWidth={true}
+                    fullWidth
                     placeholder={'Enter Timezone'}
                     handleSelect={(e) =>
                       props.setTeam({ ...props.team, timeZone: e })
@@ -172,8 +162,8 @@ const TeamStep1: React.FunctionComponent<Step1Props> = (props: Step1Props) => {
             </Box>
           </Box>
           <AtTextFieldDropdown
-            fullWidth={true}
-            required={true}
+            fullWidth
+            required
             placeholder={'Select Availability'}
             $listItems={Object.values(Availability).map(
               (label: Availability, index: number) => ({
@@ -195,7 +185,7 @@ const TeamStep1: React.FunctionComponent<Step1Props> = (props: Step1Props) => {
             type={AtTextFieldType.Number}
             label={'Project Length'}
             minValue={1}
-            required={true}
+            required
             onValueChange={(e) =>
               props.setTeam({ ...props.team, projectLength: parseInt(e) })
             }
@@ -209,7 +199,7 @@ const TeamStep1: React.FunctionComponent<Step1Props> = (props: Step1Props) => {
           />
 
           <AtTextFieldDate
-            required={true}
+            required
             label={'Start Date'}
             onValueChange={(e) =>
               props.setTeam({ ...props.team, startDate: e.format('DD-MM-YYYY') as any })
@@ -217,7 +207,7 @@ const TeamStep1: React.FunctionComponent<Step1Props> = (props: Step1Props) => {
           />
 
           <AtTextFieldDropdown
-            fullWidth={true}
+            fullWidth
             placeholder={'Select Your Currency'}
             $listItems={Object.values(Currency).map(
               (label: Currency, index: number) => ({
@@ -277,8 +267,8 @@ const TeamStep1: React.FunctionComponent<Step1Props> = (props: Step1Props) => {
           </Box>
 
           <AtTextFieldDropdown
-            fullWidth={true}
-            required={true}
+            fullWidth
+            required
             placeholder={'Select Difficulty'}
             $listItems={Object.values(Difficulty).map(
               (label: Difficulty, index: number) => ({

@@ -38,7 +38,7 @@ const StyledChip = styled(Chip)<{ clickable?: boolean; variant: string }>`
     `}
 `
 
-const AtTag: React.FunctionComponent<AtTagProps> = (props: AtTagProps) => {
+const AtTag: React.FC<AtTagProps> = (props: AtTagProps) => {
   return (
     <StyledChip
       {...props}

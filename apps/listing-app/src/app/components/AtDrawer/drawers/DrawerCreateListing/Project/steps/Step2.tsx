@@ -15,7 +15,7 @@ const StyledCharCounter = styled.div`
   color: ${grey2};
 `
 
-const ProjectStep2: React.FunctionComponent<Step2Props> = (
+const ProjectStep2: React.FC<Step2Props> = (
   props: Step2Props,
 ) => {
   return (
@@ -43,7 +43,7 @@ const ProjectStep2: React.FunctionComponent<Step2Props> = (
             maxLength={500}
             multiline={true}
             rows={6}
-            required={true}
+            required
             label={'Job Description'}
             placeholder={'Enter Job Description'}
           />

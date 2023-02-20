@@ -47,7 +47,7 @@ const StyledTextField = styled(AtTextField)<{ placeholder: any }>`
   }
 `
 
-const AtTextFieldDropdown: React.FunctionComponent<AtTextFieldDropdownProps> = (
+const AtTextFieldDropdown: React.FC<AtTextFieldDropdownProps> = (
   props: AtTextFieldDropdownProps,
 ) => {
   const dropdownRef = useRef<any>(null)

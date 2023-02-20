@@ -1,17 +1,17 @@
-import styled from 'styled-components'
-import { useState } from 'react'
-import { white, grey2 } from '../utils/colors'
-import AtButton, { AtButtonKind, AtButtonVariant } from '../components/AtButton/AtButton'
-import AtTextFieldDropdown from '../components/AtDropdown/AtTextFieldDropdown'
-import AtLine from '../components/AtLine/AtLine'
-import AtTextField from '../components/AtTextField/AtTextField'
-import AtTypography from '../components/AtTypography/AtTypography'
-import { Box, Container } from '@mui/material'
-import { ArrowRight2 } from 'iconsax-react'
-import { ClientStatus } from '@yjcapp/app'
-import { Client } from '../utils/redux/types/clients.type'
-import { useAppDispatch } from '../utils/hooks/reduxHook'
-import { handleCreateClient } from '../utils/redux/actions/clients.action'
+import { useState } from 'react';
+import styled from 'styled-components';
+import { Box, Container } from '@mui/material';
+import { ArrowRight2 } from 'iconsax-react';
+import { ClientStatus } from '@yjcapp/app';
+import { Client } from '../utils/redux/types/clients.type';
+import { useAppDispatch } from '../utils/hooks/reduxHook';
+import { handleCreateClient } from '../utils/redux/actions/clients.action';
+import AtButton, { AtButtonKind, AtButtonVariant } from '../components/AtButton/AtButton';
+import AtTextFieldDropdown from '../components/AtDropdown/AtTextFieldDropdown';
+import AtLine from '../components/AtLine/AtLine';
+import AtTextField from '../components/AtTextField/AtTextField';
+import AtTypography from '../components/AtTypography/AtTypography';
+import { white, grey2 } from '../utils/colors';
 
 export const StyledForm = styled.div`
   background-color: ${white};
@@ -19,7 +19,7 @@ export const StyledForm = styled.div`
   border-radius: 5px;
 `
 
-const GeneralInfoForm: React.FunctionComponent = () => {
+const GeneralInfoForm: React.FC = () => {
   const dispatch = useAppDispatch()
 
   const defaultClient = {
@@ -69,7 +69,7 @@ const GeneralInfoForm: React.FunctionComponent = () => {
           <Box display={'flex'} gap={'30px'} flexDirection={'column'}>
             <AtTextField
               label={'Full Name'}
-              required={true}
+              required
               placeholder={'Enter Full Name'}
               onValueChange={(e) =>
                 setClient({ ...client, fullName: e })
@@ -79,7 +79,7 @@ const GeneralInfoForm: React.FunctionComponent = () => {
 
             <AtTextField
               label={'Email Address'}
-              required={true}
+              required
               placeholder={'Enter Email Address'}
               onValueChange={(e) =>
                 setClient({ ...client, email: e })
@@ -90,8 +90,8 @@ const GeneralInfoForm: React.FunctionComponent = () => {
             <AtTextField
               maxWidth={99}
               placeholder={'Enter Phone Number'}
-              required={true}
-              countryCode={true}
+              required
+              countryCode
               onValueChange={(e) =>
                 setClient({ ...client, phoneNumber: e })
               }
@@ -100,7 +100,7 @@ const GeneralInfoForm: React.FunctionComponent = () => {
 
             <AtTextField
               label={'Company Name'}
-              required={true}
+              required
               placeholder={'Enter Company Name'}
               onValueChange={(e) =>
                 setClient({ ...client, companyName: e })
@@ -111,7 +111,7 @@ const GeneralInfoForm: React.FunctionComponent = () => {
             <AtTextField
               label={'Position'}
               // type={AtTextFieldType.Number}
-              required={true}
+              required
               placeholder={'Enter Position'}
               onValueChange={(e) =>
                 setClient({ ...client, position: e })
@@ -128,7 +128,7 @@ const GeneralInfoForm: React.FunctionComponent = () => {
             />
 
             <AtTextFieldDropdown
-              fullWidth={true}
+              fullWidth
               placeholder={'Select Industry'}
               searchable={false}
               label={'Industry'}

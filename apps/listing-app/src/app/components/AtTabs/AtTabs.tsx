@@ -59,7 +59,7 @@ const Slider = styled(motion.div)`
   background: #08e;
 `
 
-const AtTabs: React.FunctionComponent<AtTabsProps> = (props: AtTabsProps) => {
+const AtTabs: React.FC<AtTabsProps> = (props: AtTabsProps) => {
   const [value, setValue] = useState(0)
   const childRefs = useRef(new Map())
   const tabListRef = useRef<any>()

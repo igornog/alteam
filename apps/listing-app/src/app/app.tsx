@@ -4,7 +4,7 @@ import Home from './views/home'
 import GeneralInfoForm from './views/generalInfo'
 import DrawerCreateListing from './components/AtDrawer/drawers/DrawerCreateListing/DrawerCreateListing'
 
-export const App: React.FunctionComponent = () => {
+export const App: React.FC = () => {
   const location = useLocation()
 
   return (

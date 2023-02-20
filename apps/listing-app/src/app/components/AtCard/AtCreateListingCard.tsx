@@ -38,7 +38,7 @@ export const StyledCard = styled.div`
   }
 `
 
-const AtCreateListingCard: React.FunctionComponent<CreateListingCardProps> = (
+const AtCreateListingCard: React.FC<CreateListingCardProps> = (
   props: CreateListingCardProps,
 ) => {
   return (

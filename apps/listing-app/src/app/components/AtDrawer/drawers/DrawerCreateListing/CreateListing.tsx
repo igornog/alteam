@@ -50,7 +50,7 @@ export const StyledForm = styled.div`
   border-radius: 5px;
 `
 
-const CreateListing: React.FunctionComponent<CreateListingProps> = (
+const CreateListing: React.FC<CreateListingProps> = (
   props: CreateListingProps,
 ) => {
   const [step, setStep] = useState(0)

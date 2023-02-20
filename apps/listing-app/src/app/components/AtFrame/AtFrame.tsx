@@ -19,7 +19,7 @@ const StyledBox = styled(Box)`
   }
 `
 
-const AtFrame: React.FunctionComponent<TalentFrameProps> = (
+const AtFrame: React.FC<TalentFrameProps> = (
   props: TalentFrameProps,
 ) => {
   return (

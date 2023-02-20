@@ -6,7 +6,7 @@ import { AddCircle, Profile2User } from 'iconsax-react'
 import AtLine from '../AtLine/AtLine' 
 import { StyledLink } from '../../views/home'
 
-const Header: React.FunctionComponent = () => {
+const Header: React.FC = () => {
   return (
     <>
       <Box display={'flex'} justifyContent={'space-between'} width={'fill-available'} padding={'20px'}>

@@ -14,7 +14,7 @@ const StyledLink = styled(Link)`
      }
 `
 
-const CustomLink: React.FunctionComponent<Props> = (
+const CustomLink: React.FC<Props> = (
   props: Props,
 ) => {
   return (

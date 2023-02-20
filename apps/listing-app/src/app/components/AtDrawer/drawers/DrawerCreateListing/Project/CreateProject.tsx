@@ -18,7 +18,7 @@ import { handleCreateListing } from '../../../../../utils/redux/actions/listing.
 import { useAppDispatch } from '../../../../../utils/hooks/reduxHook'
 import { StyledDot, StyledFormStepper, StyledStepper } from '../CreateListing'
 
-const CreateProject: React.FunctionComponent<CreateProjectProps> = (
+const CreateProject: React.FC<CreateProjectProps> = (
   props: CreateProjectProps,
 ) => {
   const [rateType, setRateType] = useState<RateType>()
@@ -127,7 +127,7 @@ const CreateProject: React.FunctionComponent<CreateProjectProps> = (
 
   return (
     <>
-      <Grid container={true} justifyContent={'center'}>
+      <Grid container justifyContent={'center'}>
         <Grid xs={10} display={'flex'} flexDirection={'column'} gap={'20px'}>
           <Box position={'relative'} zIndex={0}>
             <form>

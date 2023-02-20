@@ -13,7 +13,7 @@ import {
   getCurrencySymbol,
 } from '../../../../../../utils/helpers'
 
-const TeamStep2: React.FunctionComponent<Step2Props> = (props: Step2Props) => {
+const TeamStep2: React.FC<Step2Props> = (props: Step2Props) => {
   const [totalCost, setTotalCost] = useState(0)
 
   const updatePriceAndPercentage = (
@@ -88,7 +88,7 @@ const TeamStep2: React.FunctionComponent<Step2Props> = (props: Step2Props) => {
                     <AtTextField
                       placeholder={'Enter Role Name'}
                       label={`Role Name ${i + 1}`}
-                      required={true}
+                      required
                       onValueChange={(e) => {
                         const newRoles = [...props.team.roles]
                         newRoles[i] = { ...newRoles[i], roleName: e }
@@ -137,7 +137,7 @@ const TeamStep2: React.FunctionComponent<Step2Props> = (props: Step2Props) => {
               <AtTypography variant={'body1'}>
                 <Box display={'flex'} gap={'4px'}>
                   Monthly cost of the project :{' '}
-                  <AtTypography $bold={true}>
+                  <AtTypography $bold>
                     {props.team.roles.reduce((acc, role) => {
                       if (role.price) {
                         return acc + role.price
@@ -152,7 +152,7 @@ const TeamStep2: React.FunctionComponent<Step2Props> = (props: Step2Props) => {
               <AtTypography variant={'body1'}>
                 <Box display={'flex'} gap={'4px'}>
                   Total cost of the project :{' '}
-                  <AtTypography $bold={true}>
+                  <AtTypography $bold>
                     {props.team.exactRate ?? totalCost}
                     {getCurrencySymbol(props.team.currency)}
                   </AtTypography>

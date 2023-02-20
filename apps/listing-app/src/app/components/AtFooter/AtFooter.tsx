@@ -17,7 +17,7 @@ const StyledFooter = styled(Box)`
   }
 `
 
-const Footer: React.FunctionComponent = () => {
+const Footer: React.FC = () => {
   return (
     <StyledFooter>
       <AtTypography >Alteam is an initiave and brand of YJCollective Limited</AtTypography>

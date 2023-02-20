@@ -7,7 +7,7 @@ import { StyledForm } from '../../DrawerCreateListing'
 import { grey2 } from '../../../../../../utils/colors'
 import { Listing } from '../../../../../../utils/redux/types/listings.type'
 
-const TeamStep5: React.FunctionComponent<Step5Props> = (props: Step5Props) => {
+const TeamStep5: React.FC<Step5Props> = (props: Step5Props) => {
   const handleArrayValueChange = (
     index: number,
     setFunc: (val: any) => void,

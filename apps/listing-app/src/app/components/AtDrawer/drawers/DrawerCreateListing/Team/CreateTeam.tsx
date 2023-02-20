@@ -19,7 +19,7 @@ import TeamStep5 from './steps/Step5'
 import { handleCreateListing } from '../../../../../utils/redux/actions/listing.action'
 import { StyledDot, StyledStepper, StyledFormStepper } from '../CreateListing'
 
-const CreateTeam: React.FunctionComponent<Props> = (
+const CreateTeam: React.FC<Props> = (
   props: Props,
 ) => {
   const dispatch = useAppDispatch()
@@ -58,7 +58,6 @@ const CreateTeam: React.FunctionComponent<Props> = (
   ]
 
   const isDisabled = () => {
-    // TODO: Remove this and use something like react-hook-form
     const fieldsConfig: any = {
       step1: {
         requiredFields: [
@@ -137,7 +136,7 @@ const CreateTeam: React.FunctionComponent<Props> = (
 
   return (
     <>
-      <Grid container={true} justifyContent={'center'}>
+      <Grid container justifyContent={'center'}>
         <Grid xs={10} display={'flex'} flexDirection={'column'} gap={'20px'}>
           <Box position={'relative'} zIndex={0}>
             <form>

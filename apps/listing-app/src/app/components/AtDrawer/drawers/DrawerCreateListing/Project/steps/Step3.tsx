@@ -9,7 +9,7 @@ import { SearchNormal1 } from 'iconsax-react'
 import AtTag from '../../../../../AtTag/AtTag'
 import { Listing } from '../../../../../../utils/redux/types/listings.type'
 
-const ProjectStep3: React.FunctionComponent<Step3Props> = (
+const ProjectStep3: React.FC<Step3Props> = (
   props: Step3Props,
 ) => {
   return (

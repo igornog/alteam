@@ -7,7 +7,7 @@ import { StyledForm } from '../../DrawerCreateListing'
 import { grey2 } from '../../../../../../utils/colors'
 import { Listing } from '../../../../../../utils/redux/types/listings.type'
 
-const ProjectStep4: React.FunctionComponent<Step4Props> = (
+const ProjectStep4: React.FC<Step4Props> = (
   props: Step4Props,
 ) => {
   const handleArrayValueChange = (

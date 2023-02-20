@@ -59,7 +59,7 @@ const IOSSwitch = styled(Switch).attrs(() => ({
   }
 `
 
-const AtSwitch: React.FunctionComponent<AtSwitchProps> = (
+const AtSwitch: React.FC<AtSwitchProps> = (
   props: AtSwitchProps,
 ) => {
   return (

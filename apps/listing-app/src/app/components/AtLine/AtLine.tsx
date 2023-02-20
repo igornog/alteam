@@ -21,7 +21,7 @@ const StyledLine = styled.div<AtLineProps>`
     spacingBottom ? `${spacingBottom}px` : ''};
 `
 
-const AtLine: React.FunctionComponent<AtLineProps> = (props: AtLineProps) => {
+const AtLine: React.FC<AtLineProps> = (props: AtLineProps) => {
   return (
     <StyledLine
       color={props.color}

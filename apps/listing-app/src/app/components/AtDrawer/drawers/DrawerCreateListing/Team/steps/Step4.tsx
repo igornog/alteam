@@ -9,7 +9,7 @@ import { SearchNormal1 } from 'iconsax-react'
 import AtTag from '../../../../../AtTag/AtTag'
 import { Listing } from '../../../../../../utils/redux/types/listings.type'
 
-const TeamStep4: React.FunctionComponent<Step4Props> = (props: Step4Props) => {
+const TeamStep4: React.FC<Step4Props> = (props: Step4Props) => {
   return (
     <Box display={'flex'} flexDirection={'column'} gap={'20px'}>
       <StyledForm>

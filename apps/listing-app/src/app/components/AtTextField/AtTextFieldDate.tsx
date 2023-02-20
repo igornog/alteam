@@ -5,7 +5,7 @@ import { Box } from '@mui/material'
 import { black, green } from '../../utils/colors'
 import moment from 'moment'
 
-const AtTextFieldDate: React.FunctionComponent<AtTextFieldProps> = (
+const AtTextFieldDate: React.FC<AtTextFieldProps> = (
   props: AtTextFieldProps,
 ) => {
   const [value, setValue] = React.useState<any>(null)

@@ -222,7 +222,7 @@ const CountryCodeInput = styled(OutlinedInput)`
 }
 `
 
-const AtTextField: React.FunctionComponent<AtTextFieldProps> = (
+const AtTextField: React.FC<AtTextFieldProps> = (
   props: AtTextFieldProps,
 ) => {
   const [showPassword, setShowPassword] = useState(false)
@@ -328,9 +328,9 @@ const AtTextField: React.FunctionComponent<AtTextFieldProps> = (
         </ClickAwayListener>
       )}
 
-      <FormControl variant="outlined" fullWidth={true}>
+      <FormControl variant="outlined" fullWidth>
         <StyledInput
-          fullWidth={true}
+          fullWidth
           onClick={props.onClick}
           onKeyDown={handlePressEnter}
           $dropdown={props.dropdown}
