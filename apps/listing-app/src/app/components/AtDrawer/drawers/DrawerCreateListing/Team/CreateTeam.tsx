@@ -1,6 +1,6 @@
 import { ArrowLeft2, ArrowRight, CloseCircle, TickCircle } from 'iconsax-react'
 import { Dispatch, useState } from 'react'
-import { ListingState, ListingType, Role, WorkType } from '@yjcapp/app'
+import { ClientStatus, ListingState, ListingType, Role, WorkType } from '@yjcapp/app'
 import { grey2, black } from '../../../../../utils/colors'
 import AtButton, {
   AtButtonVariant,
@@ -122,7 +122,7 @@ const CreateTeam: React.FC<Props> = (
       dispatch(
         handleCreateListing({
           ...team,
-          soloClient: props.client,
+          soloClient: { companyName: props.client, status: ClientStatus.Active },
           listingType: ListingType.Team,
           status: status,
         }),

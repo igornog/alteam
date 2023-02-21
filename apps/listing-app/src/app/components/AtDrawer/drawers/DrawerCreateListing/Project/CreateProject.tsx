@@ -1,7 +1,7 @@
 import { Grid, Box } from '@mui/material'
 import { ArrowLeft2, ArrowRight, CloseCircle, TickCircle } from 'iconsax-react'
 import { Dispatch, useState } from 'react'
-import { ListingState, ListingType, RateType, WorkType } from '@yjcapp/app'
+import { ClientStatus, ListingState, ListingType, RateType, WorkType } from '@yjcapp/app'
 import { grey2, black } from '../../../../../utils/colors'
 import AtButton, {
   AtButtonVariant,
@@ -113,7 +113,7 @@ const CreateProject: React.FC<CreateProjectProps> = (
       dispatch(
         handleCreateListing({
           ...project,
-          soloClient: props.client,
+          soloClient: { companyName: props.client, status: ClientStatus.Active },
           listingType: ListingType.Project,
           status: status,
         }),

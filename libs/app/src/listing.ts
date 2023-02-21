@@ -3,7 +3,7 @@ import { Availability } from './talent'
 
 export interface ClientListing {
   id?: number
-  soloClient: SoloClient | string
+  soloClient: SoloClient
   listingName: string
   individuals: number
   workType?: WorkType

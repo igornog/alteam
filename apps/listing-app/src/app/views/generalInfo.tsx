@@ -135,7 +135,23 @@ const GeneralInfoForm: React.FC = () => {
               $listItems={[
                 {
                   id: 0,
-                  label: 'IT'
+                  label: 'Software Engineering'
+                },
+                {
+                  id: 1,
+                  label: 'Data'
+                },
+                {
+                  id: 2,
+                  label: 'Marketing'
+                },
+                {
+                  id: 3,
+                  label: 'Web 3.0'
+                },
+                {
+                  id: 4,
+                  label: 'Finance, Legal & Compliance'
                 }
               ]}
               onValueChange={(e) =>
