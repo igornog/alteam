@@ -14,16 +14,12 @@ import { StyledLink } from '../../../../views/home'
 const StyledBox = styled(Box)`
   background-image: url(${Rocketbg});
   background-repeat: no-repeat;
-  width: 100vw;
   height: 100vh;
-  padding: 30px 0;
   background-origin: content-box;
   background-position: center;
 `
 
-const FinalStep: React.FC<FinalStepProps> = (
-  props: FinalStepProps,
-) => {
+const FinalStep = () => {
   return (
     <StyledBox>
       <Box
@@ -51,10 +47,6 @@ const FinalStep: React.FC<FinalStepProps> = (
       </Box>
     </StyledBox>
   )
-}
-
-interface FinalStepProps {
-  clientName?: string
 }
 
 export default FinalStep

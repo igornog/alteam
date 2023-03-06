@@ -56,7 +56,7 @@ const CreateListing: React.FC<CreateListingProps> = (
   const [step, setStep] = useState(0)
 
   return step === props.steps ? (
-    <FinalStep clientName={props.clientName} />
+    <FinalStep />
   ) : (
     <Container>
       <Box
