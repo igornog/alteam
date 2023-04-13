@@ -12,11 +12,18 @@ import { Listing } from '../../../../../../utils/redux/types/listings.type'
 const ProjectStep3: React.FC<Step3Props> = (
   props: Step3Props,
 ) => {
+  const maxSkills = 7
+
   return (
     <Box display={'flex'} flexDirection={'column'} gap={'20px'}>
       <StyledForm>
-        <Box padding={'20px'} display={'flex'} justifyContent={'space-between'}>
-          <AtTypography variant={'h4'}>Add Skills</AtTypography>
+        <Box
+          padding={'20px'}
+          display={'flex'}
+          justifyContent={'space-between'}
+          flexDirection={props.isSmallScreen ? 'column' : 'row'}
+        >
+          <AtTypography variant={'h4'} fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}>Add Skills</AtTypography>
           <AtTypography variant={'caption'} color={grey2}>
             Fields with * are mandatory
           </AtTypography>
@@ -27,12 +34,14 @@ const ProjectStep3: React.FC<Step3Props> = (
         <Box display={'flex'} flexDirection={'column'} gap={2.5} padding={2.5}>
           <AtTextField
             placeholder={'Search in Skills'}
-            onPressEnter={(e) =>
-              props.setProject({
-                ...props.project,
-                skills: [...props.project.skills, e],
-              })
-            }
+            onPressEnter={(e) => {
+              if (props.project.skills?.length < maxSkills) {
+                props.setProject({
+                  ...props.project,
+                  skills: [...props.project.skills, e],
+                })
+              }
+            }}
             startIcon={<SearchNormal1 />}
             size={'small'}
           />
@@ -72,6 +81,7 @@ const ProjectStep3: React.FC<Step3Props> = (
 interface Step3Props {
   setProject: Dispatch<React.SetStateAction<Listing>>
   project: Listing
+  isSmallScreen?: boolean
 }
 
 export default ProjectStep3

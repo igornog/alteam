@@ -1,4 +1,4 @@
-import { Box } from '@mui/material'
+import { Box, useMediaQuery } from '@mui/material'
 import React from 'react'
 import styled from 'styled-components'
 import { green, grey5, white } from '../../utils/colors'
@@ -30,10 +30,20 @@ export const StyledCard = styled.div`
   div {
     place-items: center;
     padding: 52px;
-
+  
     img {
       width: 40px;
       height: 40px;
+    }
+
+    @media (max-width: 1079px) {
+      padding: 20px;
+      gap: 10px;
+
+      img {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 `
@@ -41,11 +51,13 @@ export const StyledCard = styled.div`
 const AtCreateListingCard: React.FC<CreateListingCardProps> = (
   props: CreateListingCardProps,
 ) => {
+  const isSmallScreen = useMediaQuery('(max-width:1079px)')
+
   return (
     <StyledCard onClick={props.onClick}>
       <Box display={'flex'} flexDirection={'column'} gap={'20px'}>
         <img src={props.icon} alt={'Folder'} />
-        <AtTypography variant={'h5'}>{props.listingOption}</AtTypography>
+        <AtTypography variant={'h5'} fontSize={isSmallScreen ? '.675rem' : '1.5rem'}>{props.listingOption}</AtTypography>
       </Box>
     </StyledCard>
   )

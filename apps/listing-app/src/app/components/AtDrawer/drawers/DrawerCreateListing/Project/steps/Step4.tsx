@@ -27,8 +27,13 @@ const ProjectStep4: React.FC<Step4Props> = (
   return (
     <Box display={'flex'} flexDirection={'column'} gap={'20px'}>
       <StyledForm>
-        <Box padding={'20px'} display={'flex'} justifyContent={'space-between'}>
-          <AtTypography variant={'h4'}>Screening Questions</AtTypography>
+        <Box
+          padding={'20px'}
+          display={'flex'}
+          justifyContent={'space-between'}
+          flexDirection={props.isSmallScreen ? 'column' : 'row'}
+        >
+          <AtTypography variant={'h4'} fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}>Screening Questions</AtTypography>
           <AtTypography variant={'caption'} color={grey2}>
             Fields with * are mandatory
           </AtTypography>
@@ -96,6 +101,7 @@ const ProjectStep4: React.FC<Step4Props> = (
 interface Step4Props {
   setProject: Dispatch<React.SetStateAction<Listing>>
   project: Listing
+  isSmallScreen?: boolean
 }
 
 export default ProjectStep4

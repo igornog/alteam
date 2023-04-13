@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { Box, Container } from '@mui/material';
+import { Box, Container, useMediaQuery } from '@mui/material';
 import { ArrowRight2 } from 'iconsax-react';
 import { ClientStatus } from '@yjcapp/app';
 import { Client } from '../utils/redux/types/clients.type';
@@ -17,10 +17,15 @@ export const StyledForm = styled.div`
   background-color: ${white};
   margin: 30px 10vw;
   border-radius: 5px;
+
+  @media (max-width: 1079px) {
+    margin: 20px 0;
+  }
 `
 
 const GeneralInfoForm: React.FC = () => {
   const dispatch = useAppDispatch()
+  const isSmallScreen = useMediaQuery('(max-width:1079px)')
 
   const defaultClient = {
     companyName: '',
@@ -48,12 +53,16 @@ const GeneralInfoForm: React.FC = () => {
   return (
     <Container>
       <Box padding={'30px 0'}>
-        <AtTypography variant={'h3'}>Start by telling us who you are</AtTypography>
+        <AtTypography 
+          variant={'h3'} 
+          fontSize={isSmallScreen ? '1.5rem' : '2rem'}
+          justifyContent={isSmallScreen ? 'center' : 'flex-start'}
+          >Start by telling us who you are</AtTypography>
       </Box>
       <AtLine />
       <StyledForm>
-        <Box padding={'20px'} display={'flex'} justifyContent={'space-between'}>
-          <AtTypography variant={'h4'}>General Information</AtTypography>
+        <Box padding={'20px'} display={'flex'} justifyContent={'space-between'} flexDirection={isSmallScreen ? 'column' : 'row'}>
+          <AtTypography variant={'h4'} fontSize='1.5rem'>General Information</AtTypography>
           <AtTypography variant={'caption'} color={grey2}>
             Fields with * are mandatory
           </AtTypography>
@@ -61,7 +70,7 @@ const GeneralInfoForm: React.FC = () => {
         <AtLine />
 
         <Box
-          padding={'20px'}
+          padding={isSmallScreen ? '20px 20px 100px' : '20px'}
           display={'flex'}
           flexDirection={'column'}
           gap={'50px'}
@@ -161,7 +170,7 @@ const GeneralInfoForm: React.FC = () => {
 
           </Box>
 
-          <Box display={'flex'} justifyContent={'flex-end'}>
+          <Box display={'flex'} justifyContent={isSmallScreen ? 'center' : 'flex-end'}>
             <AtButton
               kind={AtButtonKind.Success}
               variant={AtButtonVariant.Contained}

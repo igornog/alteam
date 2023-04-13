@@ -21,8 +21,13 @@ const ProjectStep2: React.FC<Step2Props> = (
   return (
     <Box display={'flex'} flexDirection={'column'} gap={'20px'}>
       <StyledForm>
-        <Box padding={'20px'} display={'flex'} justifyContent={'space-between'}>
-          <AtTypography variant={'h4'}>Job Description</AtTypography>
+        <Box
+          padding={'20px'}
+          display={'flex'}
+          justifyContent={'space-between'}
+          flexDirection={props.isSmallScreen ? 'column' : 'row'}
+        >
+          <AtTypography variant={'h4'} fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}>Job Description</AtTypography>
           <AtTypography variant={'caption'} color={grey2}>
             Fields with * are mandatory
           </AtTypography>
@@ -49,7 +54,7 @@ const ProjectStep2: React.FC<Step2Props> = (
           />
           <StyledCharCounter>
             <AtTypography variant={'caption'} color={grey2}>
-              {props.project.jobDescription?.length}/500
+              {props.project.jobDescription?.length ?? 0}/500
             </AtTypography>
           </StyledCharCounter>
         </Box>
@@ -61,6 +66,7 @@ const ProjectStep2: React.FC<Step2Props> = (
 interface Step2Props {
   setProject: Dispatch<React.SetStateAction<Listing>>
   project: Listing
+  isSmallScreen?: boolean
 }
 
 export default ProjectStep2

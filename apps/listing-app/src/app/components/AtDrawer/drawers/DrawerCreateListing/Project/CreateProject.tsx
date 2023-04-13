@@ -35,20 +35,21 @@ const CreateProject: React.FC<CreateProjectProps> = (
           project={project}
           rateType={rateType}
           setRateType={setRateType}
+          isSmallScreen={props.isSmallScreen}
         />
       ),
     },
     {
       id: 1,
-      content: <ProjectStep2 setProject={setProject} project={project} />,
+      content: <ProjectStep2 setProject={setProject} project={project} isSmallScreen={props.isSmallScreen} />,
     },
     {
       id: 2,
-      content: <ProjectStep3 setProject={setProject} project={project} />,
+      content: <ProjectStep3 setProject={setProject} project={project} isSmallScreen={props.isSmallScreen} />,
     },
     {
       id: 3,
-      content: <ProjectStep4 setProject={setProject} project={project} />,
+      content: <ProjectStep4 setProject={setProject} project={project} isSmallScreen={props.isSmallScreen} />,
     },
   ]
 
@@ -128,7 +129,13 @@ const CreateProject: React.FC<CreateProjectProps> = (
   return (
     <>
       <Grid container justifyContent={'center'}>
-        <Grid xs={10} display={'flex'} flexDirection={'column'} gap={'20px'}>
+        <Grid
+          xs={10}
+          display={'flex'}
+          flexDirection={'column'}
+          gap={'20px'}
+          maxWidth={'-webkit-fill-available'}
+        >
           <Box position={'relative'} zIndex={0}>
             <form>
               <AtTabs tabs={tabs} step={props.step} />
@@ -161,24 +168,24 @@ const CreateProject: React.FC<CreateProjectProps> = (
             </Box>
           </AtTypography>
 
-          {isLastStep ? (
-            <AtButton
-              kind={AtButtonKind.Default}
-              variant={AtButtonVariant.Outlined}
-              name={'Save as Draft'}
-              onClick={() => handleSubmitProject(ListingState.Draft)}
-              endIcon={<CloseCircle />}
-            />
-          ) : null}
+            {isLastStep ? (
+              <AtButton
+                kind={AtButtonKind.Default}
+                variant={AtButtonVariant.Outlined}
+                name={'Save as Draft'}
+                onClick={() => handleSubmitProject(ListingState.Draft)}
+                endIcon={<CloseCircle />}
+              />
+            ) : null}
 
-          <AtButton
-            kind={AtButtonKind.Success}
-            variant={AtButtonVariant.Contained}
-            name={isLastStep ? 'Activate' : 'Next Step'}
-            disabled={isDisabled()}
-            onClick={() => handleSubmitProject(ListingState.Active)}
-            endIcon={isLastStep ? <TickCircle /> : <ArrowRight />}
-          />
+            <AtButton
+              kind={AtButtonKind.Success}
+              variant={AtButtonVariant.Contained}
+              name={isLastStep ? 'Activate' : 'Next Step'}
+              disabled={isDisabled()}
+              onClick={() => handleSubmitProject(ListingState.Active)}
+              endIcon={isLastStep ? <TickCircle /> : <ArrowRight />}
+            />
         </StyledFormStepper>
       </StyledStepper>
     </>
@@ -190,5 +197,6 @@ interface CreateProjectProps {
   client: string
   step: number
   setStep: Dispatch<React.SetStateAction<number>>
+  isSmallScreen?: boolean
 }
 

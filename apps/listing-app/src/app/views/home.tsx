@@ -12,10 +12,10 @@ import puzzleIcon from './../assets/images/icons/puzzle.svg'
 import submitIcon from './../assets/images/icons/send-mail.svg'
 import CustomLink from '../components/AtLink/AtLink'
 import { Link } from 'react-router-dom'
+import { grey6 } from '../utils/colors'
 
 const StyledBackground = styled.div`
   height: 100%;
-  overflow-x: hidden;
   background-origin: content-box;
   display: flex;
   flex-direction: column;
@@ -26,12 +26,44 @@ export const StyledLink = styled(Link)`
     text-decoration: none;
 `
 
+const StickyHeaderMobile = styled(Box)`
+position: sticky;
+gap: 20px;
+justify-content: center;
+background-color: ${grey6};
+width: 100%;
+padding: 0;
+height: 10vh;
+display: flex;
+align-items: center;
+top: 0;
+`
+
 const Home: React.FC = () => {
   const isSmallScreen = useMediaQuery('(max-width:1079px)')
 
   return (
     <StyledBackground>
       <Header />
+      {isSmallScreen &&
+        <StickyHeaderMobile
+        >
+          <AtButton
+            kind={AtButtonKind.Default}
+            variant={AtButtonVariant.Outlined}
+            startIcon={<Call />}
+            name={'Book a Call'}
+          // onClick={() => setOpenDrawerCreateClient(true)}
+          />
+          <StyledLink to="/form" >
+            <AtButton
+              kind={AtButtonKind.Success}
+              variant={AtButtonVariant.Contained}
+              startIcon={<AddCircle />}
+              name={'Create Free Listing'}
+            />
+          </StyledLink>
+        </StickyHeaderMobile>}
       <Box
         display={'flex'}
         flexDirection={'column'}
@@ -64,7 +96,7 @@ const Home: React.FC = () => {
           <CustomCard number={2} icon={submitIcon} title={'Submit Review'} text={"Once you're happy, please click the button “Submit” and a member of our team will review it. To make an edit or cancel your listing, you'll have to contact YJCollective."} />
           <CustomCard number={3} icon={puzzleIcon} title={'Get matches'} text={'We query our network of vetted freelancers & teams. We then send a talent shortlist and help arrange interviews. Like a marketplace, we take our fee when the work starts.'} />
         </Box>
-        <Box display={'flex'} gap={'20px'} flexWrap={isSmallScreen ? 'wrap' : 'nowrap'} justifyContent={isSmallScreen ?  'center' : 'flex-end'}>
+        <Box display={'flex'} gap={'20px'} flexWrap={isSmallScreen ? 'wrap' : 'nowrap'} justifyContent={isSmallScreen ? 'center' : 'flex-end'}>
           <AtButton
             kind={AtButtonKind.Default}
             variant={AtButtonVariant.Outlined}

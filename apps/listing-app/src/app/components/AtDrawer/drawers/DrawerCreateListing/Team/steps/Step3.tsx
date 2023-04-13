@@ -100,8 +100,13 @@ const TeamStep3: React.FC<Step3Props> = (props: Step3Props) => {
 
   return (
     <StyledForm>
-      <Box padding={'20px'} display={'flex'} justifyContent={'space-between'}>
-        <AtTypography variant={'h4'}>Job Description</AtTypography>
+        <Box
+          padding={'20px'}
+          display={'flex'}
+          justifyContent={'space-between'}
+          flexDirection={props.isSmallScreen ? 'column' : 'row'}
+        >
+        <AtTypography variant={'h4'} fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}>Job Description</AtTypography>
         <AtTypography variant={'caption'} color={grey2}>
           Fields with * are mandatory
         </AtTypography>
@@ -222,6 +227,7 @@ const TeamStep3: React.FC<Step3Props> = (props: Step3Props) => {
 interface Step3Props {
   setTeam: React.Dispatch<React.SetStateAction<Listing>>
   team: Listing
+  isSmallScreen?: boolean
 }
 
 export default TeamStep3

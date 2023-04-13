@@ -58,8 +58,13 @@ const TeamStep1: React.FC<Step1Props> = (props: Step1Props) => {
 
   return (
     <StyledForm>
-      <Box padding={'20px'} display={'flex'} justifyContent={'space-between'}>
-        <AtTypography variant={'h4'}>General Information</AtTypography>
+      <Box 
+        padding={'20px'} 
+        display={'flex'} 
+        justifyContent={'space-between'} 
+        flexDirection={props.isSmallScreen ? 'column' : 'row'}
+      >
+        <AtTypography variant={'h4'} fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}>General Information</AtTypography>
         <AtTypography variant={'caption'} color={grey2}>
           Fields with * are mandatory
         </AtTypography>
@@ -302,6 +307,7 @@ interface Step1Props {
   setTeam: Dispatch<React.SetStateAction<Listing>>
   team: Listing
   knownTotalPrice: boolean
+  isSmallScreen?: boolean
   setKnownTotalPrice: Dispatch<React.SetStateAction<boolean>>
 }
 

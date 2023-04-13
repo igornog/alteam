@@ -10,11 +10,18 @@ import AtTag from '../../../../../AtTag/AtTag'
 import { Listing } from '../../../../../../utils/redux/types/listings.type'
 
 const TeamStep4: React.FC<Step4Props> = (props: Step4Props) => {
+  const maxSkills = 7
+
   return (
     <Box display={'flex'} flexDirection={'column'} gap={'20px'}>
       <StyledForm>
-        <Box padding={'20px'} display={'flex'} justifyContent={'space-between'}>
-          <AtTypography variant={'h4'}>Add Skills</AtTypography>
+        <Box
+          padding={'20px'}
+          display={'flex'}
+          justifyContent={'space-between'}
+          flexDirection={props.isSmallScreen ? 'column' : 'row'}
+        >
+          <AtTypography variant={'h4'} fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}>Add Skills</AtTypography>
           <AtTypography variant={'caption'} color={grey2}>
             Fields with * are mandatory
           </AtTypography>
@@ -23,11 +30,15 @@ const TeamStep4: React.FC<Step4Props> = (props: Step4Props) => {
         <Box display={'flex'} flexDirection={'column'} gap={2.5} padding={2.5}>
           <AtTextField
             placeholder={'Search in Skills'}
-            onPressEnter={(e) =>
-              props.setTeam({
-                ...props.team,
-                skills: [...props.team.skills, e],
-              })
+            onPressEnter={(e) => {
+              if (props.team.skills?.length < maxSkills) {
+                props.setTeam({
+                  ...props.team,
+                  skills: [...props.team.skills, e],
+                })
+              }
+            }
+
             }
             startIcon={<SearchNormal1 />}
             size={'small'}
@@ -67,6 +78,7 @@ const TeamStep4: React.FC<Step4Props> = (props: Step4Props) => {
 interface Step4Props {
   setTeam: React.Dispatch<React.SetStateAction<Listing>>
   team: Listing
+  isSmallScreen?: boolean
 }
 
 export default TeamStep4

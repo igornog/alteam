@@ -1,4 +1,4 @@
-import { Box, Container, Grid } from '@mui/material'
+import { Box, Container, Grid, useMediaQuery } from '@mui/material'
 import { ArrowLeft2, Document, DocumentText } from 'iconsax-react'
 import React, { useState } from 'react'
 import styled from 'styled-components'
@@ -44,7 +44,7 @@ export const StyledCard = styled.div`
 `
 
 const DrawerCreateListing: React.FC = () => {
-
+  const isSmallScreen = useMediaQuery('(max-width:1079px)')
   const [openCreateListing, setOpenCreateListing] = useState(false)
   const [listingType, setListingType] = useState<ListingType>(ListingType.Project)
 
@@ -65,6 +65,7 @@ const DrawerCreateListing: React.FC = () => {
         listingType={listingType}
         steps={listingType === ListingType.Project ? 4 : 5}
         clientName={currencClient}
+        isSmallScreen={isSmallScreen}
         handleBackToCreateListing={handleCloseToCreateListing}
       />
     ) :
@@ -89,7 +90,7 @@ const DrawerCreateListing: React.FC = () => {
             </AtTypography>
           </Box>
 
-          <AtTypography variant={'h3'}>First step: select your listing type</AtTypography>
+          <AtTypography variant={'h3'} fontSize={isSmallScreen ? '1.5rem' : '2rem'}>First step: select your listing type</AtTypography>
 
           <AtLine />
 
@@ -99,6 +100,9 @@ const DrawerCreateListing: React.FC = () => {
               display={'flex'}
               flexDirection={'column'}
               gap={'20px'}
+              maxWidth={isSmallScreen ? 'unset' : 'initial'}
+              flexBasis={isSmallScreen ? 'unset' : 'initial'}
+
             >
               <StyledForm>
                 <Box
@@ -106,7 +110,7 @@ const DrawerCreateListing: React.FC = () => {
                   display={'flex'}
                   justifyContent={'space-between'}
                 >
-                  <AtTypography variant={'h4'}>
+                  <AtTypography variant={'h4'} fontSize={isSmallScreen ? '1rem' : '1.5rem'}>
                     Do you need a freelancer for a fixed project or a team for 3-24 months?
                   </AtTypography>
                 </Box>
@@ -136,12 +140,14 @@ const DrawerCreateListing: React.FC = () => {
               marginTop={'50px'}
               display={'flex'}
               gap={'20px'}
+              flexWrap={'wrap'}
+              justifyContent={isSmallScreen ? 'center' : 'flex-start'}
             >
               <CustomLink>
-                <AtTypography variant='subtitle1' fontSize='16px'><Document size={20} />What's an Alteam Project?</AtTypography>
+                <AtTypography variant='subtitle1' fontSize={isSmallScreen ? '14px' : '1rem'}><Document size={20} />What's an Alteam Project?</AtTypography>
               </CustomLink>
               <CustomLink>
-                <AtTypography variant='subtitle1' fontSize='16px'><DocumentText size={20} /> What's an Alteam Team?</AtTypography>
+                <AtTypography variant='subtitle1' fontSize={isSmallScreen ? '14px' : '1rem'}><DocumentText size={20} /> What's an Alteam Team?</AtTypography>
               </CustomLink>
             </Grid>
           </Grid>

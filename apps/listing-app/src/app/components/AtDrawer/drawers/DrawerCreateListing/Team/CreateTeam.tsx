@@ -33,6 +33,7 @@ const CreateTeam: React.FC<Props> = (
       content: (
         <TeamStep1
           setTeam={setTeam}
+          isSmallScreen={props.isSmallScreen}
           team={team}
           knownTotalPrice={knownTotalPrice}
           setKnownTotalPrice={setKnownTotalPrice}
@@ -41,19 +42,19 @@ const CreateTeam: React.FC<Props> = (
     },
     {
       id: 1,
-      content: <TeamStep2 setTeam={setTeam} team={team} />,
+      content: <TeamStep2 setTeam={setTeam} team={team} isSmallScreen={props.isSmallScreen}/>,
     },
     {
       id: 2,
-      content: <TeamStep3 setTeam={setTeam} team={team} />,
+      content: <TeamStep3 setTeam={setTeam} team={team} isSmallScreen={props.isSmallScreen}/>,
     },
     {
       id: 3,
-      content: <TeamStep4 setTeam={setTeam} team={team} />,
+      content: <TeamStep4 setTeam={setTeam} team={team} isSmallScreen={props.isSmallScreen}/>,
     },
     {
       id: 4,
-      content: <TeamStep5 setTeam={setTeam} team={team} />,
+      content: <TeamStep5 setTeam={setTeam} team={team} isSmallScreen={props.isSmallScreen}/>,
     },
   ]
 
@@ -137,7 +138,13 @@ const CreateTeam: React.FC<Props> = (
   return (
     <>
       <Grid container justifyContent={'center'}>
-        <Grid xs={10} display={'flex'} flexDirection={'column'} gap={'20px'}>
+        <Grid 
+          xs={10} 
+          display={'flex'} 
+          flexDirection={'column'} 
+          gap={'20px'} 
+          maxWidth={'-webkit-fill-available'}
+        >
           <Box position={'relative'} zIndex={0}>
             <form>
               <AtTabs tabs={tabs} step={props.step} />
@@ -198,6 +205,7 @@ interface Props {
   client: string
   step: number
   setStep: Dispatch<React.SetStateAction<number>>
+  isSmallScreen?: boolean
 }
 
 export default CreateTeam

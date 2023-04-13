@@ -41,8 +41,13 @@ const ProjectStep1: React.FC<Step1Props> = (
 
   return (
     <StyledForm>
-      <Box padding={'20px'} display={'flex'} justifyContent={'space-between'}>
-        <AtTypography variant={'h4'}>General Information</AtTypography>
+      <Box 
+        padding={'20px'} 
+        display={'flex'} 
+        justifyContent={'space-between'} 
+        flexDirection={props.isSmallScreen ? 'column' : 'row'}
+      >
+        <AtTypography variant={'h4'} fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}>General Information</AtTypography>
         <AtTypography variant={'caption'} color={grey2}>
           Fields with * are mandatory
         </AtTypography>
@@ -312,6 +317,7 @@ interface Step1Props {
   project: Listing
   rateType?: RateType
   setRateType: Dispatch<React.SetStateAction<RateType | undefined>>
+  isSmallScreen?: boolean
 }
 
 export default ProjectStep1
