@@ -7,11 +7,15 @@ import { grey } from '../../utils/colors'
 
 const StyledFooter = styled(Box)`
   width: fill-available;
-  position: absolute;
-  bottom: 0;
   padding: 35px 20px;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 1079px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
 
   p {
     color: ${grey}
