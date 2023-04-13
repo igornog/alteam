@@ -46,7 +46,9 @@ export const StyledCard = styled.div`
 const DrawerCreateListing: React.FC = () => {
   const isSmallScreen = useMediaQuery('(max-width:1079px)')
   const [openCreateListing, setOpenCreateListing] = useState(false)
-  const [listingType, setListingType] = useState<ListingType>(ListingType.Project)
+  const [listingType, setListingType] = useState<ListingType>(
+    ListingType.Project,
+  )
 
   const currencClient = useAppSelector((state) => state.clients.currentClient)
 
@@ -59,101 +61,116 @@ const DrawerCreateListing: React.FC = () => {
     setOpenCreateListing(false)
   }
 
-  return (
-    openCreateListing ? (
-      <CreateListing
-        listingType={listingType}
-        steps={listingType === ListingType.Project ? 4 : 5}
-        clientName={currencClient}
-        isSmallScreen={isSmallScreen}
-        handleBackToCreateListing={handleCloseToCreateListing}
-      />
-    ) :
-      <Container>
-        <Box
-          paddingY={'30px'}
-          display={'flex'}
-          flexDirection={'column'}
-          gap={'30px'}
-        >
-          <Box display={'flex'} gap={'5px'}>
-            <StyledLink to="/form" >
-              <AtButton
-                variant={AtButtonVariant.Contained}
-                startIcon={<ArrowLeft2 />}
-                kind={AtButtonKind.Default}
-                onClick={handleCloseToCreateListing}
-              />
-            </StyledLink>
-            <AtTypography color={grey2}>
-              Back to General Information
-            </AtTypography>
-          </Box>
-
-          <AtTypography variant={'h3'} fontSize={isSmallScreen ? '1.5rem' : '2rem'}>First step: select your listing type</AtTypography>
-
-          <AtLine />
-
-          <Grid container justifyContent={'center'}>
-            <Grid
-              xs={10}
-              display={'flex'}
-              flexDirection={'column'}
-              gap={'20px'}
-              maxWidth={isSmallScreen ? 'unset' : 'initial'}
-              flexBasis={isSmallScreen ? 'unset' : 'initial'}
-
-            >
-              <StyledForm>
-                <Box
-                  padding={'20px'}
-                  display={'flex'}
-                  justifyContent={'space-between'}
-                >
-                  <AtTypography variant={'h4'} fontSize={isSmallScreen ? '1rem' : '1.5rem'}>
-                    Do you need a freelancer for a fixed project or a team for 3-24 months?
-                  </AtTypography>
-                </Box>
-                <AtLine />
-                <Grid
-                  container
-                  justifyContent={'center'}
-                  gap={'20px'}
-                  padding={'20px'}
-                  flexWrap={'unset'}
-                >
-                  <AtCreateListingCard
-                    listingOption={ListingType.Project}
-                    icon={FolderIcon}
-                    onClick={() => createListing(ListingType.Project)}
-                  />
-                  <AtCreateListingCard
-                    listingOption={ListingType.Team}
-                    icon={GroupIcon}
-                    onClick={() => createListing(ListingType.Team)}
-                  />
-                </Grid>
-              </StyledForm>
-            </Grid>
-            <Grid
-              xs={10}
-              marginTop={'50px'}
-              display={'flex'}
-              gap={'20px'}
-              flexWrap={'wrap'}
-              justifyContent={isSmallScreen ? 'center' : 'flex-start'}
-            >
-              <CustomLink>
-                <AtTypography variant='subtitle1' fontSize={isSmallScreen ? '14px' : '1rem'}><Document size={20} />What's an Alteam Project?</AtTypography>
-              </CustomLink>
-              <CustomLink>
-                <AtTypography variant='subtitle1' fontSize={isSmallScreen ? '14px' : '1rem'}><DocumentText size={20} /> What's an Alteam Team?</AtTypography>
-              </CustomLink>
-            </Grid>
-          </Grid>
+  return openCreateListing ? (
+    <CreateListing
+      listingType={listingType}
+      steps={listingType === ListingType.Project ? 4 : 5}
+      clientName={currencClient}
+      isSmallScreen={isSmallScreen}
+      handleBackToCreateListing={handleCloseToCreateListing}
+    />
+  ) : (
+    <Container>
+      <Box
+        paddingY={'30px'}
+        display={'flex'}
+        flexDirection={'column'}
+        gap={'30px'}
+      >
+        <Box display={'flex'} gap={'5px'}>
+          <StyledLink to="/form">
+            <AtButton
+              variant={AtButtonVariant.Contained}
+              startIcon={<ArrowLeft2 />}
+              kind={AtButtonKind.Default}
+              onClick={handleCloseToCreateListing}
+            />
+          </StyledLink>
+          <AtTypography color={grey2}>Back to General Information</AtTypography>
         </Box>
-      </Container>
 
+        <AtTypography
+          variant={'h3'}
+          fontSize={isSmallScreen ? '1.5rem' : '2rem'}
+        >
+          First step: select your listing type
+        </AtTypography>
+
+        <AtLine />
+
+        <Grid container justifyContent={'center'}>
+          <Grid
+            xs={10}
+            display={'flex'}
+            flexDirection={'column'}
+            gap={'20px'}
+            maxWidth={isSmallScreen ? 'unset' : 'initial'}
+            flexBasis={isSmallScreen ? 'unset' : 'initial'}
+          >
+            <StyledForm>
+              <Box
+                padding={'20px'}
+                display={'flex'}
+                justifyContent={'space-between'}
+              >
+                <AtTypography
+                  variant={'h4'}
+                  fontSize={isSmallScreen ? '1rem' : '1.5rem'}
+                >
+                  Do you need a freelancer for a fixed project or a team for
+                  3-24 months?
+                </AtTypography>
+              </Box>
+              <AtLine />
+              <Grid
+                container
+                justifyContent={'center'}
+                gap={'20px'}
+                padding={'20px'}
+                flexWrap={'unset'}
+              >
+                <AtCreateListingCard
+                  listingOption={ListingType.Project}
+                  icon={FolderIcon}
+                  onClick={() => createListing(ListingType.Project)}
+                />
+                <AtCreateListingCard
+                  listingOption={ListingType.Team}
+                  icon={GroupIcon}
+                  onClick={() => createListing(ListingType.Team)}
+                />
+              </Grid>
+            </StyledForm>
+          </Grid>
+          <Grid
+            xs={10}
+            marginTop={'50px'}
+            display={'flex'}
+            gap={'20px'}
+            flexWrap={'wrap'}
+            justifyContent={isSmallScreen ? 'center' : 'flex-start'}
+          >
+            <CustomLink>
+              <AtTypography
+                variant="subtitle1"
+                fontSize={isSmallScreen ? '14px' : '1rem'}
+              >
+                <Document size={20} />
+                What's an Alteam Project?
+              </AtTypography>
+            </CustomLink>
+            <CustomLink>
+              <AtTypography
+                variant="subtitle1"
+                fontSize={isSmallScreen ? '14px' : '1rem'}
+              >
+                <DocumentText size={20} /> What's an Alteam Team?
+              </AtTypography>
+            </CustomLink>
+          </Grid>
+        </Grid>
+      </Box>
+    </Container>
   )
 }
 

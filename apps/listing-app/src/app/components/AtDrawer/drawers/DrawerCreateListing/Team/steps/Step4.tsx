@@ -21,7 +21,12 @@ const TeamStep4: React.FC<Step4Props> = (props: Step4Props) => {
           justifyContent={'space-between'}
           flexDirection={props.isSmallScreen ? 'column' : 'row'}
         >
-          <AtTypography variant={'h4'} fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}>Add Skills</AtTypography>
+          <AtTypography
+            variant={'h4'}
+            fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}
+          >
+            Add Skills
+          </AtTypography>
           <AtTypography variant={'caption'} color={grey2}>
             Fields with * are mandatory
           </AtTypography>
@@ -37,9 +42,7 @@ const TeamStep4: React.FC<Step4Props> = (props: Step4Props) => {
                   skills: [...props.team.skills, e],
                 })
               }
-            }
-
-            }
+            }}
             startIcon={<SearchNormal1 />}
             size={'small'}
           />

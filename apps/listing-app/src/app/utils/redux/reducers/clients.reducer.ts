@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { ClientStatus } from '@yjcapp/app'
-import { handleCreateClient, handleSetClientName } from '../actions/clients.action'
+import {
+  handleCreateClient,
+  handleSetClientName,
+} from '../actions/clients.action'
 import { ClientsState } from '../types/clients.type'
 import { StatusType } from '../types/status.type'
 

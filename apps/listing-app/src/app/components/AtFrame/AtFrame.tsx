@@ -19,9 +19,7 @@ const StyledBox = styled(Box)`
   }
 `
 
-const AtFrame: React.FC<TalentFrameProps> = (
-  props: TalentFrameProps,
-) => {
+const AtFrame: React.FC<TalentFrameProps> = (props: TalentFrameProps) => {
   return (
     <StyledFrame
       display={'flex'}

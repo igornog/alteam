@@ -1,6 +1,12 @@
 import { ArrowLeft2, ArrowRight, CloseCircle, TickCircle } from 'iconsax-react'
 import { Dispatch, useState } from 'react'
-import { ClientStatus, ListingState, ListingType, Role, WorkType } from '@yjcapp/app'
+import {
+  ClientStatus,
+  ListingState,
+  ListingType,
+  Role,
+  WorkType,
+} from '@yjcapp/app'
 import { grey2, black } from '../../../../../utils/colors'
 import AtButton, {
   AtButtonVariant,
@@ -19,9 +25,7 @@ import TeamStep5 from './steps/Step5'
 import { handleCreateListing } from '../../../../../utils/redux/actions/listing.action'
 import { StyledDot, StyledStepper, StyledFormStepper } from '../CreateListing'
 
-const CreateTeam: React.FC<Props> = (
-  props: Props,
-) => {
+const CreateTeam: React.FC<Props> = (props: Props) => {
   const dispatch = useAppDispatch()
 
   const [team, setTeam] = useState<Listing>(new Listing({}))
@@ -42,19 +46,43 @@ const CreateTeam: React.FC<Props> = (
     },
     {
       id: 1,
-      content: <TeamStep2 setTeam={setTeam} team={team} isSmallScreen={props.isSmallScreen}/>,
+      content: (
+        <TeamStep2
+          setTeam={setTeam}
+          team={team}
+          isSmallScreen={props.isSmallScreen}
+        />
+      ),
     },
     {
       id: 2,
-      content: <TeamStep3 setTeam={setTeam} team={team} isSmallScreen={props.isSmallScreen}/>,
+      content: (
+        <TeamStep3
+          setTeam={setTeam}
+          team={team}
+          isSmallScreen={props.isSmallScreen}
+        />
+      ),
     },
     {
       id: 3,
-      content: <TeamStep4 setTeam={setTeam} team={team} isSmallScreen={props.isSmallScreen}/>,
+      content: (
+        <TeamStep4
+          setTeam={setTeam}
+          team={team}
+          isSmallScreen={props.isSmallScreen}
+        />
+      ),
     },
     {
       id: 4,
-      content: <TeamStep5 setTeam={setTeam} team={team} isSmallScreen={props.isSmallScreen}/>,
+      content: (
+        <TeamStep5
+          setTeam={setTeam}
+          team={team}
+          isSmallScreen={props.isSmallScreen}
+        />
+      ),
     },
   ]
 
@@ -123,7 +151,10 @@ const CreateTeam: React.FC<Props> = (
       dispatch(
         handleCreateListing({
           ...team,
-          soloClient: { companyName: props.client, status: ClientStatus.Active },
+          soloClient: {
+            companyName: props.client,
+            status: ClientStatus.Active,
+          },
           listingType: ListingType.Team,
           status: status,
         }),
@@ -138,11 +169,11 @@ const CreateTeam: React.FC<Props> = (
   return (
     <>
       <Grid container justifyContent={'center'}>
-        <Grid 
-          xs={10} 
-          display={'flex'} 
-          flexDirection={'column'} 
-          gap={'20px'} 
+        <Grid
+          xs={10}
+          display={'flex'}
+          flexDirection={'column'}
+          gap={'20px'}
           maxWidth={'-webkit-fill-available'}
         >
           <Box position={'relative'} zIndex={0}>

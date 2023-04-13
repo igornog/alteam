@@ -92,7 +92,6 @@ const DrawerClientListings: React.FunctionComponent<
   }, [dispatch, listingFilter, props.open, selectedClient.id])
 
   return (
-
     <Grid container={true}>
       <Grid xs={8}>
         <Box display={'flex'} padding={'25px 20px 0 20px'}>
@@ -103,9 +102,7 @@ const DrawerClientListings: React.FunctionComponent<
               kind={AtButtonKind.Default}
               onClick={props.handleClose}
             />
-            <AtTypography color={grey2}>
-              Back to {activeTab.title}
-            </AtTypography>
+            <AtTypography color={grey2}>Back to {activeTab.title}</AtTypography>
           </Box>
         </Box>
 

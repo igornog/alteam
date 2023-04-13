@@ -31,7 +31,12 @@ const TeamStep5: React.FC<Step5Props> = (props: Step5Props) => {
           justifyContent={'space-between'}
           flexDirection={props.isSmallScreen ? 'column' : 'row'}
         >
-          <AtTypography variant={'h4'} fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}>Screening Questions</AtTypography>
+          <AtTypography
+            variant={'h4'}
+            fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}
+          >
+            Screening Questions
+          </AtTypography>
           <AtTypography variant={'caption'} color={grey2}>
             Fields with * are mandatory
           </AtTypography>

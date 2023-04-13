@@ -33,9 +33,7 @@ const Page = styled.div<{ tabIndex: number; $active: boolean }>`
   transition: max-height 0.3s ease;
 `
 
-const AtPager: React.FC<AtPagerProps> = (
-  props: AtPagerProps,
-) => {
+const AtPager: React.FC<AtPagerProps> = (props: AtPagerProps) => {
   const [initialValue, setInitialValue] = useState(props.value)
 
   useEffect(() => {

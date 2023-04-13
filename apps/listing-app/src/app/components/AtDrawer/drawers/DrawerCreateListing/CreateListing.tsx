@@ -81,9 +81,19 @@ const CreateListing: React.FC<CreateListingProps> = (
         <AtLine />
 
         {props.listingType === ListingType.Project ? (
-          <CreateProject step={step} setStep={setStep} client={props.clientName} isSmallScreen={props.isSmallScreen}/>
+          <CreateProject
+            step={step}
+            setStep={setStep}
+            client={props.clientName}
+            isSmallScreen={props.isSmallScreen}
+          />
         ) : props.listingType === ListingType.Team ? (
-          <CreateTeam step={step} setStep={setStep} client={props.clientName} isSmallScreen={props.isSmallScreen}/>
+          <CreateTeam
+            step={step}
+            setStep={setStep}
+            client={props.clientName}
+            isSmallScreen={props.isSmallScreen}
+          />
         ) : null}
       </Box>
     </Container>

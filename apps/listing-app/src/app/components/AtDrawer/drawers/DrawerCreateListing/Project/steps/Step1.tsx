@@ -1,18 +1,30 @@
-import { useState, Dispatch } from "react"
-import styled from "styled-components"
-import { StyledForm } from "../../DrawerCreateListing"
-import { WorkType, Availability, Currency, RateType, Difficulty } from "@yjcapp/app"
-import AtTextFieldDropdown from "../../../../../AtDropdown/AtTextFieldDropdown"
-import AtTimezoneDropdown from "../../../../../AtDropdown/AtTimezoneDropdown"
-import AtLine from "../../../../../AtLine/AtLine"
-import AtTextField, { AtTextFieldType } from "../../../../../AtTextField/AtTextField"
-import AtTextFieldDate from "../../../../../AtTextField/AtTextFieldDate"
-import AtTypography from "../../../../../AtTypography/AtTypography"
-import { black, white, grey2 } from "../../../../../../utils/colors"
-import { plurialize, getCurrencySymbol, convertHexToRGBA } from "../../../../../../utils/helpers"
-import { Client } from "../../../../../../utils/redux/types/clients.type"
-import { Listing } from "../../../../../../utils/redux/types/listings.type"
-import { Box } from "@mui/material"
+import { useState, Dispatch } from 'react'
+import styled from 'styled-components'
+import { StyledForm } from '../../DrawerCreateListing'
+import {
+  WorkType,
+  Availability,
+  Currency,
+  RateType,
+  Difficulty,
+} from '@yjcapp/app'
+import AtTextFieldDropdown from '../../../../../AtDropdown/AtTextFieldDropdown'
+import AtTimezoneDropdown from '../../../../../AtDropdown/AtTimezoneDropdown'
+import AtLine from '../../../../../AtLine/AtLine'
+import AtTextField, {
+  AtTextFieldType,
+} from '../../../../../AtTextField/AtTextField'
+import AtTextFieldDate from '../../../../../AtTextField/AtTextFieldDate'
+import AtTypography from '../../../../../AtTypography/AtTypography'
+import { black, white, grey2 } from '../../../../../../utils/colors'
+import {
+  plurialize,
+  getCurrencySymbol,
+  convertHexToRGBA,
+} from '../../../../../../utils/helpers'
+import { Client } from '../../../../../../utils/redux/types/clients.type'
+import { Listing } from '../../../../../../utils/redux/types/listings.type'
+import { Box } from '@mui/material'
 
 const StyledPeriod = styled.div`
   background-color: ${black};
@@ -21,9 +33,7 @@ const StyledPeriod = styled.div`
   padding: 2px 5px;
 `
 
-const ProjectStep1: React.FC<Step1Props> = (
-  props: Step1Props,
-) => {
+const ProjectStep1: React.FC<Step1Props> = (props: Step1Props) => {
   // const selectedClient = useAppSelector((state) => getActiveClient(state))
   const isDifferentOnSite =
     props.project.workType === WorkType.Hybrid ||
@@ -41,13 +51,18 @@ const ProjectStep1: React.FC<Step1Props> = (
 
   return (
     <StyledForm>
-      <Box 
-        padding={'20px'} 
-        display={'flex'} 
-        justifyContent={'space-between'} 
+      <Box
+        padding={'20px'}
+        display={'flex'}
+        justifyContent={'space-between'}
         flexDirection={props.isSmallScreen ? 'column' : 'row'}
       >
-        <AtTypography variant={'h4'} fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}>General Information</AtTypography>
+        <AtTypography
+          variant={'h4'}
+          fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}
+        >
+          General Information
+        </AtTypography>
         <AtTypography variant={'caption'} color={grey2}>
           Fields with * are mandatory
         </AtTypography>
@@ -193,7 +208,10 @@ const ProjectStep1: React.FC<Step1Props> = (
             required
             label={'Start Date'}
             onValueChange={(e) =>
-              props.setProject({ ...props.project, startDate: e.format('DD-MM-YYYY') as any })
+              props.setProject({
+                ...props.project,
+                startDate: e.format('DD-MM-YYYY') as any,
+              })
             }
           />
 
@@ -261,7 +279,9 @@ const ProjectStep1: React.FC<Step1Props> = (
                 <AtTextField
                   placeholder={'Rate To'}
                   maxLength={30}
-                  minValue={props.project.rateFrom ? props.project.rateFrom + 1 : 2}
+                  minValue={
+                    props.project.rateFrom ? props.project.rateFrom + 1 : 2
+                  }
                   type={AtTextFieldType.Number}
                   startIcon={
                     <AtTypography color={convertHexToRGBA(black, 0.5)}>

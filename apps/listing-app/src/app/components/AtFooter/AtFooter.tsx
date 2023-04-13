@@ -18,24 +18,26 @@ const StyledFooter = styled(Box)`
   }
 
   p {
-    color: ${grey}
+    color: ${grey};
   }
 `
 
 const Footer: React.FC = () => {
   return (
     <StyledFooter>
-      <AtTypography >Alteam is an initiave and brand of YJCollective Limited</AtTypography>
+      <AtTypography>
+        Alteam is an initiave and brand of YJCollective Limited
+      </AtTypography>
       <Box display={'flex'} gap={'30px'}>
-      <CustomLink> 
-        <AtTypography >Terms and Conditions</AtTypography></CustomLink>
-      <CustomLink> 
-        <AtTypography >Privacy Policy</AtTypography>
-      </CustomLink>
+        <CustomLink>
+          <AtTypography>Terms and Conditions</AtTypography>
+        </CustomLink>
+        <CustomLink>
+          <AtTypography>Privacy Policy</AtTypography>
+        </CustomLink>
       </Box>
     </StyledFooter>
   )
 }
 
 export default Footer
-

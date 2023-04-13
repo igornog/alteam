@@ -15,9 +15,7 @@ const StyledCharCounter = styled.div`
   color: ${grey2};
 `
 
-const ProjectStep2: React.FC<Step2Props> = (
-  props: Step2Props,
-) => {
+const ProjectStep2: React.FC<Step2Props> = (props: Step2Props) => {
   return (
     <Box display={'flex'} flexDirection={'column'} gap={'20px'}>
       <StyledForm>
@@ -27,7 +25,12 @@ const ProjectStep2: React.FC<Step2Props> = (
           justifyContent={'space-between'}
           flexDirection={props.isSmallScreen ? 'column' : 'row'}
         >
-          <AtTypography variant={'h4'} fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}>Job Description</AtTypography>
+          <AtTypography
+            variant={'h4'}
+            fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}
+          >
+            Job Description
+          </AtTypography>
           <AtTypography variant={'caption'} color={grey2}>
             Fields with * are mandatory
           </AtTypography>

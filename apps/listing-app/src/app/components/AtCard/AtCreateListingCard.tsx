@@ -30,7 +30,7 @@ export const StyledCard = styled.div`
   div {
     place-items: center;
     padding: 52px;
-  
+
     img {
       width: 40px;
       height: 40px;
@@ -57,7 +57,12 @@ const AtCreateListingCard: React.FC<CreateListingCardProps> = (
     <StyledCard onClick={props.onClick}>
       <Box display={'flex'} flexDirection={'column'} gap={'20px'}>
         <img src={props.icon} alt={'Folder'} />
-        <AtTypography variant={'h5'} fontSize={isSmallScreen ? '.675rem' : '1.5rem'}>{props.listingOption}</AtTypography>
+        <AtTypography
+          variant={'h5'}
+          fontSize={isSmallScreen ? '.675rem' : '1.5rem'}
+        >
+          {props.listingOption}
+        </AtTypography>
       </Box>
     </StyledCard>
   )

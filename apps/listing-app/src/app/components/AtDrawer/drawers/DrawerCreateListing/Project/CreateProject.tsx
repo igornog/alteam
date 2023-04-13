@@ -1,7 +1,13 @@
 import { Grid, Box } from '@mui/material'
 import { ArrowLeft2, ArrowRight, CloseCircle, TickCircle } from 'iconsax-react'
 import { Dispatch, useState } from 'react'
-import { ClientStatus, ListingState, ListingType, RateType, WorkType } from '@yjcapp/app'
+import {
+  ClientStatus,
+  ListingState,
+  ListingType,
+  RateType,
+  WorkType,
+} from '@yjcapp/app'
 import { grey2, black } from '../../../../../utils/colors'
 import AtButton, {
   AtButtonVariant,
@@ -41,15 +47,33 @@ const CreateProject: React.FC<CreateProjectProps> = (
     },
     {
       id: 1,
-      content: <ProjectStep2 setProject={setProject} project={project} isSmallScreen={props.isSmallScreen} />,
+      content: (
+        <ProjectStep2
+          setProject={setProject}
+          project={project}
+          isSmallScreen={props.isSmallScreen}
+        />
+      ),
     },
     {
       id: 2,
-      content: <ProjectStep3 setProject={setProject} project={project} isSmallScreen={props.isSmallScreen} />,
+      content: (
+        <ProjectStep3
+          setProject={setProject}
+          project={project}
+          isSmallScreen={props.isSmallScreen}
+        />
+      ),
     },
     {
       id: 3,
-      content: <ProjectStep4 setProject={setProject} project={project} isSmallScreen={props.isSmallScreen} />,
+      content: (
+        <ProjectStep4
+          setProject={setProject}
+          project={project}
+          isSmallScreen={props.isSmallScreen}
+        />
+      ),
     },
   ]
 
@@ -114,7 +138,10 @@ const CreateProject: React.FC<CreateProjectProps> = (
       dispatch(
         handleCreateListing({
           ...project,
-          soloClient: { companyName: props.client, status: ClientStatus.Active },
+          soloClient: {
+            companyName: props.client,
+            status: ClientStatus.Active,
+          },
           listingType: ListingType.Project,
           status: status,
         }),
@@ -168,24 +195,24 @@ const CreateProject: React.FC<CreateProjectProps> = (
             </Box>
           </AtTypography>
 
-            {isLastStep ? (
-              <AtButton
-                kind={AtButtonKind.Default}
-                variant={AtButtonVariant.Outlined}
-                name={'Save as Draft'}
-                onClick={() => handleSubmitProject(ListingState.Draft)}
-                endIcon={<CloseCircle />}
-              />
-            ) : null}
-
+          {isLastStep ? (
             <AtButton
-              kind={AtButtonKind.Success}
-              variant={AtButtonVariant.Contained}
-              name={isLastStep ? 'Activate' : 'Next Step'}
-              disabled={isDisabled()}
-              onClick={() => handleSubmitProject(ListingState.Active)}
-              endIcon={isLastStep ? <TickCircle /> : <ArrowRight />}
+              kind={AtButtonKind.Default}
+              variant={AtButtonVariant.Outlined}
+              name={'Save as Draft'}
+              onClick={() => handleSubmitProject(ListingState.Draft)}
+              endIcon={<CloseCircle />}
             />
+          ) : null}
+
+          <AtButton
+            kind={AtButtonKind.Success}
+            variant={AtButtonVariant.Contained}
+            name={isLastStep ? 'Activate' : 'Next Step'}
+            disabled={isDisabled()}
+            onClick={() => handleSubmitProject(ListingState.Active)}
+            endIcon={isLastStep ? <TickCircle /> : <ArrowRight />}
+          />
         </StyledFormStepper>
       </StyledStepper>
     </>
@@ -199,4 +226,3 @@ interface CreateProjectProps {
   setStep: Dispatch<React.SetStateAction<number>>
   isSmallScreen?: boolean
 }
-

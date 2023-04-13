@@ -68,7 +68,12 @@ const TeamStep2: React.FC<Step2Props> = (props: Step2Props) => {
           flexDirection={props.isSmallScreen ? 'column' : 'row'}
         >
           <Box display={'flex'} flexDirection={'column'}>
-            <AtTypography variant={'h4'} fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}>All Roles</AtTypography>
+            <AtTypography
+              variant={'h4'}
+              fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}
+            >
+              All Roles
+            </AtTypography>
           </Box>
           <AtTypography variant={'caption'} color={grey2}>
             Fields with * are mandatory
@@ -88,8 +93,20 @@ const TeamStep2: React.FC<Step2Props> = (props: Step2Props) => {
           <Box display={'flex'} gap={'30px'} flexDirection={'column'}>
             {props.team.roles.map((role, i) => {
               return (
-                <Box display={'flex'} gap={'16px'} flexDirection={props.isSmallScreen ? 'column' : 'row'}>
-                  <Box width={props.isSmallScreen ? '100%' : props.team.exactRate ? '65%' : '80%'}>
+                <Box
+                  display={'flex'}
+                  gap={'16px'}
+                  flexDirection={props.isSmallScreen ? 'column' : 'row'}
+                >
+                  <Box
+                    width={
+                      props.isSmallScreen
+                        ? '100%'
+                        : props.team.exactRate
+                        ? '65%'
+                        : '80%'
+                    }
+                  >
                     <AtTextField
                       placeholder={'Enter Role Name'}
                       label={`Role Name ${i + 1}`}
@@ -105,39 +122,37 @@ const TeamStep2: React.FC<Step2Props> = (props: Step2Props) => {
                     />
                   </Box>
 
-                  <Box 
-                    display={'flex'} 
-                    gap={'16px'} 
-                    width={'100%'} 
+                  <Box
+                    display={'flex'}
+                    gap={'16px'}
+                    width={'100%'}
                     justifyContent={'flex-end'}
-                    >
-
+                  >
                     {props.team.exactRate && (
-                        <AtTextField
-                          type={AtTextFieldType.Number}
-                          label={`Percentage`}
-                          value={props.team?.roles[i]?.percentage?.toFixed(0)}
-                          onValueChange={(e) => onPercentageChange(e, i)}
-                          endIcon={
-                            <AtTypography color={convertHexToRGBA(black, 0.5)}>
-                              %
-                            </AtTypography>
-                          }
-                        />
-                    )}
-
                       <AtTextField
                         type={AtTextFieldType.Number}
-                        label={`Cost per month`}
-                        value={props.team?.roles[i]?.price?.toString()}
-                        onValueChange={(e) => onPriceChange(e, i)}
-                        startIcon={
+                        label={`Percentage`}
+                        value={props.team?.roles[i]?.percentage?.toFixed(0)}
+                        onValueChange={(e) => onPercentageChange(e, i)}
+                        endIcon={
                           <AtTypography color={convertHexToRGBA(black, 0.5)}>
-                            {getCurrencySymbol(props.team.currency)}
+                            %
                           </AtTypography>
                         }
                       />
+                    )}
 
+                    <AtTextField
+                      type={AtTextFieldType.Number}
+                      label={`Cost per month`}
+                      value={props.team?.roles[i]?.price?.toString()}
+                      onValueChange={(e) => onPriceChange(e, i)}
+                      startIcon={
+                        <AtTypography color={convertHexToRGBA(black, 0.5)}>
+                          {getCurrencySymbol(props.team.currency)}
+                        </AtTypography>
+                      }
+                    />
                   </Box>
                 </Box>
               )

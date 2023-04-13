@@ -21,7 +21,7 @@ const StyledBox = styled(Box)`
 
 const FinalStep = () => {
   const isSmallScreen = useMediaQuery('(max-width:1079px)')
-  
+
   return (
     <StyledBox>
       <Box
@@ -35,11 +35,24 @@ const FinalStep = () => {
       >
         <img src={SmallRocket} alt={'Small Rocket'} />
         <AtTypography variant={'h3'}>Successfully Created</AtTypography>
-        <Box display={'flex'} flexDirection={'column'} gap={'20px'} padding={isSmallScreen ? '0 15px' : '0 35vw'} justifyContent={'center'} textAlign={'center'}>
-          <AtTypography variant={'body1'} color={'#6F737D'}>Thank you for your submission. We will get back to you within 2-5 working days</AtTypography>
-          <AtTypography variant={'body1'} color={'#6F737D'}>What happened next? Once your listing is approved we’ll start sharing it with our freelancer and teams network</AtTypography>
+        <Box
+          display={'flex'}
+          flexDirection={'column'}
+          gap={'20px'}
+          padding={isSmallScreen ? '0 15px' : '0 35vw'}
+          justifyContent={'center'}
+          textAlign={'center'}
+        >
+          <AtTypography variant={'body1'} color={'#6F737D'}>
+            Thank you for your submission. We will get back to you within 2-5
+            working days
+          </AtTypography>
+          <AtTypography variant={'body1'} color={'#6F737D'}>
+            What happened next? Once your listing is approved we’ll start
+            sharing it with our freelancer and teams network
+          </AtTypography>
         </Box>
-        <StyledLink to="/" >
+        <StyledLink to="/">
           <AtButton
             kind={AtButtonKind.Success}
             variant={AtButtonVariant.Contained}

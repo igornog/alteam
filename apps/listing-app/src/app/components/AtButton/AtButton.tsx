@@ -82,7 +82,7 @@ interface StyledButtonProps {
   $flexibleHeight?: boolean
 }
 
-const StyledButton = styled(Button) <StyledButtonProps>`
+const StyledButton = styled(Button)<StyledButtonProps>`
   & {
     border-radius: 5px;
 
@@ -104,8 +104,8 @@ const StyledButton = styled(Button) <StyledButtonProps>`
     }
 
     ${({ $btnName, startIcon }) =>
-    !$btnName && startIcon
-      ? css`
+      !$btnName && startIcon
+        ? css`
             padding: 5px;
             height: 24px;
             width: 24px;
@@ -114,36 +114,36 @@ const StyledButton = styled(Button) <StyledButtonProps>`
               margin: 0;
             }
           `
-      : css<{
-        $variant: AtButtonVariant
-        $padding?: string
-        $flexibleHeight?: boolean
-      }>`
+        : css<{
+            $variant: AtButtonVariant
+            $padding?: string
+            $flexibleHeight?: boolean
+          }>`
             padding: ${({ $variant, $padding }) =>
-          $padding
-            ? $padding
-            : $variant === AtButtonVariant.Text
-              ? '10px 0'
-              : '10px 20px'};
+              $padding
+                ? $padding
+                : $variant === AtButtonVariant.Text
+                ? '10px 0'
+                : '10px 20px'};
 
             ${({ $flexibleHeight }) =>
-          $flexibleHeight
-            ? css`
+              $flexibleHeight
+                ? css`
                     min-height: 24px;
                   `
-            : css`
+                : css`
                     height: 40px;
                   `}
           `}
 
     ${({ $variant }) =>
-    $variant === AtButtonVariant.Contained
-      ? css<{ kind: AtButtonKind }>`
+      $variant === AtButtonVariant.Contained
+        ? css<{ kind: AtButtonKind }>`
             background-color: ${({ kind }) =>
-          buttonKind[kind].default.backgroundColor};
+              buttonKind[kind].default.backgroundColor};
             color: ${({ kind }) => buttonKind[kind].default.color};
           `
-      : $variant === AtButtonVariant.Outlined
+        : $variant === AtButtonVariant.Outlined
         ? css<{ kind: AtButtonKind }>`
             background-color: transparent;
             color: ${({ kind }) => buttonKind[kind].default.backgroundColor};
@@ -167,19 +167,19 @@ const StyledButton = styled(Button) <StyledButtonProps>`
       box-shadow: none;
 
       ${({ $variant }) =>
-    $variant === AtButtonVariant.Contained
-      ? css<{ kind: AtButtonKind }>`
+        $variant === AtButtonVariant.Contained
+          ? css<{ kind: AtButtonKind }>`
               background-color: ${({ kind }) =>
-          buttonKind[kind].hover.backgroundColor};
+                buttonKind[kind].hover.backgroundColor};
               color: ${({ kind }) => buttonKind[kind].hover.color};
             `
-      : $variant === AtButtonVariant.Outlined
-        ? css<{ kind: AtButtonKind }>`
+          : $variant === AtButtonVariant.Outlined
+          ? css<{ kind: AtButtonKind }>`
               background-color: transparent;
               color: ${({ kind }) => buttonKind[kind].hover.outlined};
               border: 1px solid ${({ kind }) => buttonKind[kind].hover.outlined};
             `
-        : css<{ kind: AtButtonKind }>`
+          : css<{ kind: AtButtonKind }>`
               background-color: transparent;
               color: ${({ kind }) => buttonKind[kind].hover.backgroundColor};
             `}
@@ -190,19 +190,19 @@ const StyledButton = styled(Button) <StyledButtonProps>`
       cursor: not-allowed;
 
       ${({ $variant }) =>
-    $variant === AtButtonVariant.Contained
-      ? css<{ kind: AtButtonKind }>`
+        $variant === AtButtonVariant.Contained
+          ? css<{ kind: AtButtonKind }>`
               background-color: ${({ kind }) =>
-          buttonKind[kind].disabled.backgroundColor};
+                buttonKind[kind].disabled.backgroundColor};
               color: ${({ kind }) => buttonKind[kind].disabled.color};
             `
-      : $variant === AtButtonVariant.Outlined
-        ? css<{ kind: AtButtonKind }>`
+          : $variant === AtButtonVariant.Outlined
+          ? css<{ kind: AtButtonKind }>`
               background-color: transparent;
               color: ${({ kind }) => buttonKind[kind].disabled.color};
               border: 1px solid ${({ kind }) => buttonKind[kind].disabled.color};
             `
-        : css<{ kind: AtButtonKind }>`
+          : css<{ kind: AtButtonKind }>`
               background-color: transparent;
               color: ${({ kind }) => buttonKind[kind].disabled.backgroundColor};
             `}
@@ -210,9 +210,7 @@ const StyledButton = styled(Button) <StyledButtonProps>`
   }
 `
 
-const AtButton: React.FC<AtButtonProps> = (
-  props: AtButtonProps,
-) => {
+const AtButton: React.FC<AtButtonProps> = (props: AtButtonProps) => {
   return (
     <StyledButton
       {...props}
@@ -228,10 +226,7 @@ const AtButton: React.FC<AtButtonProps> = (
       onClick={props.onClick}
     >
       {props.name && (
-        <AtTypography
-          fontSize={props.fontSize}
-          whiteSpace={'nowrap'}
-        >
+        <AtTypography fontSize={props.fontSize} whiteSpace={'nowrap'}>
           {props.name}
         </AtTypography>
       )}

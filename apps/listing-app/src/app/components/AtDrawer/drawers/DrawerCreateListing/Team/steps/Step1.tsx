@@ -6,9 +6,15 @@ import AtTypography from '../../../../../AtTypography/AtTypography'
 import { WorkType, Availability, Currency, Difficulty } from '@yjcapp/app'
 import AtTextFieldDropdown from '../../../../../AtDropdown/AtTextFieldDropdown'
 import AtSwitch from '../../../../../AtSwitch/AtSwitch'
-import AtTextField, { AtTextFieldType } from '../../../../../AtTextField/AtTextField'
+import AtTextField, {
+  AtTextFieldType,
+} from '../../../../../AtTextField/AtTextField'
 import AtTextFieldDate from '../../../../../AtTextField/AtTextFieldDate'
-import { plurialize, getCurrencySymbol, convertHexToRGBA } from '../../../../../../utils/helpers'
+import {
+  plurialize,
+  getCurrencySymbol,
+  convertHexToRGBA,
+} from '../../../../../../utils/helpers'
 import { Client } from '../../../../../../utils/redux/types/clients.type'
 import { Listing } from '../../../../../../utils/redux/types/listings.type'
 import { StyledForm } from '../../DrawerCreateListing'
@@ -58,13 +64,18 @@ const TeamStep1: React.FC<Step1Props> = (props: Step1Props) => {
 
   return (
     <StyledForm>
-      <Box 
-        padding={'20px'} 
-        display={'flex'} 
-        justifyContent={'space-between'} 
+      <Box
+        padding={'20px'}
+        display={'flex'}
+        justifyContent={'space-between'}
         flexDirection={props.isSmallScreen ? 'column' : 'row'}
       >
-        <AtTypography variant={'h4'} fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}>General Information</AtTypography>
+        <AtTypography
+          variant={'h4'}
+          fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}
+        >
+          General Information
+        </AtTypography>
         <AtTypography variant={'caption'} color={grey2}>
           Fields with * are mandatory
         </AtTypography>
@@ -207,7 +218,10 @@ const TeamStep1: React.FC<Step1Props> = (props: Step1Props) => {
             required
             label={'Start Date'}
             onValueChange={(e) =>
-              props.setTeam({ ...props.team, startDate: e.format('DD-MM-YYYY') as any })
+              props.setTeam({
+                ...props.team,
+                startDate: e.format('DD-MM-YYYY') as any,
+              })
             }
           />
 

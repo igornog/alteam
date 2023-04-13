@@ -100,13 +100,18 @@ const TeamStep3: React.FC<Step3Props> = (props: Step3Props) => {
 
   return (
     <StyledForm>
-        <Box
-          padding={'20px'}
-          display={'flex'}
-          justifyContent={'space-between'}
-          flexDirection={props.isSmallScreen ? 'column' : 'row'}
+      <Box
+        padding={'20px'}
+        display={'flex'}
+        justifyContent={'space-between'}
+        flexDirection={props.isSmallScreen ? 'column' : 'row'}
+      >
+        <AtTypography
+          variant={'h4'}
+          fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}
         >
-        <AtTypography variant={'h4'} fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}>Job Description</AtTypography>
+          Job Description
+        </AtTypography>
         <AtTypography variant={'caption'} color={grey2}>
           Fields with * are mandatory
         </AtTypography>

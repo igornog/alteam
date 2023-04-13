@@ -7,9 +7,7 @@ import { StyledForm } from '../../DrawerCreateListing'
 import { grey2 } from '../../../../../../utils/colors'
 import { Listing } from '../../../../../../utils/redux/types/listings.type'
 
-const ProjectStep4: React.FC<Step4Props> = (
-  props: Step4Props,
-) => {
+const ProjectStep4: React.FC<Step4Props> = (props: Step4Props) => {
   const handleArrayValueChange = (
     index: number,
     setFunc: (val: any) => void,
@@ -33,7 +31,12 @@ const ProjectStep4: React.FC<Step4Props> = (
           justifyContent={'space-between'}
           flexDirection={props.isSmallScreen ? 'column' : 'row'}
         >
-          <AtTypography variant={'h4'} fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}>Screening Questions</AtTypography>
+          <AtTypography
+            variant={'h4'}
+            fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}
+          >
+            Screening Questions
+          </AtTypography>
           <AtTypography variant={'caption'} color={grey2}>
             Fields with * are mandatory
           </AtTypography>

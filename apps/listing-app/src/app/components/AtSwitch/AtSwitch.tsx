@@ -59,9 +59,7 @@ const IOSSwitch = styled(Switch).attrs(() => ({
   }
 `
 
-const AtSwitch: React.FC<AtSwitchProps> = (
-  props: AtSwitchProps,
-) => {
+const AtSwitch: React.FC<AtSwitchProps> = (props: AtSwitchProps) => {
   return (
     <FormControlLabel
       control={

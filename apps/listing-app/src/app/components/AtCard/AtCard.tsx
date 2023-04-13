@@ -24,18 +24,19 @@ const CustomCard: React.FC<Props> = (props: Props) => {
   return (
     <StyledCard>
       <img src={props.icon} alt={'logo'} width={40} />
-      <AtTypography variant='h5'>{props.number}. {props.title}</AtTypography>
-      <AtTypography >{props.text}</AtTypography>
+      <AtTypography variant="h5">
+        {props.number}. {props.title}
+      </AtTypography>
+      <AtTypography>{props.text}</AtTypography>
     </StyledCard>
   )
 }
 
 interface Props {
-  number: number,
-  icon: string,
-  title: string,
+  number: number
+  icon: string
+  title: string
   text: string
 }
 
 export default CustomCard
-

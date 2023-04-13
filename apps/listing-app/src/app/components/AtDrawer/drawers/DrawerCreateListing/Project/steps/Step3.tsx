@@ -9,9 +9,7 @@ import { SearchNormal1 } from 'iconsax-react'
 import AtTag from '../../../../../AtTag/AtTag'
 import { Listing } from '../../../../../../utils/redux/types/listings.type'
 
-const ProjectStep3: React.FC<Step3Props> = (
-  props: Step3Props,
-) => {
+const ProjectStep3: React.FC<Step3Props> = (props: Step3Props) => {
   const maxSkills = 7
 
   return (
@@ -23,7 +21,12 @@ const ProjectStep3: React.FC<Step3Props> = (
           justifyContent={'space-between'}
           flexDirection={props.isSmallScreen ? 'column' : 'row'}
         >
-          <AtTypography variant={'h4'} fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}>Add Skills</AtTypography>
+          <AtTypography
+            variant={'h4'}
+            fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}
+          >
+            Add Skills
+          </AtTypography>
           <AtTypography variant={'caption'} color={grey2}>
             Fields with * are mandatory
           </AtTypography>

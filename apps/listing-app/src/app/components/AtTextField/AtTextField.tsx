@@ -31,7 +31,6 @@ import {
   StyledDropdownElement,
 } from '../AtDropdown/AtDropdown'
 
-
 export enum AtTextFieldType {
   Text = 'text',
   Email = 'email',
@@ -68,7 +67,7 @@ const StyledLabel = styled.label<{
 }
 `
 
-const StyledInput = styled(OutlinedInput) <{
+const StyledInput = styled(OutlinedInput)<{
   $isError?: boolean
   $isSuccess?: boolean
   $focused: boolean
@@ -82,39 +81,39 @@ const StyledInput = styled(OutlinedInput) <{
 }>`
   &.${outlinedInputClasses.root} {
     ${({ multiline }) =>
-    multiline &&
-    css`
-    textarea {
-      padding-left: ${multiline ? '20px' : '0px'};
-    }
-    `}
+      multiline &&
+      css`
+        textarea {
+          padding-left: ${multiline ? '20px' : '0px'};
+        }
+      `}
     ${({ $isCountryCode }) =>
-    $isCountryCode &&
-    css`
-      padding-left: ${$isCountryCode ? '0' : '14px'};
-    `}
+      $isCountryCode &&
+      css`
+        padding-left: ${$isCountryCode ? '0' : '14px'};
+      `}
     ${({ $bgColor }) =>
-    $bgColor
-      ? css<{ $bgColor?: string }>`
+      $bgColor
+        ? css<{ $bgColor?: string }>`
             background-color: ${({ $bgColor }) =>
-          $bgColor === 'black' ? black : white};
+              $bgColor === 'black' ? black : white};
           `
-      : css<{ $focused: boolean; $isError?: boolean; $isSuccess?: boolean }>`
+        : css<{ $focused: boolean; $isError?: boolean; $isSuccess?: boolean }>`
             background-color: ${({ $focused, $isError, $isSuccess }) =>
-          $focused
-            ? $isError
-              ? red1
-              : $isSuccess
-                ? green5
-                : white
-            : white};
-    `};
+              $focused
+                ? $isError
+                  ? red1
+                  : $isSuccess
+                  ? green5
+                  : white
+                : white};
+          `};
     justify-content: space-between;
     padding-left: 0px;
     & > input {
       max-width: ${({ $maxWidth }) => $maxWidth && $maxWidth + 'ch'};
       color: ${({ disabled, $bgColor }: any) =>
-    $bgColor === 'black' ? white : disabled ? grey3 : black};
+        $bgColor === 'black' ? white : disabled ? grey3 : black};
       font-size: ${({ size }) => (size === 'medium' ? '16px' : '14px')};
 
       &::placeholder {
@@ -154,21 +153,21 @@ const StyledInput = styled(OutlinedInput) <{
       }
       & > svg {
         ${({ $dropdown }) =>
-    $dropdown &&
-    css`
+          $dropdown &&
+          css`
             &:hover {
               cursor: pointer;
             }
           `}
         width: 20px;
         color: ${({ disabled, $bgColor }) =>
-    $bgColor === 'black' ? white : disabled ? grey3 : black};
+          $bgColor === 'black' ? white : disabled ? grey3 : black};
       }
     }
     .${inputAdornmentClasses.positionStart} {
       width: ${({ size }) => (size === 'medium' ? '20px' : '15px')};
       color: ${({ $isError, $isSuccess, disabled }) =>
-    disabled ? grey3 : $isError ? red : $isSuccess ? green : grey2};
+        disabled ? grey3 : $isError ? red : $isSuccess ? green : grey2};
       margin-left: 20px;
     }
   }
@@ -179,11 +178,11 @@ const StyledInput = styled(OutlinedInput) <{
       transition: 0.3s;
       border-width: 1px;
       border-color: ${({ $isError, $isSuccess, $bgColor }) =>
-    $bgColor === 'black'
-      ? null
-      : $isError
-        ? red
-        : $isSuccess
+        $bgColor === 'black'
+          ? null
+          : $isError
+          ? red
+          : $isSuccess
           ? green
           : grey5};
     }
@@ -192,12 +191,12 @@ const StyledInput = styled(OutlinedInput) <{
     fieldset {
       transition: 0.3s;
       border-color: ${({ $isError, $isSuccess }) =>
-    $isError ? red : $isSuccess ? green : grey3};
+        $isError ? red : $isSuccess ? green : grey3};
     }
   }
 `
 
-const StyledArrow = styled(ArrowDown2) <{ open?: boolean }>`
+const StyledArrow = styled(ArrowDown2)<{ open?: boolean }>`
   transition: 0.3s;
   transform: rotate(${({ open }) => (open ? '180' : '0')}deg);
 `
@@ -222,9 +221,7 @@ const CountryCodeInput = styled(OutlinedInput)`
 }
 `
 
-const AtTextField: React.FC<AtTextFieldProps> = (
-  props: AtTextFieldProps,
-) => {
+const AtTextField: React.FC<AtTextFieldProps> = (props: AtTextFieldProps) => {
   const [showPassword, setShowPassword] = useState(false)
 
   const [showDropdownLabel, setShowDropdownLabel] = useState(false)
@@ -364,13 +361,13 @@ const AtTextField: React.FC<AtTextFieldProps> = (
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           startAdornment={
-            props.startIcon ?
+            props.startIcon ? (
               <InputAdornment position="start">
                 {props.startIcon}
               </InputAdornment>
-              : props.countryCode ?
-                <CountryCodeInput value={'+44'} />
-                : null
+            ) : props.countryCode ? (
+              <CountryCodeInput value={'+44'} />
+            ) : null
           }
           endAdornment={
             props.dropdown ? (

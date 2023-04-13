@@ -11,18 +11,25 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <Box display={'flex'} justifyContent={isSmallScreen ? 'center' : 'space-between'} width={'fill-available'} padding={'20px'}>
+      <Box
+        display={'flex'}
+        justifyContent={isSmallScreen ? 'center' : 'space-between'}
+        width={'fill-available'}
+        padding={'20px'}
+      >
         <img src={logo} alt={'logo'} width={100} />
-        {!isSmallScreen ?
+        {!isSmallScreen ? (
           <Box display={'flex'} gap={'30px'}>
             <AtButton
               kind={AtButtonKind.Default}
               variant={AtButtonVariant.Outlined}
               startIcon={<Profile2User />}
-              onClick={() => window.location.href = 'https://alteam.webflow.io/'}
+              onClick={() =>
+                (window.location.href = 'https://alteam.webflow.io/')
+              }
               name={'I am a freelancer'}
             />
-            <StyledLink to="/form" >
+            <StyledLink to="/form">
               <AtButton
                 kind={AtButtonKind.Success}
                 variant={AtButtonVariant.Contained}
@@ -31,7 +38,7 @@ const Header: React.FC = () => {
               />
             </StyledLink>
           </Box>
-          : null}
+        ) : null}
       </Box>
       <AtLine />
     </>
@@ -39,4 +46,3 @@ const Header: React.FC = () => {
 }
 
 export default Header
-
