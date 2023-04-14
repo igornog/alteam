@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 import { Box, Container, useMediaQuery } from '@mui/material'
-import { ArrowRight2 } from 'iconsax-react'
+import { ArrowLeft2, ArrowRight2 } from 'iconsax-react'
 import { ClientStatus } from '@yjcapp/app'
 import { Client } from '../utils/redux/types/clients.type'
 import { useAppDispatch } from '../utils/hooks/reduxHook'
@@ -15,6 +15,7 @@ import AtLine from '../components/AtLine/AtLine'
 import AtTextField from '../components/AtTextField/AtTextField'
 import AtTypography from '../components/AtTypography/AtTypography'
 import { white, grey2 } from '../utils/colors'
+import { useNavigate } from 'react-router-dom'
 
 export const StyledForm = styled.div`
   background-color: ${white};
@@ -28,6 +29,7 @@ export const StyledForm = styled.div`
 
 const GeneralInfoForm: React.FC = () => {
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
   const isSmallScreen = useMediaQuery('(max-width:1079px)')
 
   const defaultClient = {
@@ -50,12 +52,22 @@ const GeneralInfoForm: React.FC = () => {
 
   const createClient = () => {
     dispatch(handleCreateClient(client))
-    window.location.href = '/create-my-listing'
+    navigate('/create-my-listing')
   }
 
   return (
     <Container>
       <Box padding={'30px 0'}>
+      <Box display={'flex'} gap={'5px'} marginBottom={2}>
+        <AtButton
+          variant={AtButtonVariant.Contained}
+          startIcon={<ArrowLeft2 />}
+          kind={AtButtonKind.Default}
+          onClick={() => navigate("/")}
+        />
+
+        <AtTypography color={grey2}>Back to Home page</AtTypography>
+      </Box>
         <AtTypography
           variant={'h3'}
           fontSize={isSmallScreen ? '1.5rem' : '2rem'}

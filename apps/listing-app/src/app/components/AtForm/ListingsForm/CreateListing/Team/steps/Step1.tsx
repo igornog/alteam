@@ -17,7 +17,7 @@ import {
 } from '../../../../../../utils/helpers'
 import { Client } from '../../../../../../utils/redux/types/clients.type'
 import { Listing } from '../../../../../../utils/redux/types/listings.type'
-import { StyledForm } from '../../DrawerCreateListing'
+import { StyledForm } from '../../CreateListingStart'
 import styled from 'styled-components'
 import AtTimezoneDropdown from '../../../../../AtDropdown/AtTimezoneDropdown'
 

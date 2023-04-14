@@ -22,7 +22,7 @@ import ProjectStep3 from './steps/Step3'
 import ProjectStep4 from './steps/Step4'
 import { handleCreateListing } from '../../../../../utils/redux/actions/listing.action'
 import { useAppDispatch } from '../../../../../utils/hooks/reduxHook'
-import { StyledDot, StyledFormStepper, StyledStepper } from '../CreateListing'
+import { StyledDot, StyledFormStepper, StyledStepper } from '..'
 
 const CreateProject: React.FC<CreateProjectProps> = (
   props: CreateProjectProps,

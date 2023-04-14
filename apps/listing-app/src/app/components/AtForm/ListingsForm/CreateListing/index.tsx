@@ -12,7 +12,7 @@ import AtTypography from '../../../AtTypography/AtTypography'
 import { Box, Container } from '@mui/material'
 import CreateProject from './Project/CreateProject'
 import CreateTeam from './Team/CreateTeam'
-import FinalStep from './FinalStep'
+import FinalStep from './SuccessScreen'
 import { boxShadow } from '../../../../utils/theme'
 
 export const StyledStepper = styled.div`

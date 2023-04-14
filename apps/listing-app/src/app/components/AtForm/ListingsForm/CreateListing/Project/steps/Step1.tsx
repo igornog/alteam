@@ -1,6 +1,6 @@
 import { useState, Dispatch } from 'react'
 import styled from 'styled-components'
-import { StyledForm } from '../../DrawerCreateListing'
+import { StyledForm } from '../../CreateListingStart'
 import {
   WorkType,
   Availability,

@@ -13,7 +13,7 @@ import AtTypography from '../../../AtTypography/AtTypography'
 import FolderIcon from '../../../../assets/images/icons/folder.svg'
 import GroupIcon from '../../../../assets/images/icons/group.svg'
 import AtCreateListingCard from '../../../AtCard/AtCreateListingCard'
-import CreateListing from './CreateListing'
+import CreateListing from '.'
 import { ListingType } from '@yjcapp/app'
 import CustomLink from '../../../AtLink/AtLink'
 import { StyledLink } from '../../../../views/home'
@@ -43,7 +43,7 @@ export const StyledCard = styled.div`
   }
 `
 
-const DrawerCreateListing: React.FC = () => {
+const CreateListingStart: React.FC = () => {
   const isSmallScreen = useMediaQuery('(max-width:1079px)')
   const [openCreateListing, setOpenCreateListing] = useState(false)
   const [listingType, setListingType] = useState<ListingType>(
@@ -174,4 +174,4 @@ const DrawerCreateListing: React.FC = () => {
   )
 }
 
-export default DrawerCreateListing
+export default CreateListingStart

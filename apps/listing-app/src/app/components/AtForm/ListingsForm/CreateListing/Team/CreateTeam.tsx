@@ -23,7 +23,7 @@ import TeamStep3 from './steps/Step3'
 import TeamStep4 from './steps/Step4'
 import TeamStep5 from './steps/Step5'
 import { handleCreateListing } from '../../../../../utils/redux/actions/listing.action'
-import { StyledDot, StyledStepper, StyledFormStepper } from '../CreateListing'
+import { StyledDot, StyledStepper, StyledFormStepper } from '..'
 
 const CreateTeam: React.FC<Props> = (props: Props) => {
   const dispatch = useAppDispatch()

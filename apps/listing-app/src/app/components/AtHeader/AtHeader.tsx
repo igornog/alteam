@@ -24,7 +24,7 @@ const Header: React.FC = () => {
               kind={AtButtonKind.Default}
               variant={AtButtonVariant.Outlined}
               startIcon={<Profile2User />}
-              onClick={() =>
+              onClick={() => 
                 (window.location.href = 'https://alteam.webflow.io/')
               }
               name={'I am a freelancer'}

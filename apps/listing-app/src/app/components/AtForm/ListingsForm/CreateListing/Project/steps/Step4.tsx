@@ -3,7 +3,7 @@ import React, { Dispatch } from 'react'
 import AtLine from '../../../../../AtLine/AtLine'
 import AtTextField from '../../../../../AtTextField/AtTextField'
 import AtTypography from '../../../../../AtTypography/AtTypography'
-import { StyledForm } from '../../DrawerCreateListing'
+import { StyledForm } from '../../CreateListingStart'
 import { grey2 } from '../../../../../../utils/colors'
 import { Listing } from '../../../../../../utils/redux/types/listings.type'
 
