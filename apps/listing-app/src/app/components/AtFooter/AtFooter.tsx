@@ -23,16 +23,18 @@ const StyledFooter = styled(Box)`
 `
 
 const Footer: React.FC = () => {
+  const privacyPolicyLink = 'https://yjcollective.notion.site/Privacy-policy-1a2a1a083c9349de929ef38a051f36ca'
+
   return (
     <StyledFooter>
       <AtTypography>
         Alteam is an initiave and brand of YJCollective Limited
       </AtTypography>
       <Box display={'flex'} gap={'30px'}>
-        <CustomLink>
+        <CustomLink externalLink={privacyPolicyLink}>
           <AtTypography>Terms and Conditions</AtTypography>
         </CustomLink>
-        <CustomLink>
+        <CustomLink externalLink={privacyPolicyLink}>
           <AtTypography>Privacy Policy</AtTypography>
         </CustomLink>
       </Box>

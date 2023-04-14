@@ -15,11 +15,17 @@ const StyledLink = styled(Link)`
 `
 
 const CustomLink: React.FC<Props> = (props: Props) => {
-  return <StyledLink>{props.children}</StyledLink>
+  return (
+    <StyledLink
+      onClick={() => 
+        props.externalLink ? window.location.href = `${props.externalLink}` : true
+      }>{props.children}</StyledLink>
+  )
 }
 
 interface Props {
   children: React.ReactNode
+  externalLink?: string
 }
 
 export default CustomLink
