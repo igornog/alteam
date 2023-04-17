@@ -55,6 +55,9 @@ const CreateListing: React.FC<CreateListingProps> = (
 ) => {
   const [step, setStep] = useState(0)
 
+  console.log('step', step)
+  console.log('props.steps', props.steps)
+
   return step === props.steps ? (
     <FinalStep />
   ) : (

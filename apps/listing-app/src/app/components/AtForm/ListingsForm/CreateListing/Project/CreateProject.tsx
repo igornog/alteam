@@ -20,6 +20,7 @@ import { Listing } from '../../../../../utils/redux/types/listings.type'
 import ProjectStep2 from './steps/Step2'
 import ProjectStep3 from './steps/Step3'
 import ProjectStep4 from './steps/Step4'
+import Preview from './steps/Preview'
 import { handleCreateListing } from '../../../../../utils/redux/actions/listing.action'
 import { useAppDispatch } from '../../../../../utils/hooks/reduxHook'
 import { StyledDot, StyledFormStepper, StyledStepper } from '..'
@@ -69,6 +70,16 @@ const CreateProject: React.FC<CreateProjectProps> = (
       id: 3,
       content: (
         <ProjectStep4
+          setProject={setProject}
+          project={project}
+          isSmallScreen={props.isSmallScreen}
+        />
+      ),
+    },
+    {
+      id: 4,
+      content: (
+        <Preview
           setProject={setProject}
           project={project}
           isSmallScreen={props.isSmallScreen}

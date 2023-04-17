@@ -64,7 +64,7 @@ const CreateListingStart: React.FC = () => {
   return openCreateListing ? (
     <CreateListing
       listingType={listingType}
-      steps={listingType === ListingType.Project ? 4 : 5}
+      steps={listingType === ListingType.Project ? 5 : 6}
       clientName={currencClient}
       isSmallScreen={isSmallScreen}
       handleBackToCreateListing={handleCloseToCreateListing}
