@@ -1,4 +1,4 @@
-import { useState, Dispatch } from 'react'
+import { Dispatch } from 'react'
 import styled from 'styled-components'
 import { StyledForm } from '../../CreateListingStart'
 import {
@@ -22,7 +22,6 @@ import {
   getCurrencySymbol,
   convertHexToRGBA,
 } from '../../../../../../utils/helpers'
-import { Client } from '../../../../../../utils/redux/types/clients.type'
 import { Listing } from '../../../../../../utils/redux/types/listings.type'
 import { Box } from '@mui/material'
 
@@ -34,20 +33,9 @@ const StyledPeriod = styled.div`
 `
 
 const ProjectStep1: React.FC<Step1Props> = (props: Step1Props) => {
-  // const selectedClient = useAppSelector((state) => getActiveClient(state))
   const isDifferentOnSite =
     props.project.workType === WorkType.Hybrid ||
     props.project.workType === WorkType.Remote
-  const [listClients, setListClients] = useState<Client[]>()
-
-  // useEffect(() => {
-  //   const getListClients = async () => {
-  //     const list = await clientService.searchClient({ clientName: '' })
-  //     setListClients(list)
-  //   }
-
-  //   getListClients()
-  // }, [])
 
   return (
     <StyledForm>
@@ -85,33 +73,6 @@ const ProjectStep1: React.FC<Step1Props> = (props: Step1Props) => {
             }
             maxLength={30}
           />
-
-          {listClients && (
-            <AtTextFieldDropdown
-              fullWidth
-              searchable={true}
-              required
-              // value={selectedClient.companyName}
-              placeholder={'Client'}
-              $listItems={listClients.map((client: Client, index: number) => ({
-                id: index,
-                label: client.companyName,
-              }))}
-              handleSelect={(e) => {
-                const getClientFromName = listClients.find(
-                  (item: Client) => item.companyName === e.label,
-                )
-
-                if (getClientFromName) {
-                  props.setProject({
-                    ...props.project,
-                    soloClient: getClientFromName,
-                  })
-                }
-              }}
-              label={'Client'}
-            />
-          )}
 
           <AtTextFieldDropdown
             fullWidth
