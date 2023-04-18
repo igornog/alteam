@@ -7,7 +7,7 @@ import {
   Role,
   WorkType,
 } from '@yjcapp/app'
-import { grey2, black } from '../../../../../utils/colors'
+import { grey2 } from '../../../../../utils/colors'
 import AtButton, {
   AtButtonVariant,
   AtButtonKind,
@@ -24,6 +24,7 @@ import TeamStep4 from './steps/Step4'
 import TeamStep5 from './steps/Step5'
 import { handleCreateListing } from '../../../../../utils/redux/actions/listing.action'
 import { StyledDot, StyledStepper, StyledFormStepper } from '..'
+import Preview from './steps/Preview'
 
 const CreateTeam: React.FC<Props> = (props: Props) => {
   const dispatch = useAppDispatch()
@@ -78,6 +79,16 @@ const CreateTeam: React.FC<Props> = (props: Props) => {
       id: 4,
       content: (
         <TeamStep5
+          setTeam={setTeam}
+          team={team}
+          isSmallScreen={props.isSmallScreen}
+        />
+      ),
+    },
+    {
+      id: 5,
+      content: (
+        <Preview
           setTeam={setTeam}
           team={team}
           isSmallScreen={props.isSmallScreen}
@@ -203,7 +214,7 @@ const CreateTeam: React.FC<Props> = (props: Props) => {
           <AtTypography color={grey2}>
             Step{' '}
             <Box>
-              <span style={{ color: black }}>{props.step + 1}</span>/
+              <span>{props.step + 1}</span>/
               {tabs.length}
             </Box>
           </AtTypography>

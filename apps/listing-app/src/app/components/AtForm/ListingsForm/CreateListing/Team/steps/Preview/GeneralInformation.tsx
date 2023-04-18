@@ -84,21 +84,28 @@ const GeneralInformations: React.FunctionComponent<GeneralProps> = (
           </Grid>
           <Grid item={true} xs={8}>
             <Box display={'flex'} gap={'15px'}>
-              <AtTypography >
-                {props.listingGeneralInfo.exactRate ? 'Fixed' : 'Variable'}
-              </AtTypography>
 
-              {props.listingGeneralInfo.exactRate ?
-                <AtTypography color={grey2} variant={'caption'}>
-                  {getCurrencySymbol(props.listingGeneralInfo.currency)}
-                  {props.listingGeneralInfo.exactRate}
-                </AtTypography>
-                :
-                <AtTypography color={grey2} variant={'caption'}>
-                  {!props.listingGeneralInfo.rateTo && 'From '}
-                  {props.listingGeneralInfo.rateFrom ? getCurrencySymbol(props.listingGeneralInfo.currency) + props.listingGeneralInfo.rateFrom : 'Not defined'}
-                  {props.listingGeneralInfo.rateTo && ' - ' + getCurrencySymbol(props.listingGeneralInfo.currency) + props.listingGeneralInfo.rateTo}
-                </AtTypography>}
+              <AtTypography>
+                {getCurrencySymbol(props.listingGeneralInfo.currency)}
+                {props.listingGeneralInfo.roles.reduce((acc: any, role: { price: any }) => {
+                  if (role.price) {
+                    return acc + role.price
+                  }
+
+                  return acc
+                }, 0)}</AtTypography>
+              {props.listingGeneralInfo.exactRate &&
+                <>
+                  <span>{'/'}</span>
+                  <AtTypography >
+                    {getCurrencySymbol(props.listingGeneralInfo.currency)}
+                    {props.listingGeneralInfo.exactRate}
+                  </AtTypography>
+                </>
+              }
+              <AtTypography color={grey2} variant={'caption'}>
+                monthly
+              </AtTypography>
             </Box>
           </Grid>
         </Grid>

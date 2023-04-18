@@ -8,7 +8,7 @@ import {
   RateType,
   WorkType,
 } from '@yjcapp/app'
-import { grey2, black } from '../../../../../utils/colors'
+import { grey2 } from '../../../../../utils/colors'
 import AtButton, {
   AtButtonVariant,
   AtButtonKind,
@@ -100,8 +100,6 @@ const CreateProject: React.FC<CreateProjectProps> = (
           'availability',
           'projectLength',
           'startDate',
-          'rateFrom',
-          'rateTo',
           'difficulty',
         ],
         workTypeDependant: 'timeZone',
@@ -201,7 +199,7 @@ const CreateProject: React.FC<CreateProjectProps> = (
           <AtTypography color={grey2}>
             Step{' '}
             <Box>
-              <span style={{ color: black }}>{props.step + 1}</span>/
+              <span>{props.step + 1}</span>/
               {tabs.length}
             </Box>
           </AtTypography>

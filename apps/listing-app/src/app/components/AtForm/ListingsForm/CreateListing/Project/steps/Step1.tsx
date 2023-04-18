@@ -228,11 +228,15 @@ const ProjectStep1: React.FC<Step1Props> = (props: Step1Props) => {
                   type={AtTextFieldType.Number}
                   value={props.project.rateFrom?.toString()}
                   onValueChange={(e) =>
-                    props.setProject({
-                      ...props.project,
-                      rateFrom: parseFloat(e),
-                    })
-                  }
+                    props.rateType === RateType.Variable ?
+                      props.setProject({
+                        ...props.project,
+                        rateFrom: parseFloat(e),
+                      }) :
+                      props.setProject({
+                        ...props.project,
+                        exactRate: parseFloat(e),
+                      })}
                 />
               )}
 

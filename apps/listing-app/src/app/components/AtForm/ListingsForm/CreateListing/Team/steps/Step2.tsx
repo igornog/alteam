@@ -103,8 +103,8 @@ const TeamStep2: React.FC<Step2Props> = (props: Step2Props) => {
                       props.isSmallScreen
                         ? '100%'
                         : props.team.exactRate
-                        ? '65%'
-                        : '80%'
+                          ? '65%'
+                          : '80%'
                     }
                   >
                     <AtTextField
