@@ -12,7 +12,6 @@
           "build",
           "lint",
           "test",
-          "e2e",
           "build-storybook"
         ]
       }
@@ -31,9 +30,6 @@
     },
     "build-storybook": {
       "inputs": ["default", "^production", "{workspaceRoot}/.storybook/**/*"]
-    },
-    "e2e": {
-      "inputs": ["default", "^production"]
     }
   },
   "workspaceLayout": {
