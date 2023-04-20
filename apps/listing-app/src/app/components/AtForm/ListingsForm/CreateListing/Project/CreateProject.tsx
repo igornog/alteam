@@ -15,11 +15,11 @@ import AtButton, {
 } from '../../../../AtButton/AtButton'
 import AtTabs from '../../../../AtTabs/AtTabs'
 import AtTypography from '../../../../AtTypography/AtTypography'
-import ProjectStep1 from './steps/Step1'
+// import ProjectStep1 from './steps/Step1'
 import { Listing } from '../../../../../utils/redux/types/listings.type'
-import ProjectStep2 from './steps/Step2'
-import ProjectStep3 from './steps/Step3'
-import ProjectStep4 from './steps/Step4'
+// import ProjectStep2 from './steps/Step2'
+// import ProjectStep3 from './steps/Step3'
+// import ProjectStep4 from './steps/Step4'
 import Preview from './steps/Preview'
 import { handleCreateListing } from '../../../../../utils/redux/actions/listing.action'
 import { useAppDispatch } from '../../../../../utils/hooks/reduxHook'
@@ -34,50 +34,50 @@ const CreateProject: React.FC<CreateProjectProps> = (
   const [project, setProject] = useState<Listing>(new Listing({}))
 
   const tabs = [
+    // {
+    //   id: 0,
+    //   content: (
+    //     <ProjectStep1
+    //       setProject={setProject}
+    //       project={project}
+    //       rateType={rateType}
+    //       setRateType={setRateType}
+    //       isSmallScreen={props.isSmallScreen}
+    //     />
+    //   ),
+    // },
+    // {
+    //   id: 1,
+    //   content: (
+    //     <ProjectStep2
+    //       setProject={setProject}
+    //       project={project}
+    //       isSmallScreen={props.isSmallScreen}
+    //     />
+    //   ),
+    // },
+    // {
+    //   id: 2,
+    //   content: (
+    //     <ProjectStep3
+    //       setProject={setProject}
+    //       project={project}
+    //       isSmallScreen={props.isSmallScreen}
+    //     />
+    //   ),
+    // },
+    // {
+    //   id: 3,
+    //   content: (
+    //     <ProjectStep4
+    //       setProject={setProject}
+    //       project={project}
+    //       isSmallScreen={props.isSmallScreen}
+    //     />
+    //   ),
+    // },
     {
       id: 0,
-      content: (
-        <ProjectStep1
-          setProject={setProject}
-          project={project}
-          rateType={rateType}
-          setRateType={setRateType}
-          isSmallScreen={props.isSmallScreen}
-        />
-      ),
-    },
-    {
-      id: 1,
-      content: (
-        <ProjectStep2
-          setProject={setProject}
-          project={project}
-          isSmallScreen={props.isSmallScreen}
-        />
-      ),
-    },
-    {
-      id: 2,
-      content: (
-        <ProjectStep3
-          setProject={setProject}
-          project={project}
-          isSmallScreen={props.isSmallScreen}
-        />
-      ),
-    },
-    {
-      id: 3,
-      content: (
-        <ProjectStep4
-          setProject={setProject}
-          project={project}
-          isSmallScreen={props.isSmallScreen}
-        />
-      ),
-    },
-    {
-      id: 4,
       content: (
         <Preview
           setProject={setProject}
@@ -204,20 +204,10 @@ const CreateProject: React.FC<CreateProjectProps> = (
             </Box>
           </AtTypography>
 
-          {isLastStep ? (
-            <AtButton
-              kind={AtButtonKind.Default}
-              variant={AtButtonVariant.Outlined}
-              name={'Save as Draft'}
-              onClick={() => handleSubmitProject(ListingState.Draft)}
-              endIcon={<CloseCircle />}
-            />
-          ) : null}
-
           <AtButton
             kind={AtButtonKind.Success}
             variant={AtButtonVariant.Contained}
-            name={isLastStep ? 'Activate' : 'Next Step'}
+            name={isLastStep ? 'Post' : 'Next Step'}
             disabled={isDisabled()}
             onClick={() => handleSubmitProject(ListingState.Active)}
             endIcon={isLastStep ? <TickCircle /> : <ArrowRight />}
