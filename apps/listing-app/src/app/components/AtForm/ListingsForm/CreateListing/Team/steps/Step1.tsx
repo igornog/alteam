@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import React, { Dispatch, useEffect, useState } from 'react'
+import React, { Dispatch, useEffect } from 'react'
 import { black, grey2, white } from '../../../../../../utils/colors'
 import AtLine from '../../../../../AtLine/AtLine'
 import AtTypography from '../../../../../AtTypography/AtTypography'
@@ -15,7 +15,6 @@ import {
   getCurrencySymbol,
   convertHexToRGBA,
 } from '../../../../../../utils/helpers'
-import { Client } from '../../../../../../utils/redux/types/clients.type'
 import { Listing } from '../../../../../../utils/redux/types/listings.type'
 import { StyledForm } from '../../CreateListingStart'
 import styled from 'styled-components'
@@ -33,7 +32,6 @@ const TeamStep1: React.FC<Step1Props> = (props: Step1Props) => {
   const isDifferentOnSite =
     props.team.workType === WorkType.Hybrid ||
     props.team.workType === WorkType.Remote
-  const [listClients, setListClients] = useState<Client[]>()
 
   useEffect(() => {
     if (!props.knownTotalPrice) {
@@ -99,32 +97,6 @@ const TeamStep1: React.FC<Step1Props> = (props: Step1Props) => {
             }
             maxLength={30}
           />
-
-          {listClients && (
-            <AtTextFieldDropdown
-              fullWidth
-              required
-              // value={selectedClient.companyName}
-              placeholder={'Client'}
-              $listItems={listClients.map((client: Client, index: number) => ({
-                id: index,
-                label: client.companyName,
-              }))}
-              handleSelect={(e) => {
-                const getClientFromName = listClients.find(
-                  (item: Client) => item.companyName === e.label,
-                )
-
-                if (getClientFromName) {
-                  props.setTeam({
-                    ...props.team,
-                    soloClient: getClientFromName,
-                  })
-                }
-              }}
-              label={'Client'}
-            />
-          )}
 
           <AtTextFieldDropdown
             fullWidth

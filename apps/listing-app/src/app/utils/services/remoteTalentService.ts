@@ -7,11 +7,11 @@ import {
 import atAxios from './axios'
 
 export default class RemoteTalentService implements TalentService {
-  retrieveGroupTalent(id: string): Promise<GroupTalent | undefined> {
+  retrieveGroupTalent(): Promise<GroupTalent | undefined> {
     throw new Error('Method not implemented.')
   }
 
-  createGroupTalent(talent: Omit<GroupTalent, 'id'>): Promise<GroupTalent> {
+  createGroupTalent(): Promise<GroupTalent> {
     throw new Error('Method not implemented.')
   }
 

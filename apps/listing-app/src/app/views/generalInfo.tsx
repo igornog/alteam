@@ -135,7 +135,6 @@ const GeneralInfoForm: React.FC = () => {
 
             <AtTextField
               label={'Position'}
-              // type={AtTextFieldType.Number}
               required
               placeholder={'Enter Position'}
               onValueChange={(e) => setClient({ ...client, position: e })}

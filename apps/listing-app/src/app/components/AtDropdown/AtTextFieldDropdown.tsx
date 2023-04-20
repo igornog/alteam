@@ -8,7 +8,7 @@ import { boxShadow } from '../../utils/theme'
 import AtTextField, { AtTextFieldProps } from '../AtTextField/AtTextField'
 import AtTypography from '../AtTypography/AtTypography'
 
-export const StyledContentPopover = styled(Collapse)<{
+export const StyledContentPopover = styled(Collapse) <{
   $minWidth?: number
   left?: number
   top?: number
@@ -39,7 +39,7 @@ export const StyledDropdownElement = styled.div<{ color: string }>`
   }
 `
 
-const StyledTextField = styled(AtTextField)<{ placeholder: any }>`
+const StyledTextField = styled(AtTextField) <{ placeholder: any }>`
   justify-content: space-between;
 
   & input {
@@ -89,8 +89,8 @@ const AtTextFieldDropdown: React.FC<AtTextFieldDropdownProps> = (
   const filterSearch = () => {
     return valueSearchable && props.searchable
       ? props.$listItems.filter((item: DropdownItem) =>
-          item.label.toLowerCase().includes(valueSearchable.toLowerCase()),
-        )
+        item.label.toLowerCase().includes(valueSearchable.toLowerCase()),
+      )
       : props.$listItems
   }
 
