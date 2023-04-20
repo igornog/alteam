@@ -219,20 +219,10 @@ const CreateTeam: React.FC<Props> = (props: Props) => {
             </Box>
           </AtTypography>
 
-          {isLastStep ? (
-            <AtButton
-              kind={AtButtonKind.Default}
-              variant={AtButtonVariant.Outlined}
-              name={'Save as Draft'}
-              onClick={() => handleSubmitProject(ListingState.Draft)}
-              endIcon={<CloseCircle />}
-            />
-          ) : null}
-
           <AtButton
             kind={AtButtonKind.Success}
             variant={AtButtonVariant.Contained}
-            name={isLastStep ? 'Activate' : 'Next Step'}
+            name={isLastStep ? 'Post' : 'Next Step'}
             disabled={isDisabled()}
             onClick={() => handleSubmitProject(ListingState.Active)}
             endIcon={isLastStep ? <TickCircle /> : <ArrowRight />}
