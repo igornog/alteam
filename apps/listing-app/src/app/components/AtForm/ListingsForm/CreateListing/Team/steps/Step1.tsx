@@ -20,6 +20,7 @@ import { Listing } from '../../../../../../utils/redux/types/listings.type'
 import { StyledForm } from '../../CreateListingStart'
 import styled from 'styled-components'
 import AtTimezoneDropdown from '../../../../../AtDropdown/AtTimezoneDropdown'
+import moment from 'moment'
 
 const StyledPeriod = styled.div`
   background-color: ${black};
@@ -220,7 +221,7 @@ const TeamStep1: React.FC<Step1Props> = (props: Step1Props) => {
             onValueChange={(e) =>
               props.setTeam({
                 ...props.team,
-                startDate: e.format('DD-MM-YYYY') as any,
+                startDate: moment(e).format('MM.DD.YYYY') as any,
               })
             }
           />

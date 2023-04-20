@@ -24,6 +24,7 @@ import {
 } from '../../../../../../utils/helpers'
 import { Listing } from '../../../../../../utils/redux/types/listings.type'
 import { Box } from '@mui/material'
+import moment from 'moment'
 
 const StyledPeriod = styled.div`
   background-color: ${black};
@@ -171,7 +172,7 @@ const ProjectStep1: React.FC<Step1Props> = (props: Step1Props) => {
             onValueChange={(e) =>
               props.setProject({
                 ...props.project,
-                startDate: e.format('DD-MM-YYYY') as any,
+                startDate: moment(e).format('MM.DD.YYYY') as any,
               })
             }
           />
