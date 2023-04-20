@@ -55,7 +55,7 @@ const Home: React.FC = () => {
             variant={AtButtonVariant.Outlined}
             startIcon={<Call />}
             name={'Book a Call'}
-            onClick={() => window.location.href='https://calendly.com/'}
+            onClick={() => window.location.href='https://calendly.com/alteam-coaching/15min'}
           />
           <StyledLink to="/form">
             <AtButton
@@ -144,7 +144,7 @@ const Home: React.FC = () => {
             variant={AtButtonVariant.Outlined}
             startIcon={<Call />}
             name={'Book a Call'}
-            onClick={() => window.location.href='https://calendly.com/'}
+            onClick={() => window.location.href='https://calendly.com/alteam-coaching/15min'}
           />
           <StyledLink to="/form">
             <AtButton
