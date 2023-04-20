@@ -1,4 +1,4 @@
-import { ArrowLeft2, ArrowRight, CloseCircle, TickCircle } from 'iconsax-react'
+import { ArrowLeft2, ArrowRight, TickCircle } from 'iconsax-react'
 import { Dispatch, useState } from 'react'
 import {
   ClientStatus,
