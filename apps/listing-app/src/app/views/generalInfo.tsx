@@ -16,6 +16,9 @@ import AtTextField from '../components/AtTextField/AtTextField'
 import AtTypography from '../components/AtTypography/AtTypography'
 import { white, grey2 } from '../utils/colors'
 import { useNavigate } from 'react-router-dom'
+// import { GeneralInfoSchemaType, generalInfoSchema } from '../validations/generalInfoSchema'
+// import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+// import { zodResolver } from '@hookform/resolvers/zod';
 
 export const StyledForm = styled.div`
   background-color: ${white};
@@ -49,6 +52,19 @@ const GeneralInfoForm: React.FC = () => {
   }
 
   const [client, setClient] = useState<Client>(defaultClient)
+  // const {
+  //   control,
+  //   handleSubmit,
+  //   reset,
+  //   formState: { errors, isSubmitSuccessful },
+  // } = useForm<GeneralInfoSchemaType>({
+  //   resolver: zodResolver(generalInfoSchema),
+  // });
+
+  // const onSubmit: SubmitHandler<GeneralInfoSchemaType> = () => {
+  //   dispatch(handleCreateClient(client))
+  //   navigate('/create-my-listing')
+  // };
 
   const createClient = () => {
     dispatch(handleCreateClient(client))
@@ -58,16 +74,16 @@ const GeneralInfoForm: React.FC = () => {
   return (
     <Container>
       <Box padding={'30px 0'}>
-      <Box display={'flex'} gap={'5px'} marginBottom={2}>
-        <AtButton
-          variant={AtButtonVariant.Contained}
-          startIcon={<ArrowLeft2 />}
-          kind={AtButtonKind.Default}
-          onClick={() => navigate("/")}
-        />
+        <Box display={'flex'} gap={'5px'} marginBottom={2}>
+          <AtButton
+            variant={AtButtonVariant.Contained}
+            startIcon={<ArrowLeft2 />}
+            kind={AtButtonKind.Default}
+            onClick={() => navigate("/")}
+          />
 
-        <AtTypography color={grey2}>Back to Home page</AtTypography>
-      </Box>
+          <AtTypography color={grey2}>Back to Home page</AtTypography>
+        </Box>
         <AtTypography
           variant={'h3'}
           fontSize={isSmallScreen ? '1.5rem' : '2rem'}
@@ -107,6 +123,21 @@ const GeneralInfoForm: React.FC = () => {
               onValueChange={(e) => setClient({ ...client, fullName: e })}
               maxLength={30}
             />
+
+            {/* <Controller
+              name="email"
+              control={control}
+              defaultValue=""
+              render={({ field }) => (
+                <AtTextField
+                  placeholder={'Enter email'}
+                  label={'email'}
+                  {...field}
+                  isError={errors.email ?? false}
+                  helperText={errors.email?.message?.toString()}
+                />
+              )}
+            /> */}
 
             <AtTextField
               label={'Email Address'}
@@ -187,6 +218,7 @@ const GeneralInfoForm: React.FC = () => {
               variant={AtButtonVariant.Contained}
               name={'Next Step'}
               endIcon={<ArrowRight2 />}
+              // onClick={handleSubmit(onSubmit)}
               onClick={createClient}
             />
           </Box>

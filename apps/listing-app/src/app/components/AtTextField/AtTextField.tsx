@@ -422,7 +422,7 @@ export interface AtTextFieldProps {
   countryCode?: boolean
 
   isSuccess?: boolean
-  isError?: boolean
+  isError?: any
   helperText?: string
   disabled?: boolean
   readonly?: boolean
