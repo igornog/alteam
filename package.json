@@ -92,7 +92,6 @@
     "@date-io/moment": "^2.16.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@material-ui/lab": "^4.0.0-alpha.61",
     "@mui/lab": "^5.0.0-alpha.115",
     "@mui/material": "^5.11.0",
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
@@ -135,6 +134,7 @@
     "tslib": "^2.4.1",
     "typeorm": "^0.3.11",
     "uuid": "^9.0.0",
-    "winston": "^3.8.2"
+    "winston": "^3.8.2",
+    "zod": "^3.21.4"
   }
 }
