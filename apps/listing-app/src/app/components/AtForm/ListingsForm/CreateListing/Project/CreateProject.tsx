@@ -142,7 +142,9 @@ const CreateProject: React.FC<CreateProjectProps> = (
     }
   }
 
-  const handleSubmitProject = (status: ListingState) => {
+  const handleSubmitListing = (status: ListingState) => {
+    console.log('project', project)
+
     if (props.step + 1 === tabs.length) {
       dispatch(
         handleCreateListing({
@@ -209,7 +211,7 @@ const CreateProject: React.FC<CreateProjectProps> = (
             variant={AtButtonVariant.Contained}
             name={isLastStep ? 'Post' : 'Next Step'}
             disabled={isDisabled()}
-            onClick={() => handleSubmitProject(ListingState.Active)}
+            onClick={() => handleSubmitListing(ListingState.Active)}
             endIcon={isLastStep ? <TickCircle /> : <ArrowRight />}
           />
         </StyledFormStepper>

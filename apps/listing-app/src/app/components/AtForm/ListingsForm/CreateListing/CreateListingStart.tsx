@@ -1,13 +1,9 @@
 import { Box, Container, Grid, useMediaQuery } from '@mui/material'
-import { ArrowLeft2, Document, DocumentText } from 'iconsax-react'
+import { Document, DocumentText } from 'iconsax-react'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { white, grey2, grey5, green } from '../../../../utils/colors'
+import { white, grey5, green } from '../../../../utils/colors'
 import { boxShadow } from '../../../../utils/theme'
-import AtButton, {
-  AtButtonVariant,
-  AtButtonKind,
-} from '../../../AtButton/AtButton'
 import AtLine from '../../../AtLine/AtLine'
 import AtTypography from '../../../AtTypography/AtTypography'
 import FolderIcon from '../../../../assets/images/icons/folder.svg'
@@ -16,8 +12,8 @@ import AtCreateListingCard from '../../../AtCard/AtCreateListingCard'
 import CreateListing from '.'
 import { ListingType } from '@yjcapp/app'
 import CustomLink from '../../../AtLink/AtLink'
-import { StyledLink } from '../../../../views/home'
-import { useAppSelector } from '../../../../utils/hooks/reduxHook'
+import { useAppDispatch } from '../../../../utils/hooks/reduxHook'
+import { handleSelectClient } from '../../../../utils/redux/actions/clients.action'
 
 export const StyledForm = styled.div`
   background-color: ${white};
@@ -43,14 +39,19 @@ export const StyledCard = styled.div`
   }
 `
 
-const CreateListingStart: React.FC = () => {
+const CreateListingStart: React.FC<CreateListingProps> = (
+  props: CreateListingProps,
+) => {
   const isSmallScreen = useMediaQuery('(max-width:1079px)')
+  const dispatch = useAppDispatch()
   const [openCreateListing, setOpenCreateListing] = useState(false)
   const [listingType, setListingType] = useState<ListingType>(
     ListingType.Project,
   )
 
-  const currencClient = useAppSelector((state) => state.clients.currentClient)
+  console.log(props)
+  const currencClient = props.clientId && dispatch(handleSelectClient(props?.clientId))
+  console.log(currencClient)
 
   const createListing = (type: ListingType) => {
     setOpenCreateListing(true)
@@ -65,7 +66,7 @@ const CreateListingStart: React.FC = () => {
     <CreateListing
       listingType={listingType}
       steps={listingType === ListingType.Project ? 5 : 6}
-      clientName={currencClient}
+      clientName={''}
       isSmallScreen={isSmallScreen}
       handleBackToCreateListing={handleCloseToCreateListing}
     />
@@ -77,7 +78,7 @@ const CreateListingStart: React.FC = () => {
         flexDirection={'column'}
         gap={'30px'}
       >
-        <Box display={'flex'} gap={'5px'}>
+        {/* <Box display={'flex'} gap={'5px'}>
           <StyledLink to="/form">
             <AtButton
               variant={AtButtonVariant.Contained}
@@ -87,7 +88,7 @@ const CreateListingStart: React.FC = () => {
             />
           </StyledLink>
           <AtTypography color={grey2}>Back to General Information</AtTypography>
-        </Box>
+        </Box> */}
 
         <AtTypography
           variant={'h3'}
@@ -172,6 +173,10 @@ const CreateListingStart: React.FC = () => {
       </Box>
     </Container>
   )
+}
+
+interface CreateListingProps {
+  clientId?: number
 }
 
 export default CreateListingStart

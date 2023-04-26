@@ -84,14 +84,14 @@ const CreateListing: React.FC<CreateListingProps> = (
           <CreateProject
             step={step}
             setStep={setStep}
-            client={props.clientName}
+            client={''}
             isSmallScreen={props.isSmallScreen}
           />
         ) : props.listingType === ListingType.Team ? (
           <CreateTeam
             step={step}
             setStep={setStep}
-            client={props.clientName}
+            client={''}
             isSmallScreen={props.isSmallScreen}
           />
         ) : null}

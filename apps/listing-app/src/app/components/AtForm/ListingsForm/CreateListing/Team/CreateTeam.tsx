@@ -157,7 +157,7 @@ const CreateTeam: React.FC<Props> = (props: Props) => {
     }
   }
 
-  const handleSubmitProject = (status: ListingState) => {
+  const handleSubmitListing = (status: ListingState) => {
     if (props.step + 1 === tabs.length) {
       dispatch(
         handleCreateListing({
@@ -224,7 +224,7 @@ const CreateTeam: React.FC<Props> = (props: Props) => {
             variant={AtButtonVariant.Contained}
             name={isLastStep ? 'Post' : 'Next Step'}
             disabled={isDisabled()}
-            onClick={() => handleSubmitProject(ListingState.Active)}
+            onClick={() => handleSubmitListing(ListingState.Active)}
             endIcon={isLastStep ? <TickCircle /> : <ArrowRight />}
           />
         </StyledFormStepper>
