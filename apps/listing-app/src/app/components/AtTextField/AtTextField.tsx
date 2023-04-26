@@ -333,7 +333,7 @@ const AtTextField: React.FC<AtTextFieldProps> = (props: AtTextFieldProps) => {
           multiline={props.multiline}
           rows={props.rows}
           inputProps={{
-            maxlength: props.maxLength,
+            maxLength: props.maxLength,
             min: props.minValue,
             ...props.inputProps,
           }}

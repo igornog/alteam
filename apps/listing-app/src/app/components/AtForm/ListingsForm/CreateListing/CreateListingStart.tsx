@@ -12,8 +12,8 @@ import AtCreateListingCard from '../../../AtCard/AtCreateListingCard'
 import CreateListing from '.'
 import { ListingType } from '@yjcapp/app'
 import CustomLink from '../../../AtLink/AtLink'
-import { useAppDispatch } from '../../../../utils/hooks/reduxHook'
-import { handleSelectClient } from '../../../../utils/redux/actions/clients.action'
+import { useAppSelector } from '../../../../utils/hooks/reduxHook'
+import { getActiveClient } from '../../../../utils/redux/selectors/clients.selector'
 
 export const StyledForm = styled.div`
   background-color: ${white};
@@ -39,19 +39,14 @@ export const StyledCard = styled.div`
   }
 `
 
-const CreateListingStart: React.FC<CreateListingProps> = (
-  props: CreateListingProps,
-) => {
+const CreateListingStart: React.FC= () => {
   const isSmallScreen = useMediaQuery('(max-width:1079px)')
-  const dispatch = useAppDispatch()
   const [openCreateListing, setOpenCreateListing] = useState(false)
   const [listingType, setListingType] = useState<ListingType>(
     ListingType.Project,
   )
 
-  console.log(props)
-  const currencClient = props.clientId && dispatch(handleSelectClient(props?.clientId))
-  console.log(currencClient)
+  const currentClient = useAppSelector((state) => getActiveClient(state))
 
   const createListing = (type: ListingType) => {
     setOpenCreateListing(true)
@@ -66,7 +61,7 @@ const CreateListingStart: React.FC<CreateListingProps> = (
     <CreateListing
       listingType={listingType}
       steps={listingType === ListingType.Project ? 5 : 6}
-      clientName={''}
+      client={currentClient}
       isSmallScreen={isSmallScreen}
       handleBackToCreateListing={handleCloseToCreateListing}
     />
@@ -101,7 +96,7 @@ const CreateListingStart: React.FC<CreateListingProps> = (
 
         <Grid container justifyContent={'center'}>
           <Grid
-            xs={10}
+            item={true}
             display={'flex'}
             flexDirection={'column'}
             gap={'20px'}
@@ -145,6 +140,7 @@ const CreateListingStart: React.FC<CreateListingProps> = (
           </Grid>
           <Grid
             xs={10}
+            item={true}
             marginTop={'50px'}
             display={'flex'}
             gap={'20px'}
@@ -173,10 +169,6 @@ const CreateListingStart: React.FC<CreateListingProps> = (
       </Box>
     </Container>
   )
-}
-
-interface CreateListingProps {
-  clientId?: number
 }
 
 export default CreateListingStart

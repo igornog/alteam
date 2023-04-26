@@ -24,6 +24,7 @@ import Preview from './steps/Preview'
 import { handleCreateListing } from '../../../../../utils/redux/actions/listing.action'
 import { useAppDispatch } from '../../../../../utils/hooks/reduxHook'
 import { StyledDot, StyledFormStepper, StyledStepper } from '..'
+import { Client } from '../../../../../utils/redux/types/clients.type'
 
 const CreateProject: React.FC<CreateProjectProps> = (
   props: CreateProjectProps,
@@ -150,7 +151,7 @@ const CreateProject: React.FC<CreateProjectProps> = (
         handleCreateListing({
           ...project,
           soloClient: {
-            companyName: props.client,
+            companyName: props.client.companyName,
             status: ClientStatus.Active,
           },
           listingType: ListingType.Project,
@@ -222,7 +223,7 @@ const CreateProject: React.FC<CreateProjectProps> = (
 
 export default CreateProject
 interface CreateProjectProps {
-  client: string
+  client: Client
   step: number
   setStep: Dispatch<React.SetStateAction<number>>
   isSmallScreen?: boolean

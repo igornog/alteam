@@ -25,6 +25,7 @@ import TeamStep5 from './steps/Step5'
 import { handleCreateListing } from '../../../../../utils/redux/actions/listing.action'
 import { StyledDot, StyledStepper, StyledFormStepper } from '..'
 import Preview from './steps/Preview'
+import { Client } from '../../../../../utils/redux/types/clients.type'
 
 const CreateTeam: React.FC<Props> = (props: Props) => {
   const dispatch = useAppDispatch()
@@ -163,7 +164,7 @@ const CreateTeam: React.FC<Props> = (props: Props) => {
         handleCreateListing({
           ...team,
           soloClient: {
-            companyName: props.client,
+            companyName: props.client.companyName,
             status: ClientStatus.Active,
           },
           listingType: ListingType.Team,
@@ -234,7 +235,7 @@ const CreateTeam: React.FC<Props> = (props: Props) => {
 }
 
 interface Props {
-  client: string
+  client: Client
   step: number
   setStep: Dispatch<React.SetStateAction<number>>
   isSmallScreen?: boolean

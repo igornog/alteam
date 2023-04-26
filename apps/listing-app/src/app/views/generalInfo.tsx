@@ -4,7 +4,7 @@ import { Box, Container, useMediaQuery } from '@mui/material'
 import { ArrowLeft2, ArrowRight2 } from 'iconsax-react'
 import { ClientStatus } from '@yjcapp/app'
 import { Client } from '../utils/redux/types/clients.type'
-import { useAppDispatch, useAppSelector } from '../utils/hooks/reduxHook'
+import { useAppDispatch } from '../utils/hooks/reduxHook'
 import { handleCreateClient } from '../utils/redux/actions/clients.action'
 import AtButton, {
   AtButtonKind,
@@ -16,7 +16,6 @@ import AtTextField from '../components/AtTextField/AtTextField'
 import AtTypography from '../components/AtTypography/AtTypography'
 import { white, grey2 } from '../utils/colors'
 import { useNavigate } from 'react-router-dom'
-import { getActiveClient } from '../utils/redux/selectors/clients.selector'
 // import { GeneralInfoSchemaType, generalInfoSchema } from '../validations/generalInfoSchema'
 // import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 // import { zodResolver } from '@hookform/resolvers/zod';
@@ -30,9 +29,7 @@ export const StyledForm = styled.div`
     margin: 20px 0;
   }
 `
-const ClientInfo: React.FC<ClientInfoProps> = (
-  props: ClientInfoProps,
-)=> {
+const ClientInfo: React.FC = ()=> {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const isSmallScreen = useMediaQuery('(max-width:1079px)')
@@ -61,13 +58,9 @@ const ClientInfo: React.FC<ClientInfoProps> = (
   // } = useForm<GeneralInfoSchemaType>({
   //   resolver: zodResolver(generalInfoSchema),
   // });
-
-  const selectedClient = useAppSelector((state) => getActiveClient(state))
-  console.log(selectedClient)
   
   const createClient = () => {
     dispatch(handleCreateClient(client))
-    props.setNewClientId(client.id)
     navigate('/create-my-listing')
   }
 
@@ -229,10 +222,5 @@ const ClientInfo: React.FC<ClientInfoProps> = (
     </Container>
   )
 }
-
-interface ClientInfoProps {
-  setNewClientId: (id?: number) => void
-}
-
 
 export default ClientInfo

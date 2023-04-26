@@ -14,6 +14,7 @@ import CreateProject from './Project/CreateProject'
 import CreateTeam from './Team/CreateTeam'
 import FinalStep from './SuccessScreen'
 import { boxShadow } from '../../../../utils/theme'
+import { Client } from '../../../../utils/redux/types/clients.type'
 
 export const StyledStepper = styled.div`
   position: sticky;
@@ -55,6 +56,8 @@ const CreateListing: React.FC<CreateListingProps> = (
 ) => {
   const [step, setStep] = useState(0)
 
+  console.log(props)
+
   return step === props.steps ? (
     <FinalStep />
   ) : (
@@ -84,14 +87,14 @@ const CreateListing: React.FC<CreateListingProps> = (
           <CreateProject
             step={step}
             setStep={setStep}
-            client={''}
+            client={props.client}
             isSmallScreen={props.isSmallScreen}
           />
         ) : props.listingType === ListingType.Team ? (
           <CreateTeam
             step={step}
             setStep={setStep}
-            client={''}
+            client={props.client}
             isSmallScreen={props.isSmallScreen}
           />
         ) : null}
@@ -101,7 +104,7 @@ const CreateListing: React.FC<CreateListingProps> = (
 }
 
 interface CreateListingProps {
-  clientName: string
+  client: Client
   steps?: number
   isSmallScreen?: boolean
   listingType: ListingType
