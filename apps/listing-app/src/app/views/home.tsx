@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, useMediaQuery } from '@mui/material'
+import { Box } from '@mui/material'
 import AtTypography from '../components/AtTypography/AtTypography'
 import styled from 'styled-components'
 import Header from '../components/AtHeader/AtHeader'
@@ -15,7 +15,7 @@ import puzzleIcon from './../assets/images/icons/puzzle.svg'
 import submitIcon from './../assets/images/icons/send-mail.svg'
 import CustomLink from '../components/AtLink/AtLink'
 import { Link } from 'react-router-dom'
-import { grey6 } from '../utils/colors'
+import { useAuth0 } from "@auth0/auth0-react";
 
 const StyledBackground = styled.div`
   height: 100%;
@@ -29,56 +29,19 @@ export const StyledLink = styled(Link)`
   text-decoration: none;
 `
 
-const StickyHeaderMobile = styled(Box)`
-  position: sticky;
-  gap: 20px;
-  justify-content: center;
-  background-color: ${grey6};
-  width: 100%;
-  padding: 0;
-  height: 10vh;
-  display: flex;
-  align-items: center;
-  top: 0;
-`
-
 const Home: React.FC = () => {
-  const isSmallScreen = useMediaQuery('(max-width:1079px)')
+  const { loginWithRedirect } = useAuth0();
 
   return (
     <StyledBackground>
       <Header />
-      {isSmallScreen && (
-        <StickyHeaderMobile>
-          <AtButton
-            kind={AtButtonKind.Default}
-            variant={AtButtonVariant.Outlined}
-            startIcon={<Call />}
-            name={'Book a Call'}
-            onClick={() => window.location.href='https://calendly.com/alteam-coaching/15min'}
-          />
-          <StyledLink to="/form">
-            <AtButton
-              kind={AtButtonKind.Success}
-              variant={AtButtonVariant.Contained}
-              startIcon={<AddCircle />}
-              name={'Create Free Listing'}
-            />
-          </StyledLink>
-        </StickyHeaderMobile>
-      )}
       <Box
         display={'flex'}
         flexDirection={'column'}
-        padding={!isSmallScreen ? '30px 15vw' : '0'}
+        padding={'30px 15vw'}
         gap={'30px'}
       >
-        <Box
-          display={'flex'}
-          padding={isSmallScreen ? '30px' : ''}
-          flexDirection={'column'}
-          gap={'30.5px'}
-        >
+        <Box display={'flex'} flexDirection={'column'} gap={'30.5px'}>
           <Box display={'flex'} flexDirection={'column'} gap={'20px'}>
             <AtTypography
               variant={'h3'}
@@ -87,7 +50,7 @@ const Home: React.FC = () => {
               {`Welcome to our Beta freelance job listing. Create a free project or team listing for free to match with vetted talents for roles such as software engineers, UX UI designers, and product managers and find an entire elastic squad (a team of 3-12).`}
             </AtTypography>
           </Box>
-          <Box display={'flex'} gap={'20px'} flexWrap={'wrap'}>
+          <Box display={'flex'} gap={'20px'}>
             <CustomLink>
               <AtTypography variant="subtitle1" fontSize="16px">
                 <Document size={20} />
@@ -102,12 +65,7 @@ const Home: React.FC = () => {
             </CustomLink>
           </Box>
         </Box>
-        <Box
-          display={'flex'}
-          gap={'20px'}
-          flexWrap={isSmallScreen ? 'wrap' : 'nowrap'}
-          padding={isSmallScreen ? '0 30px' : '0'}
-        >
+        <Box display={'flex'} gap={'20px'}>
           <CustomCard
             number={1}
             icon={listingIcon}
@@ -133,27 +91,23 @@ const Home: React.FC = () => {
             }
           />
         </Box>
-        <Box
-          display={'flex'}
-          gap={'20px'}
-          flexWrap={isSmallScreen ? 'wrap' : 'nowrap'}
-          justifyContent={isSmallScreen ? 'center' : 'flex-end'}
-        >
+        <Box display={'flex'} gap={'20px'} justifyContent={'flex-end'}>
           <AtButton
             kind={AtButtonKind.Default}
             variant={AtButtonVariant.Outlined}
             startIcon={<Call />}
             name={'Book a Call'}
-            onClick={() => window.location.href='https://calendly.com/alteam-coaching/15min'}
+            // onClick={() => setOpenDrawerCreateClient(true)}
           />
-          <StyledLink to="/form">
+          {/* <StyledLink to="/form"> */}
             <AtButton
               kind={AtButtonKind.Success}
               variant={AtButtonVariant.Contained}
               startIcon={<AddCircle />}
               name={'Create Free Listing'}
+              onClick={() => loginWithRedirect()}
             />
-          </StyledLink>
+          {/* </StyledLink> */}
         </Box>
       </Box>
       <Footer />
