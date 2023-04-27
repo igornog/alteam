@@ -4,10 +4,12 @@ import logo from '../../assets/images/black_logo.svg'
 import AtButton, { AtButtonKind, AtButtonVariant } from '../AtButton/AtButton'
 import { AddCircle, Profile2User } from 'iconsax-react'
 import AtLine from '../AtLine/AtLine'
-import { StyledLink } from '../../views/home'
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 const Header: React.FC = () => {
   const isSmallScreen = useMediaQuery('(max-width:1079px)')
+  const { loginWithRedirect } = useAuth0();
 
   return (
     <>
@@ -29,14 +31,13 @@ const Header: React.FC = () => {
               }
               name={'I am a freelancer'}
             />
-            <StyledLink to="/form">
               <AtButton
                 kind={AtButtonKind.Success}
                 variant={AtButtonVariant.Contained}
                 startIcon={<AddCircle />}
                 name={'Create Free Listing'}
+                onClick={() => loginWithRedirect()}
               />
-            </StyledLink>
           </Box>
         ) : null}
       </Box>

@@ -9,7 +9,7 @@ import AtButton, {
   AtButtonVariant,
 } from '../../../AtButton/AtButton'
 import AtTypography from '../../../AtTypography/AtTypography'
-import { StyledLink } from '../../../../views/home'
+import { Link } from 'react-router-dom'
 
 const StyledBox = styled(Box)`
   background-image: url(${Rocketbg});
@@ -17,6 +17,10 @@ const StyledBox = styled(Box)`
   height: 100vh;
   background-origin: content-box;
   background-position: center;
+`
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
 `
 
 const FinalStep = () => {

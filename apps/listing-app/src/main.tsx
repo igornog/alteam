@@ -24,7 +24,7 @@ const providerConfig = {
   clientId: config.clientId,
   onRedirectCallback,
   authorizationParams: {
-    redirect_uri: window.location.origin + '/talents',
+    redirect_uri: window.location.origin + '/form',
     ...(config.audience ? { audience: config.audience } : null),
   },
 };

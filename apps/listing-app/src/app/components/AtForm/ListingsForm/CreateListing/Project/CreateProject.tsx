@@ -144,13 +144,12 @@ const CreateProject: React.FC<CreateProjectProps> = (
   }
 
   const handleSubmitListing = (status: ListingState) => {
-    console.log('project', project)
-
     if (props.step + 1 === tabs.length) {
       dispatch(
         handleCreateListing({
           ...project,
           soloClient: {
+            id: props.client.id,
             companyName: props.client.companyName,
             status: ClientStatus.Active,
           },
