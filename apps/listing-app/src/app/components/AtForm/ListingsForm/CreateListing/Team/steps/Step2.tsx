@@ -70,7 +70,7 @@ const TeamStep2: React.FC<Step2Props> = (props: Step2Props) => {
           <Box display={'flex'} flexDirection={'column'}>
             <AtTypography
               variant={'h4'}
-              fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}
+              fontSize={props.isSmallScreen ? '1.125rem' : '1.625rem'}
             >
               All Roles
             </AtTypography>

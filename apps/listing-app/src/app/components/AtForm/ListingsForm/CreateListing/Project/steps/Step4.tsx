@@ -33,7 +33,7 @@ const ProjectStep4: React.FC<Step4Props> = (props: Step4Props) => {
         >
           <AtTypography
             variant={'h4'}
-            fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}
+            fontSize={props.isSmallScreen ? '1.125rem' : '1.625rem'}
           >
             Screening Questions
           </AtTypography>

@@ -1,8 +1,8 @@
 import { Box, Container, Grid, useMediaQuery } from '@mui/material'
-import { Document, DocumentText } from 'iconsax-react'
+import { ArrowLeft2, Document, DocumentText } from 'iconsax-react'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { white, grey5, green } from '../../../../utils/colors'
+import { white, grey5, green, grey2 } from '../../../../utils/colors'
 import { boxShadow } from '../../../../utils/theme'
 import AtLine from '../../../AtLine/AtLine'
 import AtTypography from '../../../AtTypography/AtTypography'
@@ -14,6 +14,9 @@ import { ListingType } from '@yjcapp/app'
 import CustomLink from '../../../AtLink/AtLink'
 import { useAppSelector } from '../../../../utils/hooks/reduxHook'
 import { getActiveClient } from '../../../../utils/redux/selectors/clients.selector'
+import Header from '../../../AtHeader/AtHeader'
+import AtButton, { AtButtonKind, AtButtonVariant } from '../../../AtButton/AtButton'
+import { useNavigate } from 'react-router-dom'
 
 export const StyledForm = styled.div`
   background-color: ${white};
@@ -39,7 +42,8 @@ export const StyledCard = styled.div`
   }
 `
 
-const CreateListingStart: React.FC= () => {
+const CreateListingStart: React.FC = () => {
+  const navigate = useNavigate()
   const isSmallScreen = useMediaQuery('(max-width:1079px)')
   const [openCreateListing, setOpenCreateListing] = useState(false)
   const [listingType, setListingType] = useState<ListingType>(
@@ -57,117 +61,120 @@ const CreateListingStart: React.FC= () => {
     setOpenCreateListing(false)
   }
 
-  return openCreateListing ? (
-    <CreateListing
-      listingType={listingType}
-      steps={listingType === ListingType.Project ? 5 : 6}
-      client={currentClient}
-      isSmallScreen={isSmallScreen}
-      handleBackToCreateListing={handleCloseToCreateListing}
-    />
-  ) : (
-    <Container>
-      <Box
-        paddingY={'30px'}
-        display={'flex'}
-        flexDirection={'column'}
-        gap={'30px'}
-      >
-        {/* <Box display={'flex'} gap={'5px'}>
-          <StyledLink to="/form">
-            <AtButton
-              variant={AtButtonVariant.Contained}
-              startIcon={<ArrowLeft2 />}
-              kind={AtButtonKind.Default}
-              onClick={handleCloseToCreateListing}
-            />
-          </StyledLink>
-          <AtTypography color={grey2}>Back to General Information</AtTypography>
-        </Box> */}
-
-        <AtTypography
-          variant={'h3'}
-          fontSize={isSmallScreen ? '1.5rem' : '2rem'}
-        >
-          First step: select your listing type
-        </AtTypography>
-
-        <AtLine />
-
-        <Grid container justifyContent={'center'}>
-          <Grid
-            item={true}
+  return (
+    <>
+      <Header />
+      {openCreateListing ? (
+        <CreateListing
+          listingType={listingType}
+          steps={listingType === ListingType.Project ? 5 : 6}
+          client={currentClient}
+          isSmallScreen={isSmallScreen}
+          handleBackToCreateListing={handleCloseToCreateListing}
+        />
+      ) : (
+        <Container>
+          <Box
+            paddingY={'30px'}
             display={'flex'}
             flexDirection={'column'}
-            gap={'20px'}
-            maxWidth={isSmallScreen ? 'unset' : 'initial'}
-            flexBasis={isSmallScreen ? 'unset' : 'initial'}
+            gap={'30px'}
           >
-            <StyledForm>
-              <Box
-                padding={'20px'}
-                display={'flex'}
-                justifyContent={'space-between'}
-              >
-                <AtTypography
-                  variant={'h4'}
-                  fontSize={isSmallScreen ? '1rem' : '1.5rem'}
-                >
-                  Do you need a freelancer for a fixed project or a team for
-                  3-24 months?
-                </AtTypography>
-              </Box>
-              <AtLine />
+            <Box display={'flex'} gap={'7px'}>
+              <AtButton
+                variant={AtButtonVariant.Contained}
+                startIcon={<ArrowLeft2 />}
+                kind={AtButtonKind.Default}
+                onClick={() => navigate('/form')}
+              />
+              <AtTypography color={grey2}>Back to General Information</AtTypography>
+            </Box>
+
+            <AtTypography
+              variant={'h3'}
+              fontSize={isSmallScreen ? '1.5rem' : '2rem'}
+            >
+              First step: select your listing type
+            </AtTypography>
+
+            <AtLine />
+
+            <Grid container justifyContent={'center'}>
               <Grid
-                container
-                justifyContent={'center'}
+                item={true}
+                display={'flex'}
+                flexDirection={'column'}
                 gap={'20px'}
-                padding={'20px'}
-                flexWrap={'unset'}
+                maxWidth={isSmallScreen ? 'unset' : 'initial'}
+                flexBasis={isSmallScreen ? 'unset' : 'initial'}
               >
-                <AtCreateListingCard
-                  listingOption={ListingType.Project}
-                  icon={FolderIcon}
-                  onClick={() => createListing(ListingType.Project)}
-                />
-                <AtCreateListingCard
-                  listingOption={ListingType.Team}
-                  icon={GroupIcon}
-                  onClick={() => createListing(ListingType.Team)}
-                />
+                <StyledForm>
+                  <Box
+                    padding={'20px'}
+                    display={'flex'}
+                    justifyContent={'space-between'}
+                  >
+                    <AtTypography
+                      variant={'h4'}
+                      fontSize={isSmallScreen ? '1rem' : '1.5rem'}
+                    >
+                      Do you need a freelancer for a fixed project or a team for
+                      3-24 months?
+                    </AtTypography>
+                  </Box>
+                  <AtLine />
+                  <Grid
+                    container
+                    justifyContent={'center'}
+                    gap={'20px'}
+                    padding={'20px'}
+                    flexWrap={'unset'}
+                  >
+                    <AtCreateListingCard
+                      listingOption={ListingType.Project}
+                      icon={FolderIcon}
+                      onClick={() => createListing(ListingType.Project)}
+                    />
+                    <AtCreateListingCard
+                      listingOption={ListingType.Team}
+                      icon={GroupIcon}
+                      onClick={() => createListing(ListingType.Team)}
+                    />
+                  </Grid>
+                </StyledForm>
               </Grid>
-            </StyledForm>
-          </Grid>
-          <Grid
-            xs={10}
-            item={true}
-            marginTop={'50px'}
-            display={'flex'}
-            gap={'20px'}
-            flexWrap={'wrap'}
-            justifyContent={isSmallScreen ? 'center' : 'flex-start'}
-          >
-            <CustomLink>
-              <AtTypography
-                variant="subtitle1"
-                fontSize={isSmallScreen ? '14px' : '1rem'}
+              <Grid
+                xs={10}
+                item={true}
+                marginTop={'50px'}
+                display={'flex'}
+                gap={'20px'}
+                flexWrap={'wrap'}
+                justifyContent={isSmallScreen ? 'center' : 'flex-start'}
               >
-                <Document size={20} />
-                What's an Alteam Project?
-              </AtTypography>
-            </CustomLink>
-            <CustomLink>
-              <AtTypography
-                variant="subtitle1"
-                fontSize={isSmallScreen ? '14px' : '1rem'}
-              >
-                <DocumentText size={20} /> What's an Alteam Team?
-              </AtTypography>
-            </CustomLink>
-          </Grid>
-        </Grid>
-      </Box>
-    </Container>
+                <CustomLink>
+                  <AtTypography
+                    variant="subtitle1"
+                    fontSize={isSmallScreen ? '14px' : '1rem'}
+                  >
+                    <Document size={20} />
+                    What's an Alteam Project?
+                  </AtTypography>
+                </CustomLink>
+                <CustomLink>
+                  <AtTypography
+                    variant="subtitle1"
+                    fontSize={isSmallScreen ? '14px' : '1rem'}
+                  >
+                    <DocumentText size={20} /> What's an Alteam Team?
+                  </AtTypography>
+                </CustomLink>
+              </Grid>
+            </Grid>
+          </Box>
+        </Container>
+      )}
+    </>
   )
 }
 

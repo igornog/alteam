@@ -2,7 +2,6 @@ import React from 'react'
 import { Box, useMediaQuery } from '@mui/material'
 import AtTypography from '../components/AtTypography/AtTypography'
 import styled from 'styled-components'
-import Header from '../components/AtHeader/AtHeader'
 import CustomCard from '../components/AtCard/AtCard'
 import { AddCircle, Call, Document, DocumentText } from 'iconsax-react'
 import AtButton, {
@@ -16,6 +15,8 @@ import submitIcon from './../assets/images/icons/send-mail.svg'
 import CustomLink from '../components/AtLink/AtLink'
 import { useAuth0 } from "@auth0/auth0-react";
 import { grey6 } from '../utils/colors'
+import { useNavigate } from 'react-router-dom'
+import HeaderHome from '../components/AtHeader/AtHeaderHome'
 
 const StyledBackground = styled.div`
   height: 100%;
@@ -40,12 +41,13 @@ top: 0;
 `
 
 const Home: React.FC = () => {
-  const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect, isAuthenticated } = useAuth0();
   const isSmallScreen = useMediaQuery('(max-width:1079px)')
+  const navigate = useNavigate()
 
   return (
     <StyledBackground>
-      <Header />
+      <HeaderHome />
       {isSmallScreen &&
         <StickyHeaderMobile
         >
@@ -61,7 +63,13 @@ const Home: React.FC = () => {
             variant={AtButtonVariant.Contained}
             startIcon={<AddCircle />}
             name={'Create Free Listing'}
-            onClick={() => loginWithRedirect()}
+            onClick={() => 
+              isAuthenticated ? 
+              navigate('/form') : 
+              loginWithRedirect({ 
+                appState: { targetUrl: window.location.pathname+'/form' } 
+              })
+            }
           />
         </StickyHeaderMobile>}
       <Box
@@ -148,7 +156,13 @@ const Home: React.FC = () => {
             variant={AtButtonVariant.Contained}
             startIcon={<AddCircle />}
             name={'Create Free Listing'}
-            onClick={() => loginWithRedirect()}
+            onClick={() => 
+              isAuthenticated ? 
+              navigate('/form') : 
+              loginWithRedirect({ 
+                appState: { targetUrl: window.location.pathname+'/form' } 
+              })
+            }
           />
         </Box>
       </Box>

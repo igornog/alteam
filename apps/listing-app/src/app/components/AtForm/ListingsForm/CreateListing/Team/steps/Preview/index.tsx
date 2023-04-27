@@ -17,12 +17,12 @@ const Preview: React.FC<PreviewProps> = (props: PreviewProps) => {
         <Box
           padding={'20px'}
           display={'flex'}
-          justifyContent={'space-between'}
+          justifyContent={'center'}
           flexDirection={props.isSmallScreen ? 'column' : 'row'}
         >
           <AtTypography
             variant={'h4'}
-            fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}
+            fontSize={props.isSmallScreen ? '1.125rem' : '1.625rem'}
           >
             Listing Preview
           </AtTypography>

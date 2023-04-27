@@ -23,7 +23,7 @@ const ProjectStep3: React.FC<Step3Props> = (props: Step3Props) => {
         >
           <AtTypography
             variant={'h4'}
-            fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}
+            fontSize={props.isSmallScreen ? '1.125rem' : '1.625rem'}
           >
             Add Skills
           </AtTypography>

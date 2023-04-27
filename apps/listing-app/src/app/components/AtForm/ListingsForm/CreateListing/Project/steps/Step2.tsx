@@ -27,7 +27,7 @@ const ProjectStep2: React.FC<Step2Props> = (props: Step2Props) => {
         >
           <AtTypography
             variant={'h4'}
-            fontSize={props.isSmallScreen ? '1.625rem' : '2.125rem'}
+            fontSize={props.isSmallScreen ? '1.125rem' : '1.625rem'}
           >
             Job Description
           </AtTypography>
