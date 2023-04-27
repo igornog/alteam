@@ -1,11 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { Client } from '../types/clients.type'
 import { clientService } from '../../services'
+import { ClientSearch } from '@yjcapp/app'
 
 export const handleClients = createAsyncThunk(
   'clients/initClients',
-  async () => {
-    return await clientService
+  async (clientSearch: ClientSearch, { rejectWithValue }) => {
+    try {
+      return await clientService.searchClient(clientSearch)
+    } catch (error) {
+      return rejectWithValue(error)
+    }
   },
 )
 

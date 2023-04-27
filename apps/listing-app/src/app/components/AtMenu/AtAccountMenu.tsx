@@ -9,6 +9,7 @@ import { Briefcase, LogoutCurve } from 'iconsax-react';
 import { Divider } from '@mui/material';
 import { black, grey2 } from '../../utils/colors';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useNavigate } from 'react-router-dom';
 
 const StyledMenu = styled(Menu)`
   ul {
@@ -33,6 +34,7 @@ const AccountMenu: React.FC<AtAccountMenuProps> = (
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const { logout } = useAuth0();
+  const navigate = useNavigate();
 
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -72,7 +74,7 @@ const AccountMenu: React.FC<AtAccountMenuProps> = (
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={() => { navigate('/listings'); handleClose() }}>
           <Briefcase />
           My listings
         </MenuItem>

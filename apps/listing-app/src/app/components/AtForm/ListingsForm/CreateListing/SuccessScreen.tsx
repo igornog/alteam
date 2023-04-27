@@ -60,7 +60,7 @@ const FinalStep = () => {
           <AtButton
             kind={AtButtonKind.Success}
             variant={AtButtonVariant.Contained}
-            name={`Go to website`}
+            name={`See my listings`}
             endIcon={<ArrowRight />}
           />
         </StyledLink>
