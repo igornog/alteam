@@ -296,7 +296,7 @@ const ModalGeneralInformation: React.FunctionComponent<
 }
 
 interface ModalGeneralInformationProps {
-  listing: ClientListing;
+  listing?: ClientListing;
   open: boolean
   onClose?: () => void
 }

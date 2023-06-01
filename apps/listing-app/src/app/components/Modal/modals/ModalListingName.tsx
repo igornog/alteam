@@ -1,5 +1,4 @@
 import { Box } from '@mui/material'
-import { ClientListing } from '@yjcapp/app'
 import { CloseCircle, CloseSquare, TickSquare } from 'iconsax-react'
 import React, { useState } from 'react'
 import { useAppDispatch } from '../../../utils/hooks/reduxHook'
@@ -89,7 +88,7 @@ const ModalListingName: React.FunctionComponent<
 }
 
 interface ModalListingNameProps {
-  listing?: ClientListing;
+  listing?: any;
   open: boolean
   onClose?: () => void
 }

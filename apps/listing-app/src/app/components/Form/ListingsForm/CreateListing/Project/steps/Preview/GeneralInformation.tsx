@@ -4,7 +4,7 @@ import AtFrame from '../../../../../../Frame/Frame'
 import AtTypography from '../../../../../../Typography/Typography'
 import { black, grey2 } from '../../../../../../../utils/colors'
 import { getCurrencySymbol, plurialize } from '../../../../../../../utils/helpers'
-import { ClientListing, WorkType } from '@yjcapp/app'
+import { WorkType } from '@yjcapp/app'
 import { Edit } from 'iconsax-react'
 import ModalGeneralInformation from '../../../../../../Modal/modals/ModalGeneralInformation'
 import moment from 'moment'
@@ -149,7 +149,7 @@ const GeneralInformation: React.FunctionComponent<GeneralProps> = (
 }
 
 interface GeneralProps {
-  listing: ClientListing
+  listing: any
   isAuthenticated?: boolean
   isSmallScreen?: boolean
 }

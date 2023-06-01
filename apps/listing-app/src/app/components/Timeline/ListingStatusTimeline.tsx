@@ -1,6 +1,5 @@
 import { Grid } from '@mui/material'
 import React, { useState } from 'react'
-import { ClientListing } from '@yjcapp/app'
 import AtFrame from '../Frame/Frame'
 import ModalGeneralInformation from '../Modal/modals/ModalGeneralInformation'
 import TimelineStatusCard from '../Card/Timeline/StatusCard'
@@ -20,10 +19,10 @@ const ListingStatusTimeline: React.FunctionComponent<GeneralProps> = (
     >
 
       <Grid container={true} gap={'10px'} alignItems={'stretch'}>
-        <TimelineStatusCard/>
-        <TimelineStatusCard/>
-        <TimelineStatusCard/>
-        <TimelineStatusFinalCard finalCard={true}/>
+        <TimelineStatusCard />
+        <TimelineStatusCard />
+        <TimelineStatusCard />
+        <TimelineStatusFinalCard finalCard={true} />
       </Grid>
 
       <ModalGeneralInformation
@@ -37,7 +36,7 @@ const ListingStatusTimeline: React.FunctionComponent<GeneralProps> = (
 }
 
 interface GeneralProps {
-  listing: ClientListing
+  listing?: any
   isAuthenticated?: boolean
   isSmallScreen?: boolean
 }
