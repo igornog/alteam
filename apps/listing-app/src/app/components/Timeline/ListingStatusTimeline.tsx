@@ -43,7 +43,7 @@ const FadeBox = styled(Box)`
   height: 230px;
   position: absolute; 
   width: 100px;
-  z-index: 9999;
+  z-index: 1;
   top: 235px;
   right: 40px;
   background: linear-gradient(to right,transparent,rgba(255,255,255,0.7));
