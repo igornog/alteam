@@ -1,0 +1,101 @@
+
+import { Box, useMediaQuery } from '@mui/material'
+import React from 'react'
+import styled from 'styled-components'
+import { green, grey3, grey5, white, white1 } from '../../../utils/colors'
+import AtTypography from '../../Typography/Typography'
+import { boxShadow } from '../../../utils/theme'
+import moment from 'moment'
+import { ClientListing } from '@yjcapp/app'
+import Typography from '../../Typography/Typography'
+import Button, { AtButtonKind, AtButtonVariant } from '../../Button/Button'
+import blueBackgroundGradient from '../../../assets/images/blue-background-gradient.png'
+
+export const StyledCard = styled.div<{ fullHeight?: boolean, isSmallScreen?: boolean }>`
+  background-image: url(${blueBackgroundGradient});
+  background-size: cover;
+  background-position: center;
+  color: ${white};
+  max-width: 20%;
+  border: 1px solid ${grey5};
+  border-radius: 5px;
+  padding: 20px;
+  transition: 0.3s;
+
+  button {
+    background-color: ${white1};
+    line-height: 19px;
+    height: auto;
+  }
+
+  &:hover {
+    box-shadow: ${boxShadow};
+    transition: 0.3s;
+    cursor: pointer;
+    border-color: ${green};
+  }
+`
+
+const TimelineStatusFinalCard: React.FunctionComponent<AtListingCardProps> = (
+  props: AtListingCardProps,
+) => {
+  const isSmallScreen = useMediaQuery('(max-width:1079px)')
+
+  return (
+    <StyledCard onClick={props.onClick} fullHeight={props.fullHeight} isSmallScreen={isSmallScreen}>
+      <Box>
+        <Box
+          display={'flex'}
+          justifyContent={'space-between'}
+        >
+          <Box display={'flex'} gap={'10px'} flexDirection={'column'} width={'100%'} height={'100%'}>
+            <Box
+              display={'flex'}
+              gap={'5 px'}
+              flexDirection={'column'}
+            >
+              <Box display={'flex'} flexDirection={'column'} gap={'5px'}>
+                <AtTypography fontWeight={600}>
+                  {'Alteam Wants to Book a call with You'}
+                </AtTypography>
+                <AtTypography>
+                  {'Lorem ipsum dolor sit amet consectetur. Viverra egestas mus mauris sed tortor.'}
+                </AtTypography>
+              </Box>
+
+              <Box margin={'10px 0'}>
+                <Button
+                  variant={AtButtonVariant.Contained}
+                  kind={AtButtonKind.Success}
+                  name='Book a Call'
+                  fontSize='16px'
+                  fontWeight={600}
+                  padding='5px 10px'
+                />
+              </Box>
+
+              <AtTypography>
+                <>Created on: {moment(props.listing?.createdAt).format('DD.MM.YYYY')}</>
+              </AtTypography>
+            </Box>
+          </Box>
+        </Box>
+
+        <Typography color={grey3} fontSize={'12px'} ellipsis={3}>
+          {props.listing?.jobDescription}
+        </Typography>
+
+      </Box>
+    </StyledCard>
+
+  )
+}
+
+interface AtListingCardProps {
+  listing?: ClientListing
+  finalCard?: boolean
+  fullHeight?: boolean
+  onClick?: (e: React.MouseEvent) => void
+}
+
+export default TimelineStatusFinalCard

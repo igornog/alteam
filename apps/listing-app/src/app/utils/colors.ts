@@ -6,6 +6,7 @@ export const grey4 = '#CFD0D4'
 export const grey5 = '#E7E8E9'
 export const grey6 = '#F1F8FE'
 export const white = '#FFFFFF'
+export const white1 = '#f7f8fe'
 
 export const blue = '#686DF1'
 export const blue1 = 'rgba(104, 109, 241, 0.8)'

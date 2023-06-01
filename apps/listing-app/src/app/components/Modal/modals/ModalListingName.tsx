@@ -89,7 +89,7 @@ const ModalListingName: React.FunctionComponent<
 }
 
 interface ModalListingNameProps {
-  listing?: any;
+  listing?: ClientListing;
   open: boolean
   onClose?: () => void
 }
