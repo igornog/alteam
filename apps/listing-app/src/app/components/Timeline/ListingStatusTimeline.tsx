@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { ClientListing } from '@yjcapp/app'
 import AtFrame from '../Frame/Frame'
 import ModalGeneralInformation from '../Modal/modals/ModalGeneralInformation'
 import TimelineStatusCard from '../Card/Timeline/StatusCard'
@@ -93,7 +92,7 @@ const ListingStatusTimeline: React.FunctionComponent<GeneralProps> = (
 }
 
 interface GeneralProps {
-  listing: ClientListing
+  listing: any
   isAuthenticated?: boolean
   isSmallScreen?: boolean
 
