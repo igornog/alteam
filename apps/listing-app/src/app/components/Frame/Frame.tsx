@@ -25,6 +25,7 @@ const AtFrame: React.FC<TalentFrameProps> = (props: TalentFrameProps) => {
       flexDirection={'column'}
       padding={props.padding ?? '20px'}
       bgcolor={props.backgroundColor ?? black}
+      overflow={props.overflow ?? 'initial'}
     >
       <Box display={'flex'} justifyContent={'space-between'}>
         <AtTypography variant={'h5'}>{props.title}</AtTypography>
@@ -43,6 +44,7 @@ interface TalentFrameProps {
   gap?: number
   backgroundColor?: string
   padding?: string
+  overflow?: string
 }
 
 export default AtFrame

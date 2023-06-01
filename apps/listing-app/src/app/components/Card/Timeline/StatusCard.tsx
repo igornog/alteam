@@ -5,25 +5,49 @@ import styled from 'styled-components'
 import { green, grey3, grey5, white } from '../../../utils/colors'
 import AtTypography from '../../Typography/Typography'
 import { boxShadow } from '../../../utils/theme'
-import moment from 'moment'
 import { ClientListing } from '@yjcapp/app'
 import Typography from '../../Typography/Typography'
 
 export const StyledCard = styled.div<{ fullHeight?: boolean, isSmallScreen?: boolean }>`
   display: flex;
+  height: auto;
+  min-height: 140px;
   background-color: ${white};
-  max-width: 20%;
   border: 1px solid ${grey5};
   border-radius: 5px;
   padding: 20px;
   transition: 0.3s;
 
+  p {
+    font-size: 12px;
+  }
+
   &:hover {
     box-shadow: ${boxShadow};
     transition: 0.3s;
-    cursor: pointer;
     border-color: ${green};
   }
+`
+
+const StyledSpan = styled.span`
+  width: 20px;
+  border-radius: 50%;
+  background-color: #EFF0F4;
+  text-align: center;
+  font-size: 12px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    opacity: 1;
+  }
+`
+
+const DateText = styled(Typography)`
+  position: absolute;
+  bottom: 20px;
 `
 
 const TimelineStatusCard: React.FunctionComponent<AtListingCardProps> = (
@@ -32,7 +56,9 @@ const TimelineStatusCard: React.FunctionComponent<AtListingCardProps> = (
   const isSmallScreen = useMediaQuery('(max-width:1079px)')
 
   return (
-    <StyledCard onClick={props.onClick} fullHeight={props.fullHeight} isSmallScreen={isSmallScreen}>
+    <StyledCard
+      className='carousel-cell'
+      onClick={props.onClick} fullHeight={props.fullHeight} isSmallScreen={isSmallScreen}>
       <Box>
         <Box
           display={'flex'}
@@ -48,6 +74,7 @@ const TimelineStatusCard: React.FunctionComponent<AtListingCardProps> = (
               justifyContent={'space-between'}
             >
               <Box display={'flex'} flexDirection={'column'} gap={'5px'}>
+                <StyledSpan><AtTypography>1 </AtTypography></StyledSpan>
                 <AtTypography fontWeight={600}>
                   {'Alteam Lorem Ipsum Dolor'}
                 </AtTypography>
@@ -55,9 +82,9 @@ const TimelineStatusCard: React.FunctionComponent<AtListingCardProps> = (
                   {'Lorem ipsum dolor sit amet consectetur. Viverra egestas mus mauris sed tortor.'}
                 </AtTypography>
               </Box>
-              <AtTypography color={grey3}>
-                <>Created on: {moment(props.listing?.createdAt).format('DD.MM.YYYY')}</>
-              </AtTypography>
+              <DateText color={grey3}>
+                {'Feb 2, 2023'}
+              </DateText>
             </Box>
           </Box>
         </Box>
