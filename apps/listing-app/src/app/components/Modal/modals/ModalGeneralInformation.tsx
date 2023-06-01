@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import { Availability, ClientListing, Currency, Difficulty, RateType, WorkType } from '@yjcapp/app'
+import { Availability, Currency, Difficulty, RateType, WorkType } from '@yjcapp/app'
 import { CloseCircle, CloseSquare, TickSquare } from 'iconsax-react'
 import React, { useState } from 'react'
 import { useAppDispatch } from '../../../utils/hooks/reduxHook'
@@ -296,7 +296,7 @@ const ModalGeneralInformation: React.FunctionComponent<
 }
 
 interface ModalGeneralInformationProps {
-  listing?: ClientListing;
+  listing?: any;
   open: boolean
   onClose?: () => void
 }
