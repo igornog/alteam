@@ -40,7 +40,7 @@ const TeamStep1: React.FC<Step1Props> = (props: Step1Props) => {
         exactRate: undefined,
       })
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.knownTotalPrice])
 
   useEffect(() => {
@@ -116,6 +116,25 @@ const TeamStep1: React.FC<Step1Props> = (props: Step1Props) => {
             label={'Number of Individuals'}
           />
 
+          <AtTextFieldDropdown
+            fullWidth
+            required
+            placeholder={'Select Seniority'}
+            $listItems={Object.values(Difficulty).map(
+              (label: Difficulty, index: number) => ({
+                id: index,
+                label: label,
+              }),
+            )}
+            handleSelect={(e) =>
+              props.setTeam({
+                ...props.team,
+                difficulty: e.label as Difficulty,
+              })
+            }
+            label={'Seniority'}
+          />
+
           <Box display={'flex'} gap={'10px'} flexDirection={'column'}>
             <Box display={'flex'} gap={'16px'}>
               <Box width={isDifferentOnSite ? '50%' : '100%'}>
@@ -170,6 +189,18 @@ const TeamStep1: React.FC<Step1Props> = (props: Step1Props) => {
             label={'Availability'}
           />
 
+          <AtTextFieldDate
+            required
+            value={''}
+            label={'Start Date'}
+            onValueChange={(e) =>
+              props.setTeam({
+                ...props.team,
+                startDate: moment(e).format('MM.DD.YYYY') as any,
+              })
+            }
+          />
+
           <AtTextField
             placeholder={'Enter Project Length'}
             type={AtTextFieldType.Number}
@@ -188,44 +219,14 @@ const TeamStep1: React.FC<Step1Props> = (props: Step1Props) => {
             }
           />
 
-          <AtTextFieldDate
-            required
-            value={''}
-            label={'Start Date'}
-            onValueChange={(e) =>
-              props.setTeam({
-                ...props.team,
-                startDate: moment(e).format('MM.DD.YYYY') as any,
-              })
-            }
-          />
-
-          <AtTextFieldDropdown
-            fullWidth
-            placeholder={'Select Your Currency'}
-            $listItems={Object.values(Currency).map(
-              (label: Currency, index: number) => ({
-                id: index,
-                key: label,
-                label: label + ` (${getCurrencySymbol(label)})`,
-              }),
-            )}
-            handleSelect={(e) =>
-              props.setTeam({
-                ...props.team,
-                currency: e.key as Currency,
-              })
-            }
-            label={'Currency'}
-          />
 
           <Box
             display={'flex'}
             gap={props.knownTotalPrice ? '20px' : 0}
             flexDirection={'column'}
           >
-            <Box display={'flex'} flexDirection={'column'} gap={'10px'}>
-              <AtTypography>Do you know in monthly team cost?</AtTypography>
+            <Box display={'flex'} flexDirection={'column'} gap={'10px'} marginBottom={'15px'}>
+              <AtTypography>Do you know the monthly team cost?</AtTypography>
               <AtSwitch
                 label={props.knownTotalPrice ? 'Yes' : 'No'}
                 placement={'end'}
@@ -235,53 +236,55 @@ const TeamStep1: React.FC<Step1Props> = (props: Step1Props) => {
               />
             </Box>
 
-            <Box display={'flex'} gap={'16px'} width={'100%'}>
+            <Box display={'flex'} flexDirection={'column'} gap={'16px'} width={'100%'}>
               {props.knownTotalPrice && (
-                <AtTextField
-                  label={'Team Rate'}
-                  type={AtTextFieldType.Number}
-                  minValue={1}
-                  placeholder={'Enter Exact Rate'}
-                  startIcon={
-                    <AtTypography color={convertHexToRGBA(black, 0.5)}>
-                      {getCurrencySymbol(props.team.currency)}
-                    </AtTypography>
-                  }
-                  maxLength={30}
-                  value={props.team.exactRate?.toString()}
-                  onValueChange={(e) =>
-                    props.setTeam({
-                      ...props.team,
-                      exactRate: parseFloat(e),
-                    })
-                  }
-                />
+                <>
+
+                  <AtTextFieldDropdown
+                    fullWidth
+                    placeholder={'Select Your Currency'}
+                    $listItems={Object.values(Currency).map(
+                      (label: Currency, index: number) => ({
+                        id: index,
+                        key: label,
+                        label: label + ` (${getCurrencySymbol(label)})`,
+                      }),
+                    )}
+                    handleSelect={(e) =>
+                      props.setTeam({
+                        ...props.team,
+                        currency: e.key as Currency,
+                      })
+                    }
+                    label={'Currency'}
+                  />
+                  <AtTextField
+                    label={'Team Rate'}
+                    type={AtTextFieldType.Number}
+                    minValue={1}
+                    placeholder={'Enter Exact Rate'}
+                    startIcon={
+                      <AtTypography color={convertHexToRGBA(black, 0.5)}>
+                        {getCurrencySymbol(props.team.currency)}
+                      </AtTypography>
+                    }
+                    maxLength={30}
+                    value={props.team.exactRate?.toString()}
+                    onValueChange={(e) =>
+                      props.setTeam({
+                        ...props.team,
+                        exactRate: parseFloat(e),
+                      })
+                    }
+                  />
+                </>
               )}
             </Box>
           </Box>
 
-          <AtTextFieldDropdown
-            fullWidth
-            required
-            placeholder={'Select Difficulty'}
-            $listItems={Object.values(Difficulty).map(
-              (label: Difficulty, index: number) => ({
-                id: index,
-                label: label,
-              }),
-            )}
-            handleSelect={(e) =>
-              props.setTeam({
-                ...props.team,
-                difficulty: e.label as Difficulty,
-              })
-            }
-            label={'Difficulty'}
-          />
-
           <AtTextField
-            label={'Learning'}
-            placeholder={'Enter Learning Link'}
+            label={'Brief presentation'}
+            placeholder={'Add a link to your deck'}
             onValueChange={(e) =>
               props.setTeam({ ...props.team, learningLink: e })
             }

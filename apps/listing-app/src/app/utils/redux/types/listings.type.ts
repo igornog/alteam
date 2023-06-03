@@ -22,6 +22,7 @@ export class Listing implements ClientListing {
   id: number
   soloClient: SoloClient
   listingName: string
+  role: string
   individuals: number
   workType?: WorkType
   timeZone: string
@@ -46,6 +47,7 @@ export class Listing implements ClientListing {
     this.id = data.id
     this.soloClient = data.soloClient
     this.listingName = data.listingName
+    this.role = data.Role
     this.individuals = data.individuals
     this.workType = data.workType
     this.timeZone = data.timeZone

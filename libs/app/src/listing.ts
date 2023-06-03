@@ -57,6 +57,18 @@ export enum WorkType {
   Remote = 'Remote',
 }
 
+export enum ProjectRole {
+  BusinessAnalyst = 'Business analyst',
+  HardwareEngineer = 'Hardware engineer',
+  Marketer = 'Marketer',
+  ProductManager = 'Product Manager',
+  SoftwareEngineer = 'Software engineer',
+  UXUIDesigner = 'UX/UI designer',
+  ProjectManager = 'Project Manager',
+  WebDeveloper = 'Web developer',
+  Other = 'Other',
+}
+
 export enum RateType {
   Fixed = 'Fixed',
   Variable = 'Variable',

@@ -208,7 +208,7 @@ const Home: React.FC = () => {
                     fontSize={'30px'}
                   >{`Welcome, ${user.given_name ?? capitalize(user.nickname ? user.nickname : '') ?? undefined}`}</AtTypography>
                   <AtTypography variant={'body1'} color={grey}>
-                    {`Lorem ipsum dolor sit amet consectetur. Luctus venenatis est sit facilisi sed commodo proin vestibulum adipiscing.`}
+                    {`You can view your listing, edit them, and change their status below. For any questions, please contact`}
                   </AtTypography>
                 </Box>
               }
@@ -258,7 +258,7 @@ const Home: React.FC = () => {
                     icon={submitIcon}
                     title={'Submit Review'}
                     text={
-                      "Once you're happy, please click the button “Submit” and a member of our team will review it. To make an edit or cancel your listing, you'll have to contact YJCollective."
+                      "Once you're happy, please click the button “Submit” and a member of our team will review it. You'll receive a notification from us; meanwhile, you can edit your listing below."
                     }
                   />
                   <StepsCardLogged

@@ -7,6 +7,7 @@ import {
   Currency,
   RateType,
   Difficulty,
+  ProjectRole,
 } from '@yjcapp/app'
 import AtTextFieldDropdown from '../../../../../Dropdown/TextFieldDropdown'
 import AtTimezoneDropdown from '../../../../../Dropdown/TimezoneDropdown'
@@ -78,6 +79,25 @@ const ProjectStep1: React.FC<Step1Props> = (props: Step1Props) => {
           <AtTextFieldDropdown
             fullWidth
             required
+            placeholder={'Role'}
+            $listItems={Object.values(ProjectRole).map(
+              (label: ProjectRole, index: number) => ({
+                id: index,
+                label: label,
+              }),
+            )}
+            handleSelect={(e) =>
+              props.setProject({
+                ...props.project,
+                role: e.label as ProjectRole,
+              })
+            }
+            label={'Role Type'}
+          />
+
+          <AtTextFieldDropdown
+            fullWidth
+            required
             placeholder={'Select Number of Individuals'}
             $listItems={Array.from(Array(10).keys()).map((key) => ({
               id: key + 1,
@@ -90,6 +110,25 @@ const ProjectStep1: React.FC<Step1Props> = (props: Step1Props) => {
               })
             }
             label={'Number of Individuals'}
+          />
+
+          <AtTextFieldDropdown
+            fullWidth
+            required
+            placeholder={'Select Seniority'}
+            $listItems={Object.values(Difficulty).map(
+              (label: Difficulty, index: number) => ({
+                id: index,
+                label: label,
+              }),
+            )}
+            handleSelect={(e) =>
+              props.setProject({
+                ...props.project,
+                difficulty: e.label as Difficulty,
+              })
+            }
+            label={'Seniority'}
           />
 
           <Box display={'flex'} gap={'10px'} flexDirection={'column'}>
@@ -147,6 +186,18 @@ const ProjectStep1: React.FC<Step1Props> = (props: Step1Props) => {
             label={'Availability'}
           />
 
+          <AtTextFieldDate
+            required
+            value={''}
+            label={'Start Date'}
+            onValueChange={(e) =>
+              props.setProject({
+                ...props.project,
+                startDate: moment(e).format('MM.DD.YYYY') as any,
+              })
+            }
+          />
+
           <AtTextField
             label={'Project Length'}
             type={AtTextFieldType.Number}
@@ -164,37 +215,6 @@ const ProjectStep1: React.FC<Step1Props> = (props: Step1Props) => {
                 </AtTypography>
               </StyledPeriod>
             }
-          />
-
-          <AtTextFieldDate
-            required
-            value={''}
-            label={'Start Date'}
-            onValueChange={(e) =>
-              props.setProject({
-                ...props.project,
-                startDate: moment(e).format('MM.DD.YYYY') as any,
-              })
-            }
-          />
-
-          <AtTextFieldDropdown
-            fullWidth
-            placeholder={'Select Your Currency'}
-            $listItems={Object.values(Currency).map(
-              (label: Currency, index: number) => ({
-                id: index,
-                key: label,
-                label: label + ` (${getCurrencySymbol(label)})`,
-              }),
-            )}
-            handleSelect={(e) =>
-              props.setProject({
-                ...props.project,
-                currency: e.key as Currency,
-              })
-            }
-            label={'Currency'}
           />
 
           <Box display={'flex'} gap={'10px'} flexDirection={'column'}>
@@ -269,26 +289,26 @@ const ProjectStep1: React.FC<Step1Props> = (props: Step1Props) => {
 
           <AtTextFieldDropdown
             fullWidth
-            required
-            placeholder={'Select Difficulty'}
-            $listItems={Object.values(Difficulty).map(
-              (label: Difficulty, index: number) => ({
+            placeholder={'Select Your Currency'}
+            $listItems={Object.values(Currency).map(
+              (label: Currency, index: number) => ({
                 id: index,
-                label: label,
+                key: label,
+                label: label + ` (${getCurrencySymbol(label)})`,
               }),
             )}
             handleSelect={(e) =>
               props.setProject({
                 ...props.project,
-                difficulty: e.label as Difficulty,
+                currency: e.key as Currency,
               })
             }
-            label={'Difficulty'}
+            label={'Currency'}
           />
 
           <AtTextField
-            label={'Learning'}
-            placeholder={'Enter Learning Link'}
+            label={'Brief presentation'}
+            placeholder={'Add a link to your deck'}
             onValueChange={(e) =>
               props.setProject({ ...props.project, learningLink: e })
             }
