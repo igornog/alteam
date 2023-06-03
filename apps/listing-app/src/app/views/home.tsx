@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Box, useMediaQuery } from '@mui/material'
+import { Box, Snackbar, useMediaQuery } from '@mui/material'
 import AtTypography from '../components/Typography/Typography'
 import styled from 'styled-components'
 import StepsCard from '../components/Card/Home/StepsCard'
@@ -169,6 +169,12 @@ const Home: React.FC = () => {
 
   return (
     <StyledBackground>
+      <Snackbar
+        open={open}
+        onClose={() => setOpen(false)}
+        autoHideDuration={2000}
+        message="Copied to clipboard"
+      />
       {!isLoading &&
         <>
           <HeaderHome />
