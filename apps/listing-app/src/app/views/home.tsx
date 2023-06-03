@@ -20,7 +20,7 @@ import HeaderHome from '../components/Header/HeaderHome'
 import Footer from '../components/Footer/Footer'
 import AtLine from '../components/Line/Line'
 import { capitalize } from '../utils/helpers'
-import { ClientListing, ListingState, ListingType } from '@yjcapp/app'
+import { ClientListing, Difficulty, ListingState, ListingType } from '@yjcapp/app'
 import { listingService } from '../utils/services'
 import AtListingCard from '../components/Card/Listings/ListingCard'
 import blueBackgroundGradient from '../assets/images/blue-background-gradient.png'
@@ -47,7 +47,7 @@ const dummyListings = [
     "exactRate": "40000",
     "rateFrom": null,
     "rateTo": null,
-    "difficulty": ,
+    "difficulty": Difficulty.MidWeight,
     "learningLink": "google.com",
     "roles": [
       {
@@ -124,13 +124,25 @@ const StickyHeaderMobile = styled(Box)`
   top: 0;
 `
 
+const StyledLink = styled.a`
+  color: ${grey};
+  cursor: pointer;
+  text-decoration: underline;
+`
+
 const Home: React.FC = () => {
   const { loginWithRedirect, isAuthenticated, user, isLoading } = useAuth0();
   const [userListings, setUserListings] = useState<ClientListing[]>()
   const [userClient, setUserClient] = useState<Client>()
   const [allListings, setAllListings] = useState<boolean>(false)
   const isSmallScreen = useMediaQuery('(max-width:1079px)')
+  const [open, setOpen] = useState(false)
   const navigate = useNavigate()
+
+  const handleCopyEmail = () => {
+    setOpen(true)
+    navigator.clipboard.writeText('hello@yjcollective.com')
+  }
 
   const getUserListings = async () => {
     const listings = await listingService.searchListing({ clientEmail: user?.email })
@@ -209,6 +221,7 @@ const Home: React.FC = () => {
                   >{`Welcome, ${user.given_name ?? capitalize(user.nickname ? user.nickname : '') ?? undefined}`}</AtTypography>
                   <AtTypography variant={'body1'} color={grey}>
                     {`You can view your listing, edit them, and change their status below. For any questions, please contact`}
+                    <StyledLink onClick={handleCopyEmail}>{`hello@yjcollective.com`}</StyledLink>
                   </AtTypography>
                 </Box>
               }
