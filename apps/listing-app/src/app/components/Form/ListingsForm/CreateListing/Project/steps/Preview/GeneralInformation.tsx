@@ -28,6 +28,28 @@ const GeneralInformation: React.FunctionComponent<GeneralProps> = (
       onClick={() => setOpenModal(true)}
     >
       <Box display={'flex'} flexDirection={'column'} gap={'15px'}>
+      <Grid container={true}>
+          <Grid item={true} xs={4}>
+            <AtTypography color={grey2}>Listing title: </AtTypography>
+          </Grid>
+          <Grid item={true} xs={8}>
+            <AtTypography>
+              {props.listing.listingName}
+            </AtTypography>
+          </Grid>
+        </Grid>
+
+        <Grid container={true}>
+          <Grid item={true} xs={4}>
+            <AtTypography color={grey2}>Role: </AtTypography>
+          </Grid>
+          <Grid item={true} xs={8}>
+            <AtTypography>
+              {'-'}
+            </AtTypography>
+          </Grid>
+        </Grid>
+
         <Grid container={true}>
           <Grid item={true} xs={4}>
             <AtTypography color={grey2}>Number of Individuals: </AtTypography>
@@ -128,7 +150,7 @@ const GeneralInformation: React.FunctionComponent<GeneralProps> = (
 
         <Grid container={true}>
           <Grid item={true} xs={4}>
-            <AtTypography color={grey2}>Learning: </AtTypography>
+            <AtTypography color={grey2}>Brief link: </AtTypography>
           </Grid>
           <Grid item={true} xs={8}>
             <AtTypography color={!props.listing.learningLink ? grey2 : black} variant={props.listing.learningLink ? 'body2' : 'caption'}>

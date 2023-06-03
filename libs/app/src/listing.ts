@@ -84,7 +84,7 @@ export enum ProjectLengthType {
 
 export enum Difficulty {
   Junior = 'Junior',
-  MidSenior = 'MidSenior',
+  MidWeight = 'Mid-weight',
   Senior = 'Senior',
   Lead = 'Lead',
 }

@@ -47,7 +47,7 @@ const dummyListings = [
     "exactRate": "40000",
     "rateFrom": null,
     "rateTo": null,
-    "difficulty": "MidSenior",
+    "difficulty": ,
     "learningLink": "google.com",
     "roles": [
       {

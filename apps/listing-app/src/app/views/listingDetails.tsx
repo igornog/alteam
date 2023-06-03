@@ -9,7 +9,7 @@ import AtGroupTag from '../components/Tag/GroupTag'
 import AtTypography from '../components/Typography/Typography'
 import { grey2 } from '../utils/colors'
 import { useNavigate, useParams } from 'react-router-dom'
-import { ClientListing, ListingState, ListingStatus, ListingType } from '@yjcapp/app'
+import { ClientListing, Difficulty, ListingState, ListingStatus, ListingType } from '@yjcapp/app'
 import styled, { css } from 'styled-components'
 import AtDropdown from '../components/Dropdown/Dropdown'
 import Skills from '../components/Form/ListingsForm/CreateListing/Project/steps/Preview/Skills'
@@ -39,7 +39,7 @@ const dummyListing = [
     "exactRate": "40000",
     "rateFrom": null,
     "rateTo": null,
-    "difficulty": "MidSenior",
+    "difficulty": Difficulty.MidWeight,
     "learningLink": "google.com",
     "roles": [
       {
